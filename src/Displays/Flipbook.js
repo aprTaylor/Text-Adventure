@@ -8,6 +8,10 @@ export class Flipbook extends Basic {
         this.pages = pages;
         this.pageNum = 0;
     }
+
+    start(world){
+        update(world);
+    }
     
     update(world){
         skip = world.tick - this.tick;

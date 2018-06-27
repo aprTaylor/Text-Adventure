@@ -29,3 +29,5 @@ export class Room extends Component {
 
   //Room.propTypes = {
   //};
+
+  // find child (find_child) => normal state

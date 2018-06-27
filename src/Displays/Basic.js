@@ -26,6 +26,6 @@ export class Basic {
     }
 
     stop() {
-        this.kill();
+        //Stop
     }
 }
