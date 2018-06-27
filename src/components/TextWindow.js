@@ -13,5 +13,5 @@ export class TextWindow extends Component {
   }
 
   TextWindow.propTypes = {
-    exits: PropTypes.arrayOf(PropTypes.string)
+    text: PropTypes.string
   };

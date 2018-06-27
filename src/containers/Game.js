@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import App from '../App';
-import { changeRoom, updateTick } from '../actions/index'; 
+import { changeRoom, changeDisplay, updateTick } from '../actions/index'; 
 
 const mapStateToProps = state => ({
   exits: state.exits,
@@ -12,6 +12,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   changeRoom: (room) => {
     return dispatch(changeRoom(room));
+  },
+  changeDisplay: (display) => {
+    return dispatch(changeDisplay(display));
   },
   updateTick: (tickChange) => {
     return dispatch(updateTick(tickChange));

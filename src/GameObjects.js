@@ -9,3 +9,19 @@ export const EXITS = {
     [ROOMS.FOREST]: {W: ROOMS.LAVENDER_FIELD},
     [ROOMS.HOME]: {E: ROOMS.LAVENDER_FIELD},
 }
+
+export const TIME = {
+    MORNING: "Morning",
+    MIDDAY: "Midday",
+    AFTERNOON: "Afternoon",
+    EVENING: "Evening",
+    NIGHT: "Night"
+}
+
+export const HOURS = {
+    [TIME.MORNING]: 6,
+    [TIME.MIDDAY]: 11,
+    [TIME.AFTERNOON]: 13,
+    [TIME.EVENING]: 18,
+    [TIME.NIGHT]: 20
+}

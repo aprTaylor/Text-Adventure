@@ -1,28 +1,45 @@
 import genExits from './genExits';
-import updateTick from './updateTick'
 import * as actions from '../actions';
-import { ROOMS } from '../GameObjects'
+import { ROOMS, EXITS } from '../GameObjects';
+import { Basic } from '../Displays/Basic'
 
 const initialState = {
-  exits:  [ROOMS.HOME, ROOMS.FOREST],
-  world: {tick: 0}
+  exits:  EXITS[ROOMS.LAVENDER_FIELD],
+  room: ROOMS.LAVENDER_FIELD,
+  world: {tick: 0},
+  display: new Basic("The wind blew gently on the lavender fields")
 };
   
 function reducer(state = initialState, action) {
   switch (action.type) {
     case actions.CHANGE_ROOM:
-      return genExits(state, action);
+      let newState = updateX("display", action.display, state);
+      newState = updateX("room", action.room, newState);
+      return updateX("exits", EXITS[action.room], newState);
+    case actions.CHANGE_DISPLAY:
+      return updateX("display", action.display, state);
     case actions.UPDATE_TICK:
-      //console.log("reducer is called");
-      //console.log(updateTick(state, action))//, //({world: {tick: count++}, ...state}));
-      //return updateTick(state, action);
-      //let tickc = state.world.tick++//+ action.tickChange
-      //console.log(state.world.tick, action, state.world.tick+action.tickChange);
-    return updateTick(state, action)//{world: {tick: (tickc)}, ...state}//(updateTick(state, action));
+      return updateX("world", {tick: action.tick}, state);
     default:
       return state;
     }
   }
+
+
+const updateX = (key, value, state) => {
+  return {...state, [key]: value};
+}
+/*
+const updateRoom = (state, action) => {
+  return {...state, room: action.display};
+
+const updateDisplay = (state, action) => {
+  return {...state, display: action.display};
+}
+
+const updateTick = (state, action) => {
+  return {...state, world: {tick: action.tick}};
+}*/
   
 export default reducer;
   
