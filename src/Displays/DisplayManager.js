@@ -80,7 +80,3 @@ export class DisplayManager {
 
 
 }
-
-// name
-// display
-// to: {name, funct}

@@ -15,7 +15,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "test": "NODE_ENV=development mocha --compilers js:babel-core/register ./test/*.js"
+    "test": "NODE_ENV=development nyc mocha --compilers js:babel-core/register ./test/*.js"
   },
   "devDependencies": {
     "babel-preset-react-app": "^3.1.2"

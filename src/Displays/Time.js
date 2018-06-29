@@ -1,4 +1,6 @@
 import { Basic } from './Basic'
+import { isA } from '../util/isA'
+
 export class Time extends Basic {
     /**
      * Creates an instance of a time based descriptor.
@@ -9,26 +11,40 @@ export class Time extends Basic {
      * @memberof Time
      */
     constructor(times, standard, initDesc){
+        if(!isA.object(times))
+            throw Error("times must be an object.");
+        if(!isA.string(standard))
+            throw Error("standard must be a string.");
+        if(initDesc && !isA.string(initDesc))
+            throw Error("initDesc must be a string.");
+
         //Give super constructor an initial description for start
-        super(standard, initDesc?initDesc:standard);
+        super(standard, initDesc);
 
         this.standard = standard;
         this.times = times;
     }
 
     start(world){
+        //If there is not an initial description
+        //get normal time description
         if(!this.initDesc)
             return this.update(world);
         
-        super.start();
+        return super.start();
     }
     
     update(world){
-        let page = times[world.timeOfDay];
+        //Assume that by not passing the time 
+        //standard description is being asked for
+        if(!world)
+            return this.standard;
+
+        let page = this.times[world.timeOfDay];
 
         if(!page)
             return super.update();
 
-        return page
+        return page;
     }
 }

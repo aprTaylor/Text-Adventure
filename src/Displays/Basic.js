@@ -8,16 +8,18 @@
 export class Basic {
     /**
      * Creates an instance of a basic descriptor. 
-     * @param {string} Standard description that will be shown every time except the first.
-     * @param {string=} Intitial description that will be shown once.
+     * @param {string} desc Standard description that will be shown every time except the first.
+     * @param {string=} initDesc initial description that will be shown once.
      * @memberof Basic
      */
     constructor(desc, initDesc){
         this.desc = desc;
-        this.initDesc = initDesc? initDesc : desc;
+        this.initDesc = initDesc? initDesc : undefined;
     }
 
     start(){ 
+        if(!this.initDesc)
+            return this.desc;
         return this.initDesc;
     }
 
