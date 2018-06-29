@@ -4,5 +4,11 @@ export const isA = {
     },
     string: (string) => {
         return typeof string === 'string' || string instanceof String;
+    },
+    array: (array) => {
+        return array && typeof array === 'object' && array.constructor === Array;
+    },
+    number: (number) => {
+        return typeof number === 'number' && isFinite(number);
     }
 };

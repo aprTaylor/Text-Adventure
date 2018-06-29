@@ -10,14 +10,6 @@ describe('Test Time Display', function() {
             let func = () => new Time(1);
             assert.throws(func, 'times must be an object.');
         });
-        it('should throw error if standard argument is not a string', function() {
-            let func = () => new Time({}, 2);
-            assert.throws(func, 'standard must be a string.');
-        });
-        it('should throw error if initDesc argument is passed and is not a string', function() {
-            let func = () => new Time({}, "", 3);
-            assert.throws(func, 'initDesc must be a string.');
-        });
     });
     describe('start method', function() {
         it('should return initial description if it is specified', function() {

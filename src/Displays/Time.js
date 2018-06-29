@@ -13,10 +13,6 @@ export class Time extends Basic {
     constructor(times, standard, initDesc){
         if(!isA.object(times))
             throw Error("times must be an object.");
-        if(!isA.string(standard))
-            throw Error("standard must be a string.");
-        if(initDesc && !isA.string(initDesc))
-            throw Error("initDesc must be a string.");
 
         //Give super constructor an initial description for start
         super(standard, initDesc);
