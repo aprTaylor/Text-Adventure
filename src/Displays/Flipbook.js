@@ -15,30 +15,48 @@ export class Flipbook extends Basic {
     /**
      * Creates an instance of Flipbook.
      * @param {Number} startTick 
-     * @param {(string|[string, Number]|{desc: string, skip: Number})[]} pages
+     * @param {(string|[string, Number]|{desc: string, delay: Number})[]} pages
         A page can either be just the description, an array of the description and number of
-        ticks to skip from the last description, or an object with the description and tick skip.
+        ticks to delay from the last description, or an object with the description and tick delay.
      * @param {string} initDesc The initial description.
      * @memberof Flipbook
      */
     constructor(pages){
+        //Make a formatted copy of pages
+        let formattedpages = pages.map(page => {
+            return formatPage(page);
+        });
+
         //Give super constructor an initial description for start
-        super(formatPage(pages[0]).desc);
+        super(formattedpages[0].desc);
+
+        this.pages = formattedpages;
 
         //this.tick = startTick;
-        this.pages = pages;
-        this.pageNum = 0;
-        this.paused = false;
+        
+        //this.pageNum = 0;
+        //this.paused = false;
     }
 
     start(world){
-        let initPage = formatPage(this.pages[0]);
+        //Get initial tick number
+        this.tick = world.tick;
 
-        if(initPage.skip >= 1){
+        //Get first page
+        let initPage = this.pages[0];
+
+        //Set up page number and delay system
+        this.pageNum = -1;
+        this.delay = initPage.delay;
+
+        //Option for delayed scene start
+        if(this.delay >= 1){
             return undefined;
         }
 
-        return initPage//.desc;
+        //Start scene is not delayed
+        this.pageNum = 0;
+        return initPage.desc;
 
         
         //this.tick = world.tick;
@@ -54,23 +72,72 @@ export class Flipbook extends Basic {
     //41 => 8
 
     //0 => 10 => 11
-    //["sdfsdfdf", or {desc: "sdfsdf", tickSkip: } or ["dsd", 10]]
+    //["sdfsdfdf", or {desc: "sdfsdf", tickdelay: } or ["dsd", 10]]
+//2, 10, 11
+//20
+// 2, 20
+//12, 20
+//23, 20
+
+//20, 20
 
     update(world){
-        skip = world.tick - this.tick;
-        if(this.pageNum + skip > this.pages.length)
-            this.stop();
-        else{
-            this.tick += skip;
-            this.pageNum += skip;
-            return pages[pageNum]; 
+        if(this.pageNum === undefined || this.pageNum === null)
+            throw Error("Flipbook must be started before it is updated.");
+
+        //How many turns has it been since we last updated?
+        let delay = world.tick - this.tick;
+        let page = this.pageNum;
+
+        //If we have not meet the delay quota yet, display current scene
+        if(this.delay > delay){
+            if(this.pageNum < 0)
+                return undefined;
         }
+        //delay quota has been reached, delay to proper page 
+        //(in the case multiple pages are delayed)
+        else{
+
+            let delayCnt = delay-(this.pageNum>=0?this.pages[this.pageNum].delay:0);
+            for(let i = this.pageNum; i < this.pages.length; i++){
+                /*
+                if(delayCnt <= 0){
+                    //return this.pageNum + " " + delayAcc + " " + delay;
+                    //this.delay = delayAcc;
+                    break;
+                }
+                page = this.pageNum++;
+                delayCnt/*Acc*/ /*+*///-= this.pages[this.pageNum].delay;
+                
+                
+            }
+        }
+
+        //delay, pg 1) 0 pg 2) 10, 5 < 10, stop on page one, delay is 5
+        // delay pg 1) 0 pg) 10, pg 3) 20 20 > 10, stop on page 2, delay is 10
+        //delay pg 1) 0 pg) 10, 10 == 10 , stop on page 2, delay is 0
+
+        //delay (count down )
+        //delay - page.delay
+        //0<= delay met (next page), not met same page
+        this.delay -= delay;
+
+        return this.pages[this.pageNum].desc;
+            
+
+        //if(this.pageNum + delay > this.pages.length)
+          //  this.stop();
+        //else{
+        //    this.tick += delay;
+         //   this.pageNum += delay;
+         //   return pages[pageNum]; 
+        //}
     }
 }
 
 export function formatPage(page){
     if(isA.string(page)){
-        return {desc: page, skip: 0};
+        return {desc: page, delay: 0};
     }
     if(isA.array(page)){
         if(page.length !== 2)
@@ -82,17 +149,17 @@ export function formatPage(page){
         if(page[1] < 0)
             throw Error(page[1] + " too low. Second item in page array must be a postive number.");
         
-        return {desc: page[0], skip: page[1]}; 
+        return {desc: page[0], delay: page[1]}; 
     }
     if(isA.object(page)){
         if(!page.hasOwnProperty('desc'))
             throw Error("A page object must have an desc property.");
-        if(!page.hasOwnProperty('skip'))
-            page.skip = 0;
-        else if(!isA.number(page.skip))
-            throw Error(page.skip + " is not a number. A page object's skip property must be a postive number.");
-        else if(page.skip < 0)
-            throw Error(page.skip + " too low. A page object's skip property must be a postive number.");
+        if(!page.hasOwnProperty('delay'))
+            page.delay = 0;
+        else if(!isA.number(page.delay))
+            throw Error(page.delay + " is not a number. A page object's delay property must be a postive number.");
+        else if(page.delay < 0)
+            throw Error(page.delay + " too low. A page object's delay property must be a postive number.");
         return page; 
     }
 
