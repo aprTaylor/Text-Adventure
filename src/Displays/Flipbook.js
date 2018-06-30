@@ -87,7 +87,7 @@ export class Flipbook extends Basic {
 
         //How many turns has it been since we last updated?
         let delay = world.tick - this.tick;
-        let page = this.pageNum;
+        //let page = this.pageNum;
 
         //If we have not meet the delay quota yet, display current scene
         if(this.delay > delay){
@@ -98,8 +98,22 @@ export class Flipbook extends Basic {
         //(in the case multiple pages are delayed)
         else{
 
-            let delayCnt = delay-(this.pageNum>=0?this.pages[this.pageNum].delay:0);
+            //let delayCnt = delay-(this.pageNum>=0?this.pages[this.pageNum].delay:0);
             for(let i = this.pageNum; i < this.pages.length; i++){
+                if(i < 0) continue;
+                
+                let pageDelay = this.pages[i].delay;
+                //if(i == 1)return delay " " + pageDe;
+                if(delay < pageDelay) break;
+            
+                this.pageNum = i;
+                delay -= pageDelay;
+                
+
+
+                //let delay = this.pages[this.pageNum].delay;
+
+                //if(delayCnt <=delay) break;
                 /*
                 if(delayCnt <= 0){
                     //return this.pageNum + " " + delayAcc + " " + delay;
@@ -108,19 +122,19 @@ export class Flipbook extends Basic {
                 }
                 page = this.pageNum++;
                 delayCnt/*Acc*/ /*+*///-= this.pages[this.pageNum].delay;
-                
-                
+                //this.delay -= delay;
+                //page = this.pageNum;
             }
         }
 
-        //delay, pg 1) 0 pg 2) 10, 5 < 10, stop on page one, delay is 5
+        //delay, pg 1) 2 5 > 2, pg 2) 10, 3 < 10, stop on page one, delay is 3
         // delay pg 1) 0 pg) 10, pg 3) 20 20 > 10, stop on page 2, delay is 10
         //delay pg 1) 0 pg) 10, 10 == 10 , stop on page 2, delay is 0
 
         //delay (count down )
         //delay - page.delay
         //0<= delay met (next page), not met same page
-        this.delay -= delay;
+        this.delay = delay;
 
         return this.pages[this.pageNum].desc;
             
