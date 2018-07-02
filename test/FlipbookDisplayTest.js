@@ -1,4 +1,5 @@
 import chai from 'chai'
+import itParam from 'mocha-param'
 import { Flipbook, formatPage } from '../src/Displays/Flipbook'
 import 'babel-polyfill'
 
@@ -18,7 +19,7 @@ describe('Test Flipbook Display', function() {
         });
         it('should wait ticks if first page has delay specified', function() {
             let des = new Flipbook([["This is a page", 2]]);
-            des.start({tick: 0});
+            assert.isUndefined(des.start({tick: 0}));
             assert.equal(des.update({tick: 2}), "This is a page");
         });
 
@@ -34,10 +35,47 @@ describe('Test Flipbook Display', function() {
             des.start({tick: 0});
             assert.isUndefined(des.update({tick: 1}));
         });
-        it('should return current scene if delay for next scene has not been met', function() {
-            let des = new Flipbook([["This is a page", 0], ["This is a second page", 10]]);
+        
+        itParam('should return proper scene', 
+        [[["target page", 0], ["This is a second page", 20]], 
+        [["This is a first page", 0], ["target page", 10], ["This is a third page", 10]],
+        [["This is a first page", 0], ["target page", 5], ["This is a third page", 15]],
+        [["This is a first page", 5], ["This is a second page", 3], ["target page", 2]]], 
+        function(value) {
+            let des = new Flipbook(value);
             des.start({tick: 0});
-            assert.equal(des.update({tick: 5}), "This is a page");
+            assert.equal(des.update({tick: 10}), "target page");
+        });
+        itParam('should return proper scene after multiple updates', 
+        [[["This is a first page", 0], ["This is a second page", 10],  ["target page", 5]], 
+        [["This is a first page", 0], ["This is a second page", 5], ["This is a third page", 10], ["target page", 5]],
+        [["This is a a page", 0], ["target page", 20]]],  
+        function(value) {
+            let des = new Flipbook(value);
+            des.start({tick: 0});
+            des.update({tick: 15});
+            assert.equal(des.update({tick: 20}), "target page");
+        });
+        it('should return last scene if delay is greater than last scene\'s delay', function() {
+            let des = new Flipbook([["This is a page", 0], ["This is a second page", 10],  ["This is the last page", 10]]);
+            des.start({tick: 0});
+            assert.equal(des.update({tick: 30}), "This is the last page");
+        });
+        it('should return last scene if in previous update last scene had been reached', function() {
+            let des = new Flipbook([["This is a page", 0], ["This is the last page", 10]]);
+            des.start({tick: 0});
+            des.update({tick: 10})
+            assert.equal(des.update({tick: 20}), "This is the last page");
+        });
+        itParam('should set proper delay', 
+        [{arr: [["target page", 0], ["This is a second page", 20]], expDelay: 10}, 
+        {arr: [["target page", 5], ["target page", 5], ["This is a second page", 15]], expDelay: 0},
+        {arr:[["This is a a page", 0], ["target page", 5], ["This is a third page", 15]], expDelay: 5}], 
+        function(value) {
+            let des = new Flipbook(value.arr);
+            des.start({tick: 0});
+            des.update({tick: 10});
+            assert.equal(des.delay, value.expDelay);
         });
     });
     describe('stop method', function() {
