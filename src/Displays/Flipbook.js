@@ -95,37 +95,6 @@ export class Flipbook extends Basic {
 ;        }
         while(this.pageNum < this.pages.length && skip > 0)
         
-        
-/*
-        //How many turns has it been since we last updated?
-        let delay = world.tick - this.tick;
-
-        //If we have not meet the delay quota yet, display current scene
-        if(this.delay > delay){
-            if(this.pageNum < 0)
-                return undefined;
-        }
-        //delay quota has been reached, delay to proper page 
-        //(in the case multiple pages are delayed)
-        else{
-            //0, 10 , 5, 20,  
-            //let delayCnt = delay-(this.pageNum>=0?this.pages[this.pageNum].delay:0);
-            for(let i = this.pageNum; i < this.pages.length; i++){
-                if(i < 0) continue;
-
-                let pageDelay = this.pages[i].delay;
-                this.pageNum = i;
-
-                //Delay has been met
-                if(delay <= pageDelay) break;
-                this.pageNum = i;
-                delay -= pageDelay;
-            }
-        }
-        //if we exactly met delay requirment start delay for next page
-        if(delay === 0 && this.pageNum < this.pages.length-1)
-            delay = this.pages[this.pageNum+1].delay;
-*/  
         //Has not started yet
         if(this.pageNum < 0)
             return undefined;
