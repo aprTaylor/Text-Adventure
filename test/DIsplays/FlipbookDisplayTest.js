@@ -1,6 +1,6 @@
 import chai from 'chai'
 import itParam from 'mocha-param'
-import { Flipbook, formatPage } from '../src/Displays/Flipbook'
+import { Flipbook, formatPage } from '../../src/Displays/Flipbook'
 import 'babel-polyfill'
 
 let assert = chai.assert;

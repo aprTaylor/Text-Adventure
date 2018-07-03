@@ -1,5 +1,5 @@
 import chai from 'chai'
-import { DisplayManager } from '../src/Displays/DisplayManager.js'
+import { DisplayManager } from '../../src/Displays/DisplayManager.js'
 import 'babel-polyfill'
 
 let assert = chai.assert;

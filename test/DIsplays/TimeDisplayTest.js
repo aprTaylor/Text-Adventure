@@ -1,5 +1,5 @@
 import chai from 'chai'
-import { Time } from '../src/Displays/Time'
+import { Time } from '../../src/Displays/Time'
 import 'babel-polyfill'
 
 let assert = chai.assert;

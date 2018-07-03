@@ -1,5 +1,5 @@
 import chai from 'chai'
-import { Basic } from '../src/Displays/Basic'
+import { Basic } from '../../src/Displays/Basic'
 import 'babel-polyfill'
 
 let assert = chai.assert;
