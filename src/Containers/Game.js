@@ -7,6 +7,7 @@ const mapStateToProps = state => ({
   exits: state.exits,
   text: state.text,
   world: {tick: state.world.tick},
+  display: state.display
 });
 
 const mapDispatchToProps = dispatch => ({

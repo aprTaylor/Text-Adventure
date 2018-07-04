@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 export class Exits extends Component {
 
     render() {
+      console.log("exits", this.props)
       return (
         <div className="Exits">
           <ul>

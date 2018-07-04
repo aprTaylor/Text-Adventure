@@ -3,19 +3,19 @@ import * as actions from '../actions';
 import { ROOMS, EXITS } from '../GameObjects';
 import { Basic } from '../Displays/Basic'
 
-const initialState = {
-  exits:  EXITS[ROOMS.LAVENDER_FIELD],
+export const initialState = {
+  exits:  genExits(EXITS[ROOMS.LAVENDER_FIELD], {room: ROOMS.LAVENDER_FIELD}).exits,
   room: ROOMS.LAVENDER_FIELD,
   world: {tick: 0},
-  display: new Basic("The wind blew gently on the lavender fields")
+  display: new Basic("The wind blew gently on the lavender fields"),
 };
   
-function reducer(state = initialState, action) {
+function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case actions.CHANGE_ROOM:
       let newState = updateX("display", action.display, state);
       newState = updateX("room", action.room, newState);
-      return updateX("exits", EXITS[action.room], newState);
+      return genExits(newState, action);
     case actions.CHANGE_DISPLAY:
       return updateX("display", action.display, state);
     case actions.UPDATE_TICK:

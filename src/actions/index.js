@@ -5,7 +5,8 @@ export const UPDATE_TICK = 'UPDATE_TICK';
 //TODO: Implement room state system for room displays
 export const changeRoom = newRoom => ({
     type: CHANGE_ROOM,
-    room: newRoom
+    room: newRoom,
+    display: undefined
 });
 
 export const changeDisplay = display => ({

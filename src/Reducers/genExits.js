@@ -1,18 +1,16 @@
 import { EXITS } from '../GameObjects'
 
 let genExits = (state, action) => {
-    console.log("gen Exits");
     if (!action.room) return state;
 
     let roomExits = EXITS[action.room];
-    let exits = Object.keys(roomExits).map((exits, dir) => {
-        return exits.push(roomExits[dir]);
-    }, []);
-    
+    let exits = Object.keys(roomExits).map((dir, index) => {
+        return roomExits[dir];
+    });
     return {
         ...state,
-        exits
+        exits: exits
     };
 };
 
-export default genExits
+export default genExits;

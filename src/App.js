@@ -9,8 +9,9 @@ class App extends Component {
   constructor(props){
     super(props);
     this.incrementTick = this.incrementTick.bind(this);
-    console.log(this.props);
-    this.props.changeRoom(ROOMS.LAVENDER_FIELD);
+    console.log("I am in constructor", this.props);
+    //this.props.changeRoom(ROOMS.LAVENDER_FIELD);
+    console.log("After change room is called", this.props);
   }
 
   incrementTick() {
@@ -18,11 +19,11 @@ class App extends Component {
   }
 
   render() {
-    const {exits, world} = this.props;
+    console.log("APP this.props", this.props);
     return (
       <div className="App">
-        <Exits {...{exits}} />
-        <Room {...{world}}/>
+        <Exits exits={this.props.exits} />
+        <Room display={this.props.display} world={this.props.world}/>
       </div>
     );
   }

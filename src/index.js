@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import './index.css';
-import Game from './containers/Game';
-import reducer from './reducers';
+import Game from './Containers/Game';
+import reducer from './Reducers';
 import registerServiceWorker from './registerServiceWorker';
 
 /* eslint-disable no-underscore-dangle */

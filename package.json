@@ -16,12 +16,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "test": "NODE_ENV=development nyc mocha --recursive --reporter mochawesome --compilers js:babel-core/register ./test"
+    "test": "NODE_ENV=development nyc mocha -r jsdom-global/register --recursive --reporter mochawesome --compilers js:babel-core/register ./test"
   },
   "devDependencies": {
     "babel-preset-react-app": "^3.1.2",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "jsdom": "11.11.0",
+    "jsdom-global": "3.0.2",
     "mocha-param": "^2.0.0",
     "mochawesome": "^3.0.2"
   },
