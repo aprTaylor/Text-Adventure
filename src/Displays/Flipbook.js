@@ -68,32 +68,34 @@ export class Flipbook extends Basic {
         //How many turns has it been since we last updated?
         let skip = world.tick - this.tick;
 
-        do{
-            let nextDelay = this.pages[this.pageNum+1].delay;
-            //Set delay for next update
-            if(this.delay === 0 && skip < nextDelay){
-                this.delay = skip; 
-                skip = 0;
-            }
-            //Skip page with no delay
-            else if(this.delay === 0 && skip >= nextDelay){
-                skip -= nextDelay;
-                this.pageNum++;
-            }
-            //add delay to our skip;
-            else{
-                skip += this.delay;
-                this.delay = 0;
-            }
-            
-            //Reached last page
-            if(this.pageNum >= this.pages.length-1){
-                this.done = true;
-                    break;
-            }
-            //console.log("pagen", this.pageNum, "skip", skip, "delay", this.delay, "nextDelay", nextDelay)
-;        }
-        while(this.pageNum < this.pages.length && skip > 0)
+        //Do not update if time has not passed
+        if(skip !== 0)
+            do{
+                let nextDelay = this.pages[this.pageNum+1].delay;
+                //Set delay for next update
+                if(this.delay === 0 && skip < nextDelay){
+                    this.delay = skip; 
+                    skip = 0;
+                }
+                //Skip page with no delay
+                else if(this.delay === 0 && skip >= nextDelay){
+                    skip -= nextDelay;
+                    this.pageNum++;
+                }
+                //add delay to our skip;
+                else{
+                    skip += this.delay;
+                    this.delay = 0;
+                }
+                
+                //Reached last page
+                if(this.pageNum >= this.pages.length-1){
+                    this.done = true;
+                        break;
+                }
+                //console.log("pagen", this.pageNum, "skip", skip, "delay", this.delay, "nextDelay", nextDelay)
+    ;        }
+            while(this.pageNum < this.pages.length && skip > 0)
         
         //Has not started yet
         if(this.pageNum < 0)

@@ -4,10 +4,10 @@ import { ROOMS, EXITS, DESCRIPTORS } from '../GameObjects';
 import { Basic } from '../Displays/Basic'
 
 export const initialState = {
-  exits:  genExits(EXITS[ROOMS.LAVENDER_FIELD], {room: ROOMS.LAVENDER_FIELD}).exits,
-  room: ROOMS.LAVENDER_FIELD,
+  exits:  genExits(EXITS[ROOMS.FIELD], {room: ROOMS.FIELD}).exits,
+  room: ROOMS.FIELD,
   world: {tick: 0},
-  display: DESCRIPTORS[ROOMS.LAVENDER_FIELD],
+  display: DESCRIPTORS[ROOMS.FIELD],
 };
   
 function reducer(state = initialState, action = {}) {

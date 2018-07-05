@@ -2,16 +2,16 @@ import { DisplayManager } from './Displays/DisplayManager'
 import { Flipbook } from './Displays/Flipbook'
 
 export const ROOMS = {
-    "LAVENDER_FIELD": "Lavender Field",
+    "FIELD": "Field",
     "FOREST": "Forest",
     "HOME": "Home",
     "TEST": "Test"
 }
 
 export const EXITS = {
-    [ROOMS.LAVENDER_FIELD]:  {E: ROOMS.FOREST, W: ROOMS.HOME},
-    [ROOMS.FOREST]: {W: ROOMS.LAVENDER_FIELD},
-    [ROOMS.HOME]: {E: ROOMS.LAVENDER_FIELD},
+    [ROOMS.FIELD]:  {E: ROOMS.FOREST, W: ROOMS.HOME},
+    [ROOMS.FOREST]: {W: ROOMS.FIELD},
+    [ROOMS.HOME]: {E: ROOMS.FIELD},
     [ROOMS.TEST]: {N: "north", S: "south", E:"east", W:"west"}
 }
 
@@ -32,11 +32,11 @@ export const HOURS = {
 }
 
 export const DESCRIPTORS = {
-    [ROOMS.LAVENDER_FIELD]: new DisplayManager({
+    [ROOMS.FIELD]: new DisplayManager({
         intro: {
             display: new Flipbook([
-                "Lavender waves gently brush agianst you. Their musky sent fills your head"+
-                " and your sence of smell. A nearby basket is brimming"+
+                "Purple waves gently brush agianst you. Their musky sent fills your head"+
+                " and your sense of smell. A nearby basket is brimming"+
                 " with the surrounding long stemmed plants. Still your gloved hand reaches to pick more"+
                 " If you are even a little short of a needed herb it could be devastating for the village.",
                 "You wipe your glistening brow with the back of your hand and look up to estimate the time."+

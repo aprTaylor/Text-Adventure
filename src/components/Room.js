@@ -12,7 +12,7 @@ import { TextWindow } from './TextWindow';
 export class Room extends Component {
     constructor(props){
         super(props);
-        console.log("ROOM this.props", this.props)
+        console.log("Updating room", this.props.world)
         this.text = this.props.display.start(this.props.world);
     }
     
@@ -21,6 +21,7 @@ export class Room extends Component {
     }
 
     render() {
+        console.log("Updating room", this.props.world)
         this.text = this.props.display.update(this.props.world);
         return (
             <TextWindow text={this.text} />

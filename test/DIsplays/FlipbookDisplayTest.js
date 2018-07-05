@@ -46,6 +46,11 @@ describe('Test Flipbook Display', function() {
             des.start({tick: 0});
             assert.equal(des.update({tick: 10}), "target page");
         });
+        it('should return the current scence if no time passes but there are multiple 0 tick pages', () => {
+            let des = new Flipbook([["target page", 0], ["This is a second page", 0]]);
+            des.start({tick: 0});
+            assert.equal(des.update({tick: 0}), "target page");
+        });
         itParam('should return proper scene after multiple updates', 
         [[["This is a first page", 0], ["This is a second page", 10],  ["target page", 5]], 
         [["This is a first page", 0], ["This is a second page", 5], ["This is a third page", 10], ["target page", 5]],
