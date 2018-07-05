@@ -22,6 +22,12 @@ describe('Test DisplayManager', function() {
     describe('constructor', function() {
         let dis = new TestDisplay("I am a standard description");
         let dm = new DisplayManager({test:{display: dis}}, "test");
+
+        it('should throw error if displayManager is not an object', function() {
+            let fn = () => {new DisplayManager(0)};
+            assert.throws(fn, 'displayMaps must be an object.');
+        });
+
         it('should derive displayMap from given displayName', function() {
             let initDisplayMap = dm.displayMap;
             

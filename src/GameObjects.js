@@ -1,3 +1,6 @@
+import { DisplayManager } from './Displays/DisplayManager'
+import { Flipbook } from './Displays/Flipbook'
+
 export const ROOMS = {
     "LAVENDER_FIELD": "Lavender Field",
     "FOREST": "Forest",
@@ -27,3 +30,18 @@ export const HOURS = {
     [TIME.EVENING]: 18,
     [TIME.NIGHT]: 20
 }
+
+export const DESCRIPTORS = {
+    [ROOMS.LAVENDER_FIELD]: new DisplayManager({
+        intro: {
+            display: new Flipbook([
+                "Lavender waves gently brush agianst you. Their musky sent fills your head"+
+                " and your sence of smell. A nearby basket is brimming"+
+                " with the surrounding long stemmed plants. Still your gloved hand reaches to pick more"+
+                " If you are even a little short of a needed herb it could be devastating for the village.",
+                "You wipe your glistening brow with the back of your hand and look up to estimate the time."+
+                " A little past noon it seems. You move to grab your basket when a far off figure catches your eye."
+            ]),
+        }
+    }, "intro"),
+} 

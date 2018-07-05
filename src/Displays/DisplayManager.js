@@ -1,4 +1,5 @@
 import { forceArray } from '../util/mis'
+import { isA } from '../util/isA'
 /**
  * Handles state changes between diffrent displays.
  * 
@@ -16,6 +17,9 @@ export class DisplayManager {
      * @memberof DisplayManager
      */
     constructor(displayMaps, initDisplayName, flags){
+        if(!isA.object(displayMaps))
+            throw Error('DisplayManager error. Argument displayMaps must be an object.')
+
         this.displayMaps = displayMaps;
         this.flags = flags;
         this.displayMap = displayMaps[initDisplayName];

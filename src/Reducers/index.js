@@ -1,13 +1,13 @@
 import genExits from './genExits';
 import * as actions from '../actions';
-import { ROOMS, EXITS } from '../GameObjects';
+import { ROOMS, EXITS, DESCRIPTORS } from '../GameObjects';
 import { Basic } from '../Displays/Basic'
 
 export const initialState = {
   exits:  genExits(EXITS[ROOMS.LAVENDER_FIELD], {room: ROOMS.LAVENDER_FIELD}).exits,
   room: ROOMS.LAVENDER_FIELD,
   world: {tick: 0},
-  display: new Basic("The wind blew gently on the lavender fields"),
+  display: DESCRIPTORS[ROOMS.LAVENDER_FIELD],
 };
   
 function reducer(state = initialState, action = {}) {
