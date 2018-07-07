@@ -1,5 +1,6 @@
 import { DisplayManager } from './Displays/DisplayManager'
 import { Flipbook } from './Displays/Flipbook'
+import { Basic } from './Displays/Basic'
 
 export const ROOMS = {
     "FIELD": "Field",
@@ -46,8 +47,23 @@ export const DESCRIPTORS = {
                 " with the surrounding long stemmed plants. Still your gloved hand reaches to pick more"+
                 " If you are even a little short of a needed herb it could be devastating for the village.",
                 "You wipe your glistening brow with the back of your hand and look up to estimate the time."+
-                " A little past noon it seems. You move to grab your basket when a far off figure catches your eye."
+                " A little past noon it seems. You still have some time before the cold season starts but when"+
+                " winter hits it can hit hard. <br> After plucking a few more stems you realize that if you don't"+
+                " stop soon your basket will begin to overflow. You grab your basket and stand up."
             ]),
+            to: [{
+                name: "standDesc",
+                condition: (flags, display) => {return eval(display.done)}
+                }
+            ]
+        },
+        standDesc: {
+            display: new Basic("You stand in a field of purple sage stretching out about an acre."+
+                    " Each gust of wind sends waves rippling throughout the stalky plants. At the"+
+                    " edge of the field to the west sits a charming cottage that you call home. Along"+
+                    " the opposite way, to the east, grand oaks fill your view. An inky blackness between"+
+                    " thier trunks obscure any hidden treasures.")
         }
-    }, "intro"),
+
+    }, "intro", {introIsDone: "this.done"}),
 } 

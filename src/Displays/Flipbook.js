@@ -63,8 +63,14 @@ export class Flipbook extends Basic {
         if(this.pageNum === undefined || this.pageNum === null)
             throw Error("Flipbook must be started before it is updated.");
 
+        //Reached last page
+        if(this.pageNum >= this.pages.length-1){
+            this.done = true;
+        }
+
         //If the last page has been reached earlier return it
         if(this.done && this.pageNum !== -1) return this.pages[this.pages.length-1].desc;
+
 
         //How many turns has it been since we last updated?
         let skip = world.tick - this.tick;
@@ -89,14 +95,9 @@ export class Flipbook extends Basic {
                     this.delay = 0;
                 }
                 
-                //Reached last page
-                if(this.pageNum >= this.pages.length-1){
-                    this.done = true;
-                        break;
-                }
                 //console.log("pagen", this.pageNum, "skip", skip, "delay", this.delay, "nextDelay", nextDelay)
-    ;        }
-            while(this.pageNum < this.pages.length && skip > 0)
+            }
+            while(this.pageNum < this.pages.length-1 && skip > 0)
         
         //Has not started yet
         if(this.pageNum < 0)
@@ -109,7 +110,7 @@ export class Flipbook extends Basic {
     }
 
     getActions() {
-        return ACTIONS.NEXT;
+            return ACTIONS.NEXT;
     }
 
     stop(){

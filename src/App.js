@@ -13,9 +13,10 @@ class App extends Component {
     super(props);
     this.incrementTick = this.incrementTick.bind(this);
     this.addActions = this.addActions.bind(this);
+    this.takeTurn = this.takeTurn.bind(this);
 
     this.actionsMap = {
-      [ACTIONS.NEXT]: this.incrementTick
+      [ACTIONS.NEXT]: this.takeTurn
     }
     //this.props.changeRoom(ROOMS.FIELD);
   }
@@ -23,12 +24,18 @@ class App extends Component {
 
 
   shouldComponentUpdate(nextProps, nextState){
-    if(nextProps == this.props)
+    console.log(nextProps, this.props, nextProps == this.props)
+    if(nextProps === this.props)
       return false;
     return true;
   }
 
 
+
+  takeTurn() {
+    this.incrementTick();
+    this.props.clearActions();
+  }
 
   incrementTick() {
     this.props.updateTick(this.props.world.tick);
@@ -48,12 +55,11 @@ class App extends Component {
   }
 
   render() {
-    //this.props.clearActions();
     return (
       <div className="App">
         <Exits exits={this.props.exits} />
         <Room display={this.props.display} world={this.props.world} 
-        addActions={this.addActions}/>
+        addActions={this.addActions} actions={this.props.actions}/>
         <Actions actions={this.props.actions} actionMap={this.actionsMap}/>
       </div>
     );

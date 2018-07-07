@@ -14,13 +14,18 @@ export class Room extends Component {
         super(props);
         this.text = this.props.display.start(this.props.world);
     }
+
+   // shouldComponentUpdate(nextProps, nextState){
+   //     console.log("Room", nextProps.actions.length )
+   //     if(nextProps.actions.length > 0)
+   //         return true;
+   // }
     
     componentWillUnmount(){
         this.props.display.stop();
     }
 
     render() {
-        console.log(this.props.display.getActions())
         this.text = this.props.display.update(this.props.world);
         
         let actions = this.props.display.getActions();

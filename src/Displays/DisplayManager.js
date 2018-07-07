@@ -51,14 +51,16 @@ export class DisplayManager {
     }
 
     shouldTransition(world) {
+        
         //No transactions are specified
         if(!this.displayMap.hasOwnProperty('to'))
             return false;
-
+            
         this.displayMap.to = forceArray(this.displayMap.to);
-
+        
         let validTrans = this.displayMap.to.filter((trans) => {
-            return trans.condition(this.flags, world);
+            console.log("should trans", this.flags);
+            return trans.condition(this.flags, this.displayMap.display, world);
         });
 
         //If there are no valid transitions 

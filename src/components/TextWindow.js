@@ -5,11 +5,12 @@ export class TextWindow extends Component {
 
     render() {
       return (
-        <div className="TextWindow">
-           {this.props.text} 
+        <div className="TextWindow" 
+        dangerouslySetInnerHTML={{__html: this.props.text}}>
+           
         </div>
       );
-    }
+    }y
   }
 
   TextWindow.propTypes = {

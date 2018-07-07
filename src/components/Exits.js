@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 
 export class Exits extends Component {
 
+  shouldComponentUpdate(nextProps){
+    if(nextProps.exits !== this.props.exits)
+      return true;
+  }
+
     render() {
       return (
         <div className="Exits">
