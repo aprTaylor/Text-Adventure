@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { TextWindow } from './TextWindow';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 /**
  * 
@@ -12,24 +12,30 @@ import { TextWindow } from './TextWindow';
 export class Room extends Component {
     constructor(props){
         super(props);
-        console.log("Updating room", this.props.world)
         this.text = this.props.display.start(this.props.world);
     }
     
     componentWillUnmount(){
-        this.props.display.end();
+        this.props.display.stop();
     }
 
     render() {
-        console.log("Updating room", this.props.world)
+        console.log(this.props.display.getActions())
         this.text = this.props.display.update(this.props.world);
+        
+        let actions = this.props.display.getActions();
+        if(actions)
+            this.props.addActions(actions);
+
         return (
             <TextWindow text={this.text} />
         )
     }
   }
 
-  //Room.propTypes = {
-  //};
+  Room.propTypes = {
+      addActions: PropTypes.func.isRequired,
+      display: PropTypes.object.isRequired
+  };
 
   // find child (find_child) => normal state

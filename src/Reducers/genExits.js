@@ -1,6 +1,6 @@
 import { EXITS } from '../GameObjects'
 
-let genExits = (state, action) => {
+const genExits = (state, action) => {
     if (!action.room) return state;
 
     let roomExits = EXITS[action.room];

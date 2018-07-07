@@ -1,13 +1,16 @@
 import genExits from './genExits';
+import addActions from './addActions';
 import * as actions from '../actions';
+
 import { ROOMS, EXITS, DESCRIPTORS } from '../GameObjects';
-import { Basic } from '../Displays/Basic'
+import { Basic } from '../Displays/Basic';
 
 export const initialState = {
   exits:  genExits(EXITS[ROOMS.FIELD], {room: ROOMS.FIELD}).exits,
   room: ROOMS.FIELD,
   world: {tick: 0},
   display: DESCRIPTORS[ROOMS.FIELD],
+  actions: []
 };
   
 function reducer(state = initialState, action = {}) {
@@ -20,13 +23,16 @@ function reducer(state = initialState, action = {}) {
       return updateX("display", action.display, state);
     case actions.UPDATE_TICK:
       return updateX("world", {tick: action.tick}, state);
+    case actions.CLEAR_ACTIONS:
+    case actions.ADD_ACTIONS:
+      return updateX("actions", action.actions, state);
     default:
       return state;
     }
   }
 
 
-const updateX = (key, value, state) => {
+export const updateX = (key, value, state) => {
   return {...state, [key]: value};
 }
 /*

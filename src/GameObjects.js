@@ -31,6 +31,12 @@ export const HOURS = {
     [TIME.NIGHT]: 20
 }
 
+export const ACTIONS = {
+    TAKE: "TAKE",
+    EXAMINE: "EXAMINE",
+    NEXT: "NEXT"
+}
+
 export const DESCRIPTORS = {
     [ROOMS.FIELD]: new DisplayManager({
         intro: {

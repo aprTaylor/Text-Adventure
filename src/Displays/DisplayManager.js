@@ -78,6 +78,10 @@ export class DisplayManager {
         }, validTrans[0]).name;
     }
 
+    getActions(){
+        return this.displayMap.display.getActions();
+    }
+
     stop() {
         return this.displayMap.display.stop();
     }

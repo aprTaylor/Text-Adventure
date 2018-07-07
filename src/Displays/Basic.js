@@ -37,4 +37,12 @@ export class Basic {
     stop() {
         //Stop
     }
+
+    /**
+     * Actions currently available that result from display
+     * 
+     * @memberof Basic
+     */
+    getActions() {
+    }
 }

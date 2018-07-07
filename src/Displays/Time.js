@@ -43,4 +43,8 @@ export class Time extends Basic {
 
         return page;
     }
+
+    stop(){
+        super.stop();
+    }
 }

@@ -1,5 +1,6 @@
 import { Basic } from './Basic'
 import { isA } from '../util/isA'
+import { ACTIONS } from '../GameObjects'
 
 /**
  * Flipbooks Displays are meant to play out simular to how a scene would.
@@ -105,6 +106,14 @@ export class Flipbook extends Basic {
         this.tick = world.tick;
         //this.delay = delay;
         return this.pages[this.pageNum].desc;
+    }
+
+    getActions() {
+        return ACTIONS.NEXT;
+    }
+
+    stop(){
+        super.stop();
     }
 }
 
