@@ -16,9 +16,12 @@ export const initialState = {
 function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case actions.CHANGE_ROOM:
-      let newState = updateX("display", action.display, state);
-      newState = updateX("room", action.room, newState);
-      return genExits(newState, action);
+      let newState ={
+        display: DESCRIPTORS[action.room],
+        actions: [],
+        room: action.room
+      }
+      return genExits(updateMany(newState, state), action);
     case actions.CHANGE_DISPLAY:
       return updateX("display", action.display, state);
     case actions.UPDATE_TICK:
@@ -34,6 +37,10 @@ function reducer(state = initialState, action = {}) {
 
 export const updateX = (key, value, state) => {
   return {...state, [key]: value};
+}
+
+const updateMany = (updatedState, oldState) => {
+  return {...oldState, ...updatedState};
 }
 /*
 const updateRoom = (state, action) => {

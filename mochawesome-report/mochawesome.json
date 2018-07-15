@@ -2,14 +2,14 @@
   "stats": {
     "suites": 24,
     "tests": 65,
-    "passes": 64,
+    "passes": 63,
     "pending": 0,
-    "failures": 1,
-    "start": "2018-07-05T02:59:12.268Z",
-    "end": "2018-07-05T02:59:12.349Z",
-    "duration": 81,
+    "failures": 2,
+    "start": "2018-07-07T05:40:30.257Z",
+    "end": "2018-07-07T05:40:30.339Z",
+    "duration": 82,
     "testsRegistered": 65,
-    "passPercent": 98.5,
+    "passPercent": 96.9,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -19,7 +19,7 @@
     "pendingPercentClass": "danger"
   },
   "suites": {
-    "uuid": "7aafa40c-2363-45f4-8d4c-d1c5e1560c21",
+    "uuid": "de47cf26-39c0-40ca-8ebe-3b781d380160",
     "title": "",
     "fullFile": "",
     "file": "",
@@ -28,7 +28,7 @@
     "tests": [],
     "suites": [
       {
-        "uuid": "f8b218b3-2ce8-47f6-81ce-35c7e89f9458",
+        "uuid": "97c9e9e3-16c4-4604-8f06-25fa5d0ce736",
         "title": "<App />",
         "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/Components/AppCompTest.js",
         "file": "/test/Components/AppCompTest.js",
@@ -44,7 +44,7 @@
             "code": "props = {\n    display: { start: function start() {}, update: function update() {}, end: function end() {} },\n    room: \"\",\n    exits: [\"\", \"\"]\n};\napp = undefined;",
             "err": {},
             "isRoot": false,
-            "uuid": "8d12bf82-1dd0-434e-9ee3-f9289e5ba0a1",
+            "uuid": "44cd95d4-d115-49b3-92a8-c7bf372a5e53",
             "isHook": true,
             "skipped": false
           }
@@ -56,22 +56,24 @@
             "fullTitle": "<App /> always renders a div",
             "timedOut": false,
             "duration": 37,
-            "state": "passed",
-            "speed": "fast",
-            "pass": true,
-            "fail": false,
+            "state": "failed",
+            "pass": false,
+            "fail": true,
             "pending": false,
             "code": "var divs = Game().find(\"div\");\n_chai.assert.isAbove(divs.length, 0);",
-            "err": {},
+            "err": {
+              "message": "TypeError: this.props.display.getActions is not a function",
+              "estack": "TypeError: this.props.display.getActions is not a function\n    at Room.render (src/components/Room.js:12:370)\n    at finishClassComponent (node_modules/react-dom/cjs/react-dom.development.js:13193:31)\n    at updateClassComponent (node_modules/react-dom/cjs/react-dom.development.js:13155:10)\n    at beginWork (node_modules/react-dom/cjs/react-dom.development.js:13824:14)\n    at performUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:15863:12)\n    at workLoop (node_modules/react-dom/cjs/react-dom.development.js:15902:24)\n    at renderRoot (node_modules/react-dom/cjs/react-dom.development.js:15942:7)\n    at performWorkOnRoot (node_modules/react-dom/cjs/react-dom.development.js:16560:22)\n    at performWork (node_modules/react-dom/cjs/react-dom.development.js:16482:7)\n    at performSyncWork (node_modules/react-dom/cjs/react-dom.development.js:16454:3)\n    at requestWork (node_modules/react-dom/cjs/react-dom.development.js:16354:5)\n    at scheduleWork$1 (node_modules/react-dom/cjs/react-dom.development.js:16218:11)\n    at scheduleRootUpdate (node_modules/react-dom/cjs/react-dom.development.js:16785:3)\n    at updateContainerAtExpirationTime (node_modules/react-dom/cjs/react-dom.development.js:16812:10)\n    at updateContainer (node_modules/react-dom/cjs/react-dom.development.js:16839:10)\n    at ReactRoot.render (node_modules/react-dom/cjs/react-dom.development.js:17122:3)\n    at /home/dawn/Documents/Javascript projects/text-adventure/node_modules/react-dom/cjs/react-dom.development.js:17262:14\n    at unbatchedUpdates (node_modules/react-dom/cjs/react-dom.development.js:16679:10)\n    at legacyRenderSubtreeIntoContainer (node_modules/react-dom/cjs/react-dom.development.js:17258:5)\n    at Object.render (node_modules/react-dom/cjs/react-dom.development.js:17317:12)\n    at Object.render (node_modules/enzyme-adapter-react-16/build/ReactSixteenAdapter.js:218:50)\n    at new ReactWrapper (node_modules/enzyme/build/ReactWrapper.js:98:16)\n    at mount (node_modules/enzyme/build/mount.js:19:10)\n    at Game (test/Components/AppCompTest.js:12:19)\n    at Context.<anonymous> (test/Components/AppCompTest.js:29:22)"
+            },
             "isRoot": false,
-            "uuid": "606e28e1-1ef9-420b-aea1-d4edfb48bd82",
+            "uuid": "f13b7cb2-57b6-47f1-b3f5-70d7e7b56e64",
             "isHook": false,
             "skipped": false
           }
         ],
         "suites": [
           {
-            "uuid": "74eee2cf-ef73-49e2-b67a-b0895da7e604",
+            "uuid": "c2d74e1b-6780-452d-bde0-1b4e1aef82df",
             "title": "the rendered div",
             "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/Components/AppCompTest.js",
             "file": "/test/Components/AppCompTest.js",
@@ -82,18 +84,18 @@
                 "title": "contains everything else that gets rendered",
                 "fullTitle": "<App /> the rendered div contains everything else that gets rendered",
                 "timedOut": false,
-                "duration": 7,
+                "duration": 8,
                 "state": "failed",
                 "pass": false,
                 "fail": true,
                 "pending": false,
                 "code": "var divs = Game().find(\"div\");\nvar wrappingDiv = divs.first();\n_chai.assert.equal(wrappingDiv.children(), Game().children);",
                 "err": {
-                  "message": "AssertionError: expected { length: 3 } to equal [Function: children]",
-                  "estack": "AssertionError: expected { length: 3 } to equal [Function: children]\n    at Context.<anonymous> (test/Components/AppCompTest.js:38:20)"
+                  "message": "TypeError: this.props.display.getActions is not a function",
+                  "estack": "TypeError: this.props.display.getActions is not a function\n    at Room.render (src/components/Room.js:12:370)\n    at finishClassComponent (node_modules/react-dom/cjs/react-dom.development.js:13193:31)\n    at updateClassComponent (node_modules/react-dom/cjs/react-dom.development.js:13155:10)\n    at beginWork (node_modules/react-dom/cjs/react-dom.development.js:13824:14)\n    at performUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:15863:12)\n    at workLoop (node_modules/react-dom/cjs/react-dom.development.js:15902:24)\n    at renderRoot (node_modules/react-dom/cjs/react-dom.development.js:15942:7)\n    at performWorkOnRoot (node_modules/react-dom/cjs/react-dom.development.js:16560:22)\n    at performWork (node_modules/react-dom/cjs/react-dom.development.js:16482:7)\n    at performSyncWork (node_modules/react-dom/cjs/react-dom.development.js:16454:3)\n    at requestWork (node_modules/react-dom/cjs/react-dom.development.js:16354:5)\n    at scheduleWork$1 (node_modules/react-dom/cjs/react-dom.development.js:16218:11)\n    at scheduleRootUpdate (node_modules/react-dom/cjs/react-dom.development.js:16785:3)\n    at updateContainerAtExpirationTime (node_modules/react-dom/cjs/react-dom.development.js:16812:10)\n    at updateContainer (node_modules/react-dom/cjs/react-dom.development.js:16839:10)\n    at ReactRoot.render (node_modules/react-dom/cjs/react-dom.development.js:17122:3)\n    at /home/dawn/Documents/Javascript projects/text-adventure/node_modules/react-dom/cjs/react-dom.development.js:17262:14\n    at unbatchedUpdates (node_modules/react-dom/cjs/react-dom.development.js:16679:10)\n    at legacyRenderSubtreeIntoContainer (node_modules/react-dom/cjs/react-dom.development.js:17258:5)\n    at Object.render (node_modules/react-dom/cjs/react-dom.development.js:17317:12)\n    at Object.render (node_modules/enzyme-adapter-react-16/build/ReactSixteenAdapter.js:218:50)\n    at new ReactWrapper (node_modules/enzyme/build/ReactWrapper.js:98:16)\n    at mount (node_modules/enzyme/build/mount.js:19:10)\n    at Game (test/Components/AppCompTest.js:12:19)\n    at Context.<anonymous> (test/Components/AppCompTest.js:35:26)"
                 },
                 "isRoot": false,
-                "uuid": "3c30ff56-10fc-476b-b67d-519415c8ba4f",
+                "uuid": "5dcc3195-6caa-49db-8f54-f285ba103f12",
                 "isHook": false,
                 "skipped": false
               }
@@ -101,20 +103,20 @@
             "suites": [],
             "passes": [],
             "failures": [
-              "3c30ff56-10fc-476b-b67d-519415c8ba4f"
+              "5dcc3195-6caa-49db-8f54-f285ba103f12"
             ],
             "pending": [],
             "skipped": [],
-            "duration": 7,
+            "duration": 8,
             "root": false,
             "rootEmpty": false,
             "_timeout": 2000
           }
         ],
-        "passes": [
-          "606e28e1-1ef9-420b-aea1-d4edfb48bd82"
+        "passes": [],
+        "failures": [
+          "f13b7cb2-57b6-47f1-b3f5-70d7e7b56e64"
         ],
-        "failures": [],
         "pending": [],
         "skipped": [],
         "duration": 37,
@@ -123,7 +125,7 @@
         "_timeout": 2000
       },
       {
-        "uuid": "c6185a35-6b73-43ca-be3f-206fe9d776a1",
+        "uuid": "801c625b-a498-4831-904f-16626ba0c397",
         "title": "<Exits/>",
         "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/Components/ExitsCompTest.js",
         "file": "/test/Components/ExitsCompTest.js",
@@ -134,7 +136,7 @@
             "title": "should render ul with length of exits",
             "fullTitle": "<Exits/> should render ul with length of exits",
             "timedOut": false,
-            "duration": 3,
+            "duration": 6,
             "state": "passed",
             "speed": "fast",
             "pass": true,
@@ -143,25 +145,25 @@
             "code": "var props = [1, 1, 1, 1];\nvar wrapper = (0, _enzyme.shallow)(_react2.default.createElement(_Exits.Exits, { exits: props, __source: {\n        fileName: _jsxFileName,\n        lineNumber: 9\n    },\n    __self: _this\n}));\n_chai.assert.lengthOf(wrapper.find(\"ul\").children(), 4);",
             "err": {},
             "isRoot": false,
-            "uuid": "445bbb3b-a1b2-4a54-b18f-4642b15683c6",
+            "uuid": "9d8d0ee5-8267-4263-a395-8d2d5fc84c53",
             "isHook": false,
             "skipped": false
           }
         ],
         "suites": [],
         "passes": [
-          "445bbb3b-a1b2-4a54-b18f-4642b15683c6"
+          "9d8d0ee5-8267-4263-a395-8d2d5fc84c53"
         ],
         "failures": [],
         "pending": [],
         "skipped": [],
-        "duration": 3,
+        "duration": 6,
         "root": false,
         "rootEmpty": false,
         "_timeout": 2000
       },
       {
-        "uuid": "9aa0ee11-9409-4959-be71-9032b0824527",
+        "uuid": "2efc5722-2bcf-4b84-9467-d5afb5571fc2",
         "title": "Test Basic Display",
         "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/DIsplays/BasicDisplayTest.js",
         "file": "/test/DIsplays/BasicDisplayTest.js",
@@ -170,7 +172,7 @@
         "tests": [],
         "suites": [
           {
-            "uuid": "6cc7372f-70fe-43fd-b5ce-efbbde61bf70",
+            "uuid": "b29c5a28-29b3-479a-bd36-fc46ee4b0cf0",
             "title": "constructor",
             "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/DIsplays/BasicDisplayTest.js",
             "file": "/test/DIsplays/BasicDisplayTest.js",
@@ -181,7 +183,7 @@
                 "title": "should throw error if standard argument is not a string",
                 "fullTitle": "Test Basic Display constructor should throw error if standard argument is not a string",
                 "timedOut": false,
-                "duration": 0,
+                "duration": 1,
                 "state": "passed",
                 "speed": "fast",
                 "pass": true,
@@ -190,7 +192,7 @@
                 "code": "var func = function func() {\n    return new _Basic.Basic(1);\n};\nassert.throws(func, 'Standard description must be a string.');",
                 "err": {},
                 "isRoot": false,
-                "uuid": "e31467e8-3fa1-4d84-b17b-f76f3c9f61ab",
+                "uuid": "f4abccf6-6e47-4204-845b-b19d5d5ee4fb",
                 "isHook": false,
                 "skipped": false
               },
@@ -198,7 +200,7 @@
                 "title": "should throw error if initDesc argument is passed and is not a string",
                 "fullTitle": "Test Basic Display constructor should throw error if initDesc argument is passed and is not a string",
                 "timedOut": false,
-                "duration": 1,
+                "duration": 0,
                 "state": "passed",
                 "speed": "fast",
                 "pass": true,
@@ -207,15 +209,15 @@
                 "code": "var func = function func() {\n    return new _Basic.Basic(\"\", 3);\n};\nassert.throws(func, 'Initial description must be a string.');",
                 "err": {},
                 "isRoot": false,
-                "uuid": "424ca373-04a9-4918-893a-343de42950fa",
+                "uuid": "bf3d790b-2f66-4d94-940d-d00a0ac82c9a",
                 "isHook": false,
                 "skipped": false
               }
             ],
             "suites": [],
             "passes": [
-              "e31467e8-3fa1-4d84-b17b-f76f3c9f61ab",
-              "424ca373-04a9-4918-893a-343de42950fa"
+              "f4abccf6-6e47-4204-845b-b19d5d5ee4fb",
+              "bf3d790b-2f66-4d94-940d-d00a0ac82c9a"
             ],
             "failures": [],
             "pending": [],
@@ -226,7 +228,7 @@
             "_timeout": 2000
           },
           {
-            "uuid": "d3b778c3-04fe-4f20-bebd-0d058028c471",
+            "uuid": "4821eadf-9045-42ab-b474-f1e37ed1fe04",
             "title": "start method",
             "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/DIsplays/BasicDisplayTest.js",
             "file": "/test/DIsplays/BasicDisplayTest.js",
@@ -237,7 +239,7 @@
                 "title": "should return initial description if it is specified",
                 "fullTitle": "Test Basic Display start method should return initial description if it is specified",
                 "timedOut": false,
-                "duration": 0,
+                "duration": 1,
                 "state": "passed",
                 "speed": "fast",
                 "pass": true,
@@ -246,7 +248,7 @@
                 "code": "var dis = new _Basic.Basic(\"standard desc\", \"initial desc\");\nassert.equal(dis.start(), \"initial desc\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "a6f53a41-5dfa-4a8a-b5f3-1cbce3130174",
+                "uuid": "2dfd15f4-18fb-4368-8523-3414d811a53b",
                 "isHook": false,
                 "skipped": false
               },
@@ -263,26 +265,26 @@
                 "code": "var dis = new _Basic.Basic(\"standard desc\");\nassert.equal(dis.start(), \"standard desc\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "d0e398f9-5764-43a1-a7f9-35a45033c913",
+                "uuid": "fe981a48-1b5b-40a0-9f70-2b7a155ed702",
                 "isHook": false,
                 "skipped": false
               }
             ],
             "suites": [],
             "passes": [
-              "a6f53a41-5dfa-4a8a-b5f3-1cbce3130174",
-              "d0e398f9-5764-43a1-a7f9-35a45033c913"
+              "2dfd15f4-18fb-4368-8523-3414d811a53b",
+              "fe981a48-1b5b-40a0-9f70-2b7a155ed702"
             ],
             "failures": [],
             "pending": [],
             "skipped": [],
-            "duration": 0,
+            "duration": 1,
             "root": false,
             "rootEmpty": false,
             "_timeout": 2000
           },
           {
-            "uuid": "3fde680b-346e-47b6-9f76-b0d1db4916ff",
+            "uuid": "20b101a8-2ca9-4677-8637-fa0132dabe66",
             "title": "update method",
             "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/DIsplays/BasicDisplayTest.js",
             "file": "/test/DIsplays/BasicDisplayTest.js",
@@ -302,14 +304,14 @@
                 "code": "var dis = new _Basic.Basic(\"standard desc\");\nvar initDis = new _Basic.Basic(\"standard desc\", \"initial desc\");\nassert.equal(dis.update(), \"standard desc\");\nassert.notEqual(initDis.update(), \"initial desc\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "a59c6379-6ba1-48e0-a36a-882ab8df04d8",
+                "uuid": "5bbeb1c6-00eb-4405-8ec0-7f3754356502",
                 "isHook": false,
                 "skipped": false
               }
             ],
             "suites": [],
             "passes": [
-              "a59c6379-6ba1-48e0-a36a-882ab8df04d8"
+              "5bbeb1c6-00eb-4405-8ec0-7f3754356502"
             ],
             "failures": [],
             "pending": [],
@@ -330,7 +332,7 @@
         "_timeout": 2000
       },
       {
-        "uuid": "b9030d90-145b-4d13-9737-d3ffd63d11db",
+        "uuid": "091bf6e9-d739-4595-98da-0387761e7bf0",
         "title": "Test DisplayManager",
         "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/DIsplays/DisplayManagerTest.js",
         "file": "/test/DIsplays/DisplayManagerTest.js",
@@ -339,7 +341,7 @@
         "tests": [],
         "suites": [
           {
-            "uuid": "d1e3bc44-80d6-47ce-a359-888478db86c7",
+            "uuid": "0f77b91d-cd68-454a-af4e-24cbdd343f34",
             "title": "constructor",
             "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/DIsplays/DisplayManagerTest.js",
             "file": "/test/DIsplays/DisplayManagerTest.js",
@@ -359,7 +361,7 @@
                 "code": "var fn = function fn() {\n    new _DisplayManager.DisplayManager(0);\n};\nassert.throws(fn, 'displayMaps must be an object.');",
                 "err": {},
                 "isRoot": false,
-                "uuid": "85533816-6cef-4ad9-87ca-cef16b3da729",
+                "uuid": "f5a8bf3c-2248-445a-b6bc-32172a1c4b34",
                 "isHook": false,
                 "skipped": false
               },
@@ -376,15 +378,15 @@
                 "code": "var initDisplayMap = dm.displayMap;\nassert.deepEqual(initDisplayMap, { display: dis });",
                 "err": {},
                 "isRoot": false,
-                "uuid": "0ba83f87-d10f-4220-aa16-3386ba9c291c",
+                "uuid": "464e39a4-f880-45db-b451-5768de21cc16",
                 "isHook": false,
                 "skipped": false
               }
             ],
             "suites": [],
             "passes": [
-              "85533816-6cef-4ad9-87ca-cef16b3da729",
-              "0ba83f87-d10f-4220-aa16-3386ba9c291c"
+              "f5a8bf3c-2248-445a-b6bc-32172a1c4b34",
+              "464e39a4-f880-45db-b451-5768de21cc16"
             ],
             "failures": [],
             "pending": [],
@@ -395,7 +397,7 @@
             "_timeout": 2000
           },
           {
-            "uuid": "7dbde86a-920a-44b9-b8ef-e57f63b3a9e5",
+            "uuid": "5e19d714-c933-4c4f-9efd-ba77afcf75bf",
             "title": "start method",
             "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/DIsplays/DisplayManagerTest.js",
             "file": "/test/DIsplays/DisplayManagerTest.js",
@@ -415,7 +417,7 @@
                 "code": "var start = dm.start();\nassert.equal(start, \"I am a standard description\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "bb603aeb-6f74-4b42-9117-06b87ba6e7c2",
+                "uuid": "56283fd1-4f97-4a14-a2d7-ab778160c4f2",
                 "isHook": false,
                 "skipped": false
               },
@@ -432,7 +434,7 @@
                 "code": "var start = dm.start(null, \"test2\");\nassert.equal(start, \"I am a secodairy description\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "2dab1055-77e3-48fc-9929-bba31df5ca99",
+                "uuid": "09a32578-d8a5-43e0-9305-df92047a9b52",
                 "isHook": false,
                 "skipped": false
               },
@@ -449,7 +451,7 @@
                 "code": "var start = worldDm.start({ msg: \"Message for standard description\" });\nassert.equal(start, \"Message for standard description\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "630dddc6-e6e9-4678-a7f9-25907885e3ad",
+                "uuid": "b39f4703-1413-444c-b6ec-b82b21ad48cf",
                 "isHook": false,
                 "skipped": false
               },
@@ -466,17 +468,17 @@
                 "code": "var start = worldDm.start({ msg: \"Message for secondairy description\" });\nassert.equal(start, \"Message for secondairy description\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "edc4857f-f350-453a-97fd-32ef4c549f4b",
+                "uuid": "791f9463-297a-423a-9e03-2c041795b8a7",
                 "isHook": false,
                 "skipped": false
               }
             ],
             "suites": [],
             "passes": [
-              "bb603aeb-6f74-4b42-9117-06b87ba6e7c2",
-              "2dab1055-77e3-48fc-9929-bba31df5ca99",
-              "630dddc6-e6e9-4678-a7f9-25907885e3ad",
-              "edc4857f-f350-453a-97fd-32ef4c549f4b"
+              "56283fd1-4f97-4a14-a2d7-ab778160c4f2",
+              "09a32578-d8a5-43e0-9305-df92047a9b52",
+              "b39f4703-1413-444c-b6ec-b82b21ad48cf",
+              "791f9463-297a-423a-9e03-2c041795b8a7"
             ],
             "failures": [],
             "pending": [],
@@ -487,7 +489,7 @@
             "_timeout": 2000
           },
           {
-            "uuid": "cd58e0f8-735a-4502-868b-3928440a0940",
+            "uuid": "5838d425-d5ee-4099-8082-4ed112eb62ab",
             "title": "shouldTransition method",
             "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/DIsplays/DisplayManagerTest.js",
             "file": "/test/DIsplays/DisplayManagerTest.js",
@@ -507,7 +509,7 @@
                 "code": "var dm = new _DisplayManager.DisplayManager({ test: { display: dis(\"1\") },\n    test2: { display: dis(\"2\") } }, \"test\");\nvar start = dm.shouldTransition();\nassert.equal(start, false);",
                 "err": {},
                 "isRoot": false,
-                "uuid": "69aee317-0e86-486f-8c08-e76a711a1fd8",
+                "uuid": "2109ac8c-b685-4090-a748-f2f0104b4d83",
                 "isHook": false,
                 "skipped": false
               },
@@ -515,7 +517,7 @@
                 "title": "should return false when there are no valid transactions",
                 "fullTitle": "Test DisplayManager shouldTransition method should return false when there are no valid transactions",
                 "timedOut": false,
-                "duration": 0,
+                "duration": 1,
                 "state": "passed",
                 "speed": "fast",
                 "pass": true,
@@ -524,7 +526,7 @@
                 "code": "var dmFalseTran = new _DisplayManager.DisplayManager({ test: { display: dis(\"1\"),\n        to: { name: \"test2\", condition: function condition() {\n                return false;\n            } } },\n    test2: { display: dis(\"2\") } }, \"test\");\nvar start = dmFalseTran.shouldTransition();\nassert.equal(start, false);",
                 "err": {},
                 "isRoot": false,
-                "uuid": "1b1ba2da-9f22-467f-8c83-ff90cb88b490",
+                "uuid": "f39120e4-4529-44bb-a7f2-2ab743b11ba0",
                 "isHook": false,
                 "skipped": false
               },
@@ -541,7 +543,7 @@
                 "code": "var dmValidTran = new _DisplayManager.DisplayManager({ test: { display: dis(\"1\"),\n        to: { name: \"test2\", condition: function condition() {\n                return true;\n            } } },\n    test2: { display: dis(\"2\") } }, \"test\");\nvar start = dmValidTran.shouldTransition();\nassert.equal(start, \"test2\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "d0803e3f-9767-4588-b67a-d97aaf31a584",
+                "uuid": "c1cb1a16-ed95-4d83-a800-5a81e5301e00",
                 "isHook": false,
                 "skipped": false
               },
@@ -558,7 +560,7 @@
                 "code": "var dmMultiVTran = new _DisplayManager.DisplayManager({ test: { display: dis(\"1\"),\n        to: [{ name: \"test2\", condition: function condition() {\n                return true;\n            } }, { name: \"test3\", condition: function condition() {\n                return true;\n            } }] },\n    test2: { display: dis(\"2\") }, test3: { display: dis(\"3\") } }, \"test\");\nvar start = dmMultiVTran.shouldTransition();\nassert.equal(start, \"test2\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "16cd3e6e-7e69-47cd-8ea9-422162cc8793",
+                "uuid": "1f52562b-e625-4b76-ab02-782512f7cb43",
                 "isHook": false,
                 "skipped": false
               },
@@ -575,7 +577,7 @@
                 "code": "var dmMultiVTran = new _DisplayManager.DisplayManager({ test: { display: dis(\"1\"),\n        to: [{ name: \"test2\", condition: function condition() {\n                return true;\n            }, priority: 1 }, { name: \"test3\", condition: function condition() {\n                return true;\n            }, priority: 1 }] },\n    test2: { display: dis(\"2\") }, test3: { display: dis(\"3\") } }, \"test\");\nvar start = dmMultiVTran.shouldTransition();\nassert.equal(start, \"test2\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "8cf36f40-a30f-4fca-932a-a6da5836dd21",
+                "uuid": "d842d0c8-ab80-410e-a06c-b8d0bb834cda",
                 "isHook": false,
                 "skipped": false
               },
@@ -592,30 +594,30 @@
                 "code": "var dmMultiVTran = new _DisplayManager.DisplayManager({ test: { display: dis(\"1\"),\n        to: [{ name: \"test2\", condition: function condition() {\n                return false;\n            }, priority: 1 }, { name: \"test3\", condition: function condition() {\n                return true;\n            }, priority: 2 }] },\n    test2: { display: dis(\"2\") }, test3: { display: dis(\"3\") } }, \"test\");\nvar start = dmMultiVTran.shouldTransition();\nassert.equal(start, \"test3\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "68558223-cc11-425b-acae-21d03385e9ae",
+                "uuid": "2048c7f2-8679-431f-b0ac-69d5f2dfd373",
                 "isHook": false,
                 "skipped": false
               }
             ],
             "suites": [],
             "passes": [
-              "69aee317-0e86-486f-8c08-e76a711a1fd8",
-              "1b1ba2da-9f22-467f-8c83-ff90cb88b490",
-              "d0803e3f-9767-4588-b67a-d97aaf31a584",
-              "16cd3e6e-7e69-47cd-8ea9-422162cc8793",
-              "8cf36f40-a30f-4fca-932a-a6da5836dd21",
-              "68558223-cc11-425b-acae-21d03385e9ae"
+              "2109ac8c-b685-4090-a748-f2f0104b4d83",
+              "f39120e4-4529-44bb-a7f2-2ab743b11ba0",
+              "c1cb1a16-ed95-4d83-a800-5a81e5301e00",
+              "1f52562b-e625-4b76-ab02-782512f7cb43",
+              "d842d0c8-ab80-410e-a06c-b8d0bb834cda",
+              "2048c7f2-8679-431f-b0ac-69d5f2dfd373"
             ],
             "failures": [],
             "pending": [],
             "skipped": [],
-            "duration": 0,
+            "duration": 1,
             "root": false,
             "rootEmpty": false,
             "_timeout": 2000
           },
           {
-            "uuid": "a6e4a593-8763-48ef-beae-5bb122cd7057",
+            "uuid": "a098ee12-0b19-4a45-a576-104a2cfe0f40",
             "title": "update method",
             "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/DIsplays/DisplayManagerTest.js",
             "file": "/test/DIsplays/DisplayManagerTest.js",
@@ -635,7 +637,7 @@
                 "code": "var dm = new _DisplayManager.DisplayManager({ test: { display: dis(\"1\") },\n    test2: { display: dis(\"2\") } }, \"test\");\nvar start = dm.update();\nassert.equal(start, \"update1\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "f7670922-dfd0-4442-95d9-34a50fdf5309",
+                "uuid": "b553c64b-77dd-4c4b-a982-08c96a4b6df3",
                 "isHook": false,
                 "skipped": false
               },
@@ -652,7 +654,7 @@
                 "code": "var dmFalseTran = new _DisplayManager.DisplayManager({ test: { display: dis(\"1\"),\n        to: { name: \"test2\", condition: function condition() {\n                return false;\n            } } },\n    test2: { display: dis(\"2\") } }, \"test\");\nvar start = dmFalseTran.update();\nassert.equal(start, \"update1\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "24a94f97-47cc-47a7-9798-6443adea21fb",
+                "uuid": "8a77c042-125d-4821-b63b-9d0b249521a4",
                 "isHook": false,
                 "skipped": false
               },
@@ -669,16 +671,16 @@
                 "code": "var dmValidTran = new _DisplayManager.DisplayManager({ test: { display: dis(\"1\"),\n        to: { name: \"test2\", condition: function condition() {\n                return true;\n            } } },\n    test2: { display: dis(\"2\") } }, \"test\");\nvar start = dmValidTran.update();\nassert.equal(start, \"start2\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "15ea3525-7a76-4fb5-b5b8-346db5ee9a80",
+                "uuid": "01b6b284-e61f-43a3-85b4-b06afc2e761e",
                 "isHook": false,
                 "skipped": false
               }
             ],
             "suites": [],
             "passes": [
-              "f7670922-dfd0-4442-95d9-34a50fdf5309",
-              "24a94f97-47cc-47a7-9798-6443adea21fb",
-              "15ea3525-7a76-4fb5-b5b8-346db5ee9a80"
+              "b553c64b-77dd-4c4b-a982-08c96a4b6df3",
+              "8a77c042-125d-4821-b63b-9d0b249521a4",
+              "01b6b284-e61f-43a3-85b4-b06afc2e761e"
             ],
             "failures": [],
             "pending": [],
@@ -689,7 +691,7 @@
             "_timeout": 2000
           },
           {
-            "uuid": "a9638bf9-f2f5-463f-8e11-5519b7d94feb",
+            "uuid": "17b3d57d-23f1-484a-ad13-f65e7b526586",
             "title": "stop method",
             "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/DIsplays/DisplayManagerTest.js",
             "file": "/test/DIsplays/DisplayManagerTest.js",
@@ -709,14 +711,14 @@
                 "code": "var dm = new _DisplayManager.DisplayManager({ test: { display: dis(\"1\") },\n    test2: { display: dis(\"2\") } }, \"test\");\nvar stop = dm.stop();\nassert.equal(stop, \"stop\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "e108222a-5fc6-4634-8589-fa4036ab8a01",
+                "uuid": "6fd9d993-08be-4074-974c-7836f0910d44",
                 "isHook": false,
                 "skipped": false
               }
             ],
             "suites": [],
             "passes": [
-              "e108222a-5fc6-4634-8589-fa4036ab8a01"
+              "6fd9d993-08be-4074-974c-7836f0910d44"
             ],
             "failures": [],
             "pending": [],
@@ -737,7 +739,7 @@
         "_timeout": 2000
       },
       {
-        "uuid": "6dbd4d25-568c-4e63-8bd5-29b2bd434f36",
+        "uuid": "bdd253ba-ffc1-409b-a760-d1e2c8f0b9eb",
         "title": "Test Flipbook Display",
         "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/DIsplays/FlipbookDisplayTest.js",
         "file": "/test/DIsplays/FlipbookDisplayTest.js",
@@ -746,7 +748,7 @@
         "tests": [],
         "suites": [
           {
-            "uuid": "8cab0e6c-5452-48ae-84e5-41360ffa7135",
+            "uuid": "593768b0-92fd-4f76-9619-f38fdefe611a",
             "title": "start method",
             "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/DIsplays/FlipbookDisplayTest.js",
             "file": "/test/DIsplays/FlipbookDisplayTest.js",
@@ -766,7 +768,7 @@
                 "code": "var des = new _Flipbook.Flipbook([\"This is a page\"]);\nassert.equal(des.start({ tick: 0 }), \"This is a page\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "cb5c4a27-460a-4f34-afe7-dbbd581dcb06",
+                "uuid": "e5bc253e-e53b-4083-9c0f-3fd721207e55",
                 "isHook": false,
                 "skipped": false
               },
@@ -783,7 +785,7 @@
                 "code": "var des = new _Flipbook.Flipbook([[\"This is a page\", 1]]);\nassert.isUndefined(des.start({ tick: 0 }));",
                 "err": {},
                 "isRoot": false,
-                "uuid": "9b5b852e-ffe5-4712-a1ba-91c080760036",
+                "uuid": "89a9df71-54a2-4e07-b15d-7da8cc38ddc8",
                 "isHook": false,
                 "skipped": false
               },
@@ -791,7 +793,7 @@
                 "title": "should wait ticks if first page has delay specified",
                 "fullTitle": "Test Flipbook Display start method should wait ticks if first page has delay specified",
                 "timedOut": false,
-                "duration": 1,
+                "duration": 0,
                 "state": "passed",
                 "speed": "fast",
                 "pass": true,
@@ -800,27 +802,27 @@
                 "code": "var des = new _Flipbook.Flipbook([[\"This is a page\", 2]]);\nassert.isUndefined(des.start({ tick: 0 }));\nassert.equal(des.update({ tick: 2 }), \"This is a page\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "e5706f6a-326f-4a6c-ad6e-a87c85370f52",
+                "uuid": "ea5f5877-1664-44ea-b8f5-4f083c1ea632",
                 "isHook": false,
                 "skipped": false
               }
             ],
             "suites": [],
             "passes": [
-              "cb5c4a27-460a-4f34-afe7-dbbd581dcb06",
-              "9b5b852e-ffe5-4712-a1ba-91c080760036",
-              "e5706f6a-326f-4a6c-ad6e-a87c85370f52"
+              "e5bc253e-e53b-4083-9c0f-3fd721207e55",
+              "89a9df71-54a2-4e07-b15d-7da8cc38ddc8",
+              "ea5f5877-1664-44ea-b8f5-4f083c1ea632"
             ],
             "failures": [],
             "pending": [],
             "skipped": [],
-            "duration": 2,
+            "duration": 1,
             "root": false,
             "rootEmpty": false,
             "_timeout": 2000
           },
           {
-            "uuid": "2ef23ad8-4bb5-495c-bac4-81c5320da582",
+            "uuid": "1177d451-ab60-422e-8e67-b7abc9f15c1b",
             "title": "update method",
             "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/DIsplays/FlipbookDisplayTest.js",
             "file": "/test/DIsplays/FlipbookDisplayTest.js",
@@ -840,7 +842,7 @@
                 "code": "var des = new _Flipbook.Flipbook([[\"This is a page\", 2]]);\nvar fn = function fn() {\n    return des.update({ tick: 1 });\n};\nassert.throws(fn, \"Flipbook must be started before it is updated.\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "d496687a-38cc-4f8d-9a64-0c698b537a48",
+                "uuid": "9981cd68-5468-446c-bfaf-f359fb754663",
                 "isHook": false,
                 "skipped": false
               },
@@ -857,7 +859,7 @@
                 "code": "var des = new _Flipbook.Flipbook([[\"This is a page\", 2]]);\ndes.start({ tick: 0 });\nassert.isUndefined(des.update({ tick: 1 }));",
                 "err": {},
                 "isRoot": false,
-                "uuid": "08156589-6859-46ae-9d2f-5cf25d333616",
+                "uuid": "8c4c9592-0b47-4889-977f-014defb238cb",
                 "isHook": false,
                 "skipped": false
               },
@@ -874,7 +876,7 @@
                 "code": "return callback(val);",
                 "err": {},
                 "isRoot": false,
-                "uuid": "47820cd7-e0af-41b7-8bb4-539675bab383",
+                "uuid": "ac54801f-b611-423c-bb2d-081b1feeabe5",
                 "isHook": false,
                 "skipped": false
               },
@@ -891,7 +893,7 @@
                 "code": "return callback(val);",
                 "err": {},
                 "isRoot": false,
-                "uuid": "a3cfd8e0-cfe6-474b-b81c-cce8cb778c4a",
+                "uuid": "58259612-aa8c-4864-be8c-5b928fa296ce",
                 "isHook": false,
                 "skipped": false
               },
@@ -908,7 +910,7 @@
                 "code": "return callback(val);",
                 "err": {},
                 "isRoot": false,
-                "uuid": "7c9f8e2e-17ba-4a96-8536-4c78c085ec7e",
+                "uuid": "f128aa73-a102-4320-9044-fc8b37e09a9d",
                 "isHook": false,
                 "skipped": false
               },
@@ -925,7 +927,7 @@
                 "code": "return callback(val);",
                 "err": {},
                 "isRoot": false,
-                "uuid": "aba02833-a80e-4d8c-9b75-ef022aef5217",
+                "uuid": "f5d948da-8328-4b20-a03b-a123c3557ff3",
                 "isHook": false,
                 "skipped": false
               },
@@ -942,7 +944,7 @@
                 "code": "var des = new _Flipbook.Flipbook([[\"target page\", 0], [\"This is a second page\", 0]]);\ndes.start({ tick: 0 });\nassert.equal(des.update({ tick: 0 }), \"target page\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "af7b9185-3bee-457b-a5ee-d706eada793d",
+                "uuid": "f95ec7e6-6fc5-4824-9880-c3b33097de66",
                 "isHook": false,
                 "skipped": false
               },
@@ -959,7 +961,7 @@
                 "code": "return callback(val);",
                 "err": {},
                 "isRoot": false,
-                "uuid": "f0447fc0-ff00-4854-af1f-83e305c64510",
+                "uuid": "3a4f822e-24de-48fc-8b16-01aea27caeac",
                 "isHook": false,
                 "skipped": false
               },
@@ -976,7 +978,7 @@
                 "code": "return callback(val);",
                 "err": {},
                 "isRoot": false,
-                "uuid": "54b32b43-b907-43fa-93e1-c7a7425f47ed",
+                "uuid": "b66caf4c-85b9-4fbb-96f5-476dabed7f4c",
                 "isHook": false,
                 "skipped": false
               },
@@ -993,7 +995,7 @@
                 "code": "return callback(val);",
                 "err": {},
                 "isRoot": false,
-                "uuid": "7e3d9ec0-b8e5-412a-a05b-999b78dae638",
+                "uuid": "b1069048-abce-4f4a-892a-5698154dafeb",
                 "isHook": false,
                 "skipped": false
               },
@@ -1010,7 +1012,7 @@
                 "code": "var des = new _Flipbook.Flipbook([[\"This is a page\", 0], [\"This is a second page\", 10], [\"This is the last page\", 10]]);\ndes.start({ tick: 0 });\nassert.equal(des.update({ tick: 30 }), \"This is the last page\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "fa1662f0-c013-4886-89ee-046a9c695b1e",
+                "uuid": "6dcad896-06d3-47d8-a37e-14d843a68cfa",
                 "isHook": false,
                 "skipped": false
               },
@@ -1027,7 +1029,7 @@
                 "code": "var des = new _Flipbook.Flipbook([[\"This is a page\", 0], [\"This is the last page\", 10]]);\ndes.start({ tick: 0 });\ndes.update({ tick: 10 });\nassert.equal(des.update({ tick: 20 }), \"This is the last page\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "20863992-04c3-4ac2-ae8b-c5aa69b6b775",
+                "uuid": "6a565d8e-fa28-413a-9f6b-d3a1af097930",
                 "isHook": false,
                 "skipped": false
               },
@@ -1044,7 +1046,24 @@
                 "code": "return callback(val);",
                 "err": {},
                 "isRoot": false,
-                "uuid": "d3bbfbd8-4d2f-4f7e-809a-46b1a8fa00e9",
+                "uuid": "7b78294a-8343-43e3-a324-d886644d6496",
+                "isHook": false,
+                "skipped": false
+              },
+              {
+                "title": "should set proper delay",
+                "fullTitle": "Test Flipbook Display update method should set proper delay",
+                "timedOut": false,
+                "duration": 1,
+                "state": "passed",
+                "speed": "fast",
+                "pass": true,
+                "fail": false,
+                "pending": false,
+                "code": "return callback(val);",
+                "err": {},
+                "isRoot": false,
+                "uuid": "06e7f4a9-5ad4-4fb7-b635-84d26870c69f",
                 "isHook": false,
                 "skipped": false
               },
@@ -1061,56 +1080,39 @@
                 "code": "return callback(val);",
                 "err": {},
                 "isRoot": false,
-                "uuid": "c9783361-f14d-4e90-a610-69f8b30eb7aa",
-                "isHook": false,
-                "skipped": false
-              },
-              {
-                "title": "should set proper delay",
-                "fullTitle": "Test Flipbook Display update method should set proper delay",
-                "timedOut": false,
-                "duration": 0,
-                "state": "passed",
-                "speed": "fast",
-                "pass": true,
-                "fail": false,
-                "pending": false,
-                "code": "return callback(val);",
-                "err": {},
-                "isRoot": false,
-                "uuid": "0a46a5a7-dabc-4f49-9df3-d956b09bc4f8",
+                "uuid": "bdfaab5f-d603-4454-ad17-098c434bd49a",
                 "isHook": false,
                 "skipped": false
               }
             ],
             "suites": [],
             "passes": [
-              "d496687a-38cc-4f8d-9a64-0c698b537a48",
-              "08156589-6859-46ae-9d2f-5cf25d333616",
-              "47820cd7-e0af-41b7-8bb4-539675bab383",
-              "a3cfd8e0-cfe6-474b-b81c-cce8cb778c4a",
-              "7c9f8e2e-17ba-4a96-8536-4c78c085ec7e",
-              "aba02833-a80e-4d8c-9b75-ef022aef5217",
-              "af7b9185-3bee-457b-a5ee-d706eada793d",
-              "f0447fc0-ff00-4854-af1f-83e305c64510",
-              "54b32b43-b907-43fa-93e1-c7a7425f47ed",
-              "7e3d9ec0-b8e5-412a-a05b-999b78dae638",
-              "fa1662f0-c013-4886-89ee-046a9c695b1e",
-              "20863992-04c3-4ac2-ae8b-c5aa69b6b775",
-              "d3bbfbd8-4d2f-4f7e-809a-46b1a8fa00e9",
-              "c9783361-f14d-4e90-a610-69f8b30eb7aa",
-              "0a46a5a7-dabc-4f49-9df3-d956b09bc4f8"
+              "9981cd68-5468-446c-bfaf-f359fb754663",
+              "8c4c9592-0b47-4889-977f-014defb238cb",
+              "ac54801f-b611-423c-bb2d-081b1feeabe5",
+              "58259612-aa8c-4864-be8c-5b928fa296ce",
+              "f128aa73-a102-4320-9044-fc8b37e09a9d",
+              "f5d948da-8328-4b20-a03b-a123c3557ff3",
+              "f95ec7e6-6fc5-4824-9880-c3b33097de66",
+              "3a4f822e-24de-48fc-8b16-01aea27caeac",
+              "b66caf4c-85b9-4fbb-96f5-476dabed7f4c",
+              "b1069048-abce-4f4a-892a-5698154dafeb",
+              "6dcad896-06d3-47d8-a37e-14d843a68cfa",
+              "6a565d8e-fa28-413a-9f6b-d3a1af097930",
+              "7b78294a-8343-43e3-a324-d886644d6496",
+              "06e7f4a9-5ad4-4fb7-b635-84d26870c69f",
+              "bdfaab5f-d603-4454-ad17-098c434bd49a"
             ],
             "failures": [],
             "pending": [],
             "skipped": [],
-            "duration": 1,
+            "duration": 2,
             "root": false,
             "rootEmpty": false,
             "_timeout": 2000
           },
           {
-            "uuid": "8e5a8d8f-11a1-42b1-9bd1-e0802b120fa6",
+            "uuid": "325cf20c-2487-42b9-ba99-4ff412c6fd8f",
             "title": "formatPage",
             "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/DIsplays/FlipbookDisplayTest.js",
             "file": "/test/DIsplays/FlipbookDisplayTest.js",
@@ -1130,7 +1132,7 @@
                 "code": "var page = \"This is a page\";\nassert.deepEqual((0, _Flipbook.formatPage)(page), { desc: page, delay: 0 });",
                 "err": {},
                 "isRoot": false,
-                "uuid": "3e0483b3-158f-4ecf-9650-444322d99984",
+                "uuid": "e2a243dc-d04d-4ae6-b780-c7b99013e057",
                 "isHook": false,
                 "skipped": false
               },
@@ -1138,7 +1140,7 @@
                 "title": "should throw error if given array and array length is not 2",
                 "fullTitle": "Test Flipbook Display formatPage should throw error if given array and array length is not 2",
                 "timedOut": false,
-                "duration": 1,
+                "duration": 0,
                 "state": "passed",
                 "speed": "fast",
                 "pass": true,
@@ -1147,7 +1149,7 @@
                 "code": "var page = [\"This is a page\"];\nvar func = function func() {\n    return (0, _Flipbook.formatPage)(page);\n};\nassert.throws(func, \"A page array must have exactly 2 items.\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "953c8168-6c95-4c9e-958d-9500a95822a4",
+                "uuid": "2d6723ea-7c2f-42f7-bbb0-91dcd1df46e9",
                 "isHook": false,
                 "skipped": false
               },
@@ -1155,7 +1157,7 @@
                 "title": "should throw error if given array and first item in array is not string",
                 "fullTitle": "Test Flipbook Display formatPage should throw error if given array and first item in array is not string",
                 "timedOut": false,
-                "duration": 0,
+                "duration": 1,
                 "state": "passed",
                 "speed": "fast",
                 "pass": true,
@@ -1164,7 +1166,7 @@
                 "code": "var page = [1, 2];\nvar func = function func() {\n    return (0, _Flipbook.formatPage)(page);\n};\nassert.throws(func, \"is not a string. First item in page array must be a string.\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "87c779a6-25ec-4848-8278-cbd411d848a0",
+                "uuid": "8a253501-b583-4064-9625-f48b9975abca",
                 "isHook": false,
                 "skipped": false
               },
@@ -1181,7 +1183,7 @@
                 "code": "var page = [\"This is a page\", \"not a number\"];\nvar negPage = [\"This is a page\", -2];\nvar func = function func() {\n    return (0, _Flipbook.formatPage)(page);\n};\nvar funcneg = function funcneg() {\n    return (0, _Flipbook.formatPage)(negPage);\n};\nassert.throws(func, \"Second item in page array must be a postive number.\");\nassert.throws(funcneg, \"Second item in page array must be a postive number.\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "43eb9fc8-bd2d-425a-9d9f-372fd8a1736a",
+                "uuid": "9809e370-262b-42f0-a916-1ad2878dff5f",
                 "isHook": false,
                 "skipped": false
               },
@@ -1198,7 +1200,7 @@
                 "code": "var page = [\"This is a page\", 10];\nassert.deepEqual((0, _Flipbook.formatPage)(page), { desc: \"This is a page\", delay: 10 });",
                 "err": {},
                 "isRoot": false,
-                "uuid": "4444df6c-0f9d-4f90-b16d-3d9eea598c60",
+                "uuid": "bd9d769d-7326-4339-9dd3-5569f709c920",
                 "isHook": false,
                 "skipped": false
               },
@@ -1215,7 +1217,7 @@
                 "code": "var page = { delay: 1 };\nvar func = function func() {\n    return (0, _Flipbook.formatPage)(page);\n};\nassert.throws(func, \"A page object must have an desc property.\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "d1ddaef6-20f5-4e17-87d7-d20391a06e50",
+                "uuid": "298e748a-de05-46f5-9fe2-1b8216460f98",
                 "isHook": false,
                 "skipped": false
               },
@@ -1232,7 +1234,7 @@
                 "code": "var page = { desc: \"This is a page\", delay: \"not a number\" };\nvar negPage = { desc: \"This is a page\", delay: -1 };\nvar func = function func() {\n    return (0, _Flipbook.formatPage)(page);\n};\nvar funcneg = function funcneg() {\n    return (0, _Flipbook.formatPage)(negPage);\n};\nassert.throws(func, \"A page object's delay property must be a postive number.\");\nassert.throws(funcneg, \"A page object's delay property must be a postive number.\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "0ea042bf-7cb4-487b-a4b1-6f904c31b0b3",
+                "uuid": "dcef7ba5-1caa-4422-9cd1-2779d6f6d5f9",
                 "isHook": false,
                 "skipped": false
               },
@@ -1240,7 +1242,7 @@
                 "title": "should add delay property of 0 if object does not have delay property",
                 "fullTitle": "Test Flipbook Display formatPage should add delay property of 0 if object does not have delay property",
                 "timedOut": false,
-                "duration": 1,
+                "duration": 0,
                 "state": "passed",
                 "speed": "fast",
                 "pass": true,
@@ -1249,7 +1251,7 @@
                 "code": "var page = { desc: \"This is a page\" };\nvar func = function func() {\n    return (0, _Flipbook.formatPage)(page);\n};\nassert.equal((0, _Flipbook.formatPage)(page).delay, 0);",
                 "err": {},
                 "isRoot": false,
-                "uuid": "4dcd5e05-518e-44ed-932e-0e0772ba486b",
+                "uuid": "88682b07-f3a1-45d7-9597-831da911f72c",
                 "isHook": false,
                 "skipped": false
               },
@@ -1266,7 +1268,7 @@
                 "code": "var page = { desc: \"This is a page\", delay: 10 };\nassert.deepEqual((0, _Flipbook.formatPage)(page), { desc: \"This is a page\", delay: 10 });",
                 "err": {},
                 "isRoot": false,
-                "uuid": "0f66963d-8d13-4556-85a1-89acb174cd81",
+                "uuid": "ff76fd17-3ec5-4028-a62e-7ce4b07d6e68",
                 "isHook": false,
                 "skipped": false
               },
@@ -1274,7 +1276,7 @@
                 "title": "should return an error if the given argument is not an object, array, or string.",
                 "fullTitle": "Test Flipbook Display formatPage should return an error if the given argument is not an object, array, or string.",
                 "timedOut": false,
-                "duration": 0,
+                "duration": 1,
                 "state": "passed",
                 "speed": "fast",
                 "pass": true,
@@ -1283,23 +1285,23 @@
                 "code": "var page = 10;\nvar func = function func() {\n    return (0, _Flipbook.formatPage)(page);\n};\nassert.throws(func, \"A page should be an object, array, or string.\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "b7bdd8a7-3d17-4509-9cbc-db3f0d173533",
+                "uuid": "e492b7a6-85c5-4eb3-8dc4-8c9fbeaef904",
                 "isHook": false,
                 "skipped": false
               }
             ],
             "suites": [],
             "passes": [
-              "3e0483b3-158f-4ecf-9650-444322d99984",
-              "953c8168-6c95-4c9e-958d-9500a95822a4",
-              "87c779a6-25ec-4848-8278-cbd411d848a0",
-              "43eb9fc8-bd2d-425a-9d9f-372fd8a1736a",
-              "4444df6c-0f9d-4f90-b16d-3d9eea598c60",
-              "d1ddaef6-20f5-4e17-87d7-d20391a06e50",
-              "0ea042bf-7cb4-487b-a4b1-6f904c31b0b3",
-              "4dcd5e05-518e-44ed-932e-0e0772ba486b",
-              "0f66963d-8d13-4556-85a1-89acb174cd81",
-              "b7bdd8a7-3d17-4509-9cbc-db3f0d173533"
+              "e2a243dc-d04d-4ae6-b780-c7b99013e057",
+              "2d6723ea-7c2f-42f7-bbb0-91dcd1df46e9",
+              "8a253501-b583-4064-9625-f48b9975abca",
+              "9809e370-262b-42f0-a916-1ad2878dff5f",
+              "bd9d769d-7326-4339-9dd3-5569f709c920",
+              "298e748a-de05-46f5-9fe2-1b8216460f98",
+              "dcef7ba5-1caa-4422-9cd1-2779d6f6d5f9",
+              "88682b07-f3a1-45d7-9597-831da911f72c",
+              "ff76fd17-3ec5-4028-a62e-7ce4b07d6e68",
+              "e492b7a6-85c5-4eb3-8dc4-8c9fbeaef904"
             ],
             "failures": [],
             "pending": [],
@@ -1320,7 +1322,7 @@
         "_timeout": 2000
       },
       {
-        "uuid": "1d184954-1b6f-4802-ac51-2046db985180",
+        "uuid": "c012461d-32ac-4a3b-8898-df685b73d827",
         "title": "Test Time Display",
         "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/DIsplays/TimeDisplayTest.js",
         "file": "/test/DIsplays/TimeDisplayTest.js",
@@ -1329,7 +1331,7 @@
         "tests": [],
         "suites": [
           {
-            "uuid": "307e6fc6-06e8-4c62-8dcf-7a8487a36052",
+            "uuid": "9edf4c8d-36dc-4a0a-937d-c72a362f64d7",
             "title": "constructor",
             "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/DIsplays/TimeDisplayTest.js",
             "file": "/test/DIsplays/TimeDisplayTest.js",
@@ -1349,14 +1351,14 @@
                 "code": "var func = function func() {\n    return new _Time.Time(1);\n};\nassert.throws(func, 'times must be an object.');",
                 "err": {},
                 "isRoot": false,
-                "uuid": "dca41e41-3bba-44c8-b185-b92f4aed5dd9",
+                "uuid": "696cf304-4a1c-4ac1-ab27-314d4eb73a44",
                 "isHook": false,
                 "skipped": false
               }
             ],
             "suites": [],
             "passes": [
-              "dca41e41-3bba-44c8-b185-b92f4aed5dd9"
+              "696cf304-4a1c-4ac1-ab27-314d4eb73a44"
             ],
             "failures": [],
             "pending": [],
@@ -1367,7 +1369,7 @@
             "_timeout": 2000
           },
           {
-            "uuid": "9446848a-dc7c-4fd3-ab06-52282d2a9e33",
+            "uuid": "ae8fcb23-30fd-44da-99b4-20dcdfdabdad",
             "title": "start method",
             "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/DIsplays/TimeDisplayTest.js",
             "file": "/test/DIsplays/TimeDisplayTest.js",
@@ -1387,7 +1389,7 @@
                 "code": "var dis = new _Time.Time({}, \"standard desc\", \"initial desc\");\nassert.equal(dis.start(), \"initial desc\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "98544508-4765-4735-820b-f2a2aaa0e08b",
+                "uuid": "65e174aa-ce35-4382-8147-f38a867901db",
                 "isHook": false,
                 "skipped": false
               },
@@ -1404,15 +1406,15 @@
                 "code": "var dis = new _Time.Time({ morn: \"This is a morning description\" }, \"standard desc\");\nassert.equal(dis.start({ timeOfDay: \"morn\" }), \"This is a morning description\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "842285e0-44e5-4815-a5dd-f1131d4dd29c",
+                "uuid": "40ab77fc-f275-4f5c-b2fe-290b976e6cf4",
                 "isHook": false,
                 "skipped": false
               }
             ],
             "suites": [],
             "passes": [
-              "98544508-4765-4735-820b-f2a2aaa0e08b",
-              "842285e0-44e5-4815-a5dd-f1131d4dd29c"
+              "65e174aa-ce35-4382-8147-f38a867901db",
+              "40ab77fc-f275-4f5c-b2fe-290b976e6cf4"
             ],
             "failures": [],
             "pending": [],
@@ -1423,7 +1425,7 @@
             "_timeout": 2000
           },
           {
-            "uuid": "6e1f6353-0f2b-4cd8-8471-ec573ffe4ffc",
+            "uuid": "87958b16-65b7-4663-90a5-12cc45f8413d",
             "title": "update method",
             "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/DIsplays/TimeDisplayTest.js",
             "file": "/test/DIsplays/TimeDisplayTest.js",
@@ -1434,7 +1436,7 @@
                 "title": "should return time-based description if that time's description is specified",
                 "fullTitle": "Test Time Display update method should return time-based description if that time's description is specified",
                 "timedOut": false,
-                "duration": 1,
+                "duration": 0,
                 "state": "passed",
                 "speed": "fast",
                 "pass": true,
@@ -1443,7 +1445,7 @@
                 "code": "var dis = new _Time.Time({ morn: \"This is a morning description\" }, \"standard desc\");\nassert.equal(dis.update({ timeOfDay: \"morn\" }), \"This is a morning description\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "b7e9fa3f-feb9-4bf9-b790-a0d40655a642",
+                "uuid": "97d52dcd-bb41-4fdc-87c2-863160462566",
                 "isHook": false,
                 "skipped": false
               },
@@ -1460,7 +1462,7 @@
                 "code": "var dis = new _Time.Time({ morn: \"This is a morning description\" }, \"standard desc\");\nassert.equal(dis.update({ timeOfDay: \"noon\" }), \"standard desc\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "7694ca0e-ab93-4f0e-8062-3c1a6c87d6d6",
+                "uuid": "8056e142-7438-4a1d-8d37-7cddeb882bc8",
                 "isHook": false,
                 "skipped": false
               },
@@ -1477,21 +1479,21 @@
                 "code": "var dis = new _Time.Time({ morn: \"This is a morning description\" }, \"standard desc\");\nassert.equal(dis.update(), \"standard desc\");",
                 "err": {},
                 "isRoot": false,
-                "uuid": "a1d9ef6c-83dc-47ef-a360-337804a022cf",
+                "uuid": "078d31ff-57e4-476a-a229-1de9dc88465b",
                 "isHook": false,
                 "skipped": false
               }
             ],
             "suites": [],
             "passes": [
-              "b7e9fa3f-feb9-4bf9-b790-a0d40655a642",
-              "7694ca0e-ab93-4f0e-8062-3c1a6c87d6d6",
-              "a1d9ef6c-83dc-47ef-a360-337804a022cf"
+              "97d52dcd-bb41-4fdc-87c2-863160462566",
+              "8056e142-7438-4a1d-8d37-7cddeb882bc8",
+              "078d31ff-57e4-476a-a229-1de9dc88465b"
             ],
             "failures": [],
             "pending": [],
             "skipped": [],
-            "duration": 1,
+            "duration": 0,
             "root": false,
             "rootEmpty": false,
             "_timeout": 2000
@@ -1507,7 +1509,7 @@
         "_timeout": 2000
       },
       {
-        "uuid": "00e5eeab-12fc-4200-ad38-8c99d11a4229",
+        "uuid": "52767a3b-69a3-48ee-947b-7728c9f9b64f",
         "title": "Reducer",
         "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/Reducers/IndexTest.js",
         "file": "/test/Reducers/IndexTest.js",
@@ -1518,7 +1520,7 @@
             "title": "should return initial state when state is not specified",
             "fullTitle": "Reducer should return initial state when state is not specified",
             "timedOut": false,
-            "duration": 1,
+            "duration": 0,
             "state": "passed",
             "speed": "fast",
             "pass": true,
@@ -1527,7 +1529,7 @@
             "code": "_chai.assert.equal((0, _index2.default)(), _index.initialState);",
             "err": {},
             "isRoot": false,
-            "uuid": "5dba527b-568f-4da1-8721-cecda2863cef",
+            "uuid": "a6430456-928f-4404-b7b4-e541087b5c43",
             "isHook": false,
             "skipped": false
           },
@@ -1535,7 +1537,7 @@
             "title": "changeRoom action should store room info",
             "fullTitle": "Reducer changeRoom action should store room info",
             "timedOut": false,
-            "duration": 0,
+            "duration": 1,
             "state": "passed",
             "speed": "fast",
             "pass": true,
@@ -1544,7 +1546,7 @@
             "code": "var action = { type: actions.CHANGE_ROOM, room: _GameObjects.ROOMS.TEST, display: \"display\" };\nvar exits = [\"north\", \"south\", \"east\", \"west\"];\n_chai.assert.deepEqual((0, _index2.default)(_index.initialState, action), Object.assign({}, _index.initialState, {\n    room: _GameObjects.ROOMS.TEST, display: \"display\", exits: exits }));",
             "err": {},
             "isRoot": false,
-            "uuid": "ec091221-4cd6-4c9b-b185-c8f3ddf4553f",
+            "uuid": "92be1204-6313-4ec9-aab4-5ef84dca97af",
             "isHook": false,
             "skipped": false
           },
@@ -1561,7 +1563,7 @@
             "code": "var action = { type: actions.CHANGE_DISPLAY, display: \"display\" };\n_chai.assert.deepEqual((0, _index2.default)(_index.initialState, action), Object.assign({}, _index.initialState, {\n    display: \"display\" }));",
             "err": {},
             "isRoot": false,
-            "uuid": "110c9e1a-c06c-4b3e-abc0-894829dbf9d8",
+            "uuid": "e6d02093-9eea-44a6-bc30-e64d9b4ebde4",
             "isHook": false,
             "skipped": false
           },
@@ -1569,7 +1571,7 @@
             "title": "updateTick action should store new tick in world state",
             "fullTitle": "Reducer updateTick action should store new tick in world state",
             "timedOut": false,
-            "duration": 0,
+            "duration": 1,
             "state": "passed",
             "speed": "fast",
             "pass": true,
@@ -1578,28 +1580,28 @@
             "code": "var action = { type: actions.UPDATE_TICK, tick: 10 };\n_chai.assert.deepEqual((0, _index2.default)(_index.initialState, action), Object.assign({}, _index.initialState, {\n    world: Object.assign({}, _index.initialState.world, { tick: 10 }) }));",
             "err": {},
             "isRoot": false,
-            "uuid": "3900e023-6c91-409d-866f-9098dc35aa2e",
+            "uuid": "8ac07789-024a-4e06-94d3-80ad48ee7e42",
             "isHook": false,
             "skipped": false
           }
         ],
         "suites": [],
         "passes": [
-          "5dba527b-568f-4da1-8721-cecda2863cef",
-          "ec091221-4cd6-4c9b-b185-c8f3ddf4553f",
-          "110c9e1a-c06c-4b3e-abc0-894829dbf9d8",
-          "3900e023-6c91-409d-866f-9098dc35aa2e"
+          "a6430456-928f-4404-b7b4-e541087b5c43",
+          "92be1204-6313-4ec9-aab4-5ef84dca97af",
+          "e6d02093-9eea-44a6-bc30-e64d9b4ebde4",
+          "8ac07789-024a-4e06-94d3-80ad48ee7e42"
         ],
         "failures": [],
         "pending": [],
         "skipped": [],
-        "duration": 1,
+        "duration": 2,
         "root": false,
         "rootEmpty": false,
         "_timeout": 2000
       },
       {
-        "uuid": "f8b1f553-717c-46ff-a649-7dc2f5610f8e",
+        "uuid": "5ec786bc-72bd-489c-8fe8-044914a0a7fd",
         "title": "genExits",
         "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/Reducers/genExitsTest.js",
         "file": "/test/Reducers/genExitsTest.js",
@@ -1610,7 +1612,7 @@
             "title": "should return unchanged state if room is not specified in the action",
             "fullTitle": "genExits should return unchanged state if room is not specified in the action",
             "timedOut": false,
-            "duration": 1,
+            "duration": 0,
             "state": "passed",
             "speed": "fast",
             "pass": true,
@@ -1619,7 +1621,7 @@
             "code": "var state = { key: \"value\", exits: undefined };\n_chai.assert.equal((0, _genExits2.default)(state, {}), state);",
             "err": {},
             "isRoot": false,
-            "uuid": "dee47d12-5627-40eb-b522-a32d31c0bae5",
+            "uuid": "4d55ea26-f33c-4116-a2db-1fb8acf8c8cb",
             "isHook": false,
             "skipped": false
           },
@@ -1636,26 +1638,26 @@
             "code": "var state = { key: \"value\", exits: undefined };\n_chai.assert.deepEqual((0, _genExits2.default)(state, { room: _GameObjects.ROOMS.TEST }), Object.assign({}, state, { exits: [\"north\", \"south\", \"east\", \"west\"] }));",
             "err": {},
             "isRoot": false,
-            "uuid": "15acf8a5-3987-4889-84a8-e56a99a6071e",
+            "uuid": "2f6ac194-0671-4613-95df-7be5f458c36b",
             "isHook": false,
             "skipped": false
           }
         ],
         "suites": [],
         "passes": [
-          "dee47d12-5627-40eb-b522-a32d31c0bae5",
-          "15acf8a5-3987-4889-84a8-e56a99a6071e"
+          "4d55ea26-f33c-4116-a2db-1fb8acf8c8cb",
+          "2f6ac194-0671-4613-95df-7be5f458c36b"
         ],
         "failures": [],
         "pending": [],
         "skipped": [],
-        "duration": 1,
+        "duration": 0,
         "root": false,
         "rootEmpty": false,
         "_timeout": 2000
       },
       {
-        "uuid": "6bcc72bd-873a-4433-a4f8-e661f40cc3c2",
+        "uuid": "4ec2644c-fff7-4dd0-9663-738b2c2770ff",
         "title": "Tests configured",
         "fullFile": "/home/dawn/Documents/Javascript projects/text-adventure/test/setupTests.js",
         "file": "/test/setupTests.js",
@@ -1675,14 +1677,14 @@
             "code": "return true;",
             "err": {},
             "isRoot": false,
-            "uuid": "c755f14d-1d78-4d6d-9ea2-1f8e81b956d4",
+            "uuid": "88958734-917c-400f-a379-49599b48bd75",
             "isHook": false,
             "skipped": false
           }
         ],
         "suites": [],
         "passes": [
-          "c755f14d-1d78-4d6d-9ea2-1f8e81b956d4"
+          "88958734-917c-400f-a379-49599b48bd75"
         ],
         "failures": [],
         "pending": [],

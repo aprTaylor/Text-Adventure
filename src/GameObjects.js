@@ -42,10 +42,10 @@ export const DESCRIPTORS = {
     [ROOMS.FIELD]: new DisplayManager({
         intro: {
             display: new Flipbook([
-                "Purple waves gently brush agianst you. Their musky sent fills your head"+
+                "Purple waves gently brush agianst you. Their musky scent fills your head"+
                 " and your sense of smell. A nearby basket is brimming"+
-                " with the surrounding long stemmed plants. Still your gloved hand reaches to pick more"+
-                " If you are even a little short of a needed herb it could be devastating for the village.",
+                " with the surrounding long stemmed plants. Still, your gloved hand reaches to pick more."+
+                " Lacking even a single needed herb could be devastating for the village.",
                 "You wipe your glistening brow with the back of your hand and look up to estimate the time."+
                 " A little past noon it seems. You still have some time before the cold season starts but when"+
                 " winter hits it can hit hard. <br> After plucking a few more stems you realize that if you don't"+
@@ -66,4 +66,7 @@ export const DESCRIPTORS = {
         }
 
     }, "intro", {introIsDone: "this.done"}),
-} 
+    [ROOMS.FOREST]: new Basic("You hesitantly take a few steps into into the forested depths. The trees are"+
+                    " densely packed, their branches overlapping, blocking out but the faintest traces of sunlight. "),  
+    [ROOMS.HOME]: new Basic("You are inside a house."),  
+}

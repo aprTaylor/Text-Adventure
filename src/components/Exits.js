@@ -13,7 +13,10 @@ export class Exits extends Component {
         <div className="Exits">
           <ul>
               {this.props.exits.map((exit, index) => {
-                  return (<li key={index}>{exit}</li>);
+                  return (
+                  <li key={index} onClick={this.props.changeRoom.bind(this, exit)}>
+                    {exit}
+                  </li>);
               })}
           </ul>
         </div>

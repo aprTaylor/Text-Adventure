@@ -24,7 +24,6 @@ class App extends Component {
 
 
   shouldComponentUpdate(nextProps, nextState){
-    console.log(nextProps, this.props, nextProps == this.props)
     if(nextProps === this.props)
       return false;
     return true;
@@ -57,7 +56,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Exits exits={this.props.exits} />
+        <Exits exits={this.props.exits} changeRoom={this.props.changeRoom}/>
         <Room display={this.props.display} world={this.props.world} 
         addActions={this.addActions} actions={this.props.actions}/>
         <Actions actions={this.props.actions} actionMap={this.actionsMap}/>

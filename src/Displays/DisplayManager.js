@@ -59,7 +59,6 @@ export class DisplayManager {
         this.displayMap.to = forceArray(this.displayMap.to);
         
         let validTrans = this.displayMap.to.filter((trans) => {
-            console.log("should trans", this.flags);
             return trans.condition(this.flags, this.displayMap.display, world);
         });
 
