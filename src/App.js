@@ -4,6 +4,7 @@ import { Exits } from './components/Exits'
 import { TextWindow } from './components/TextWindow'
 import { Room } from './components/Room'
 import { Actions } from './components/Actions'
+import { Map } from './Containers/Map'
 
 import { ACTIONS } from './GameObjects'
 import { forceArray } from './util/mis'
@@ -54,12 +55,14 @@ class App extends Component {
   }
 
   render() {
+    console.log("App",this.props);
     return (
       <div className="App">
         <Exits exits={this.props.exits} changeRoom={this.props.changeRoom}/>
         <Room display={this.props.display} world={this.props.world} 
         addActions={this.addActions} actions={this.props.actions}/>
         <Actions actions={this.props.actions} actionMap={this.actionsMap}/>
+        <Map />
       </div>
     );
   }

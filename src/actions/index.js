@@ -2,7 +2,9 @@ export const CHANGE_ROOM = 'CHANGE_ROOM';
 export const CHANGE_DISPLAY = 'CHANGE_DISPLAY';
 export const UPDATE_TICK = 'UPDATE_TICK';
 export const ADD_ACTIONS = 'ADD_ACTIONS';
-export const CLEAR_ACTIONS = 'CLEAR_ACTIONS'
+export const CLEAR_ACTIONS = 'CLEAR_ACTIONS';
+export const GENERATE_MAP = 'GENERATE_MAP';
+export const MAP_RENDERED = 'MAP_RENDERED'
 
 export const changeRoom = newRoom => ({
     type: CHANGE_ROOM,
@@ -27,4 +29,14 @@ export const addActions = (actions, newActions) => ({
 export const updateTick = (tick, tickAmnt = 1) => ({
     type: UPDATE_TICK,
     tick: tick+tickAmnt
+});
+
+/* Map Container */
+
+export const generateMap = () => ({
+    type: GENERATE_MAP
+});
+
+export const mapRendered = () => ({
+    type: MAP_RENDERED
 });

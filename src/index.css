@@ -5,9 +5,6 @@ body, html {
   padding: 0;
   overflow: hidden; }
 
-body {
-  background: #b3b3b3; }
-
 ul {
   margin: 0;
   padding: 0; }
@@ -17,14 +14,14 @@ li {
 
 button {
   cursor: pointer;
-  border: 2px solid darkgray;
-  color: aqua;
-  box-shadow: inset 0 0 15px 2px #4d4d4d;
+  border: 2px solid #967bb6;
+  color: #665d1e;
+  box-shadow: inset 0 0 15px 2px #634883;
   min-width: 100px;
   padding: 10px 20px;
-  background: gray; }
+  background: #967bb6; }
   button:hover {
-    color: aqua; }
+    color: #665d1e; }
 
 #root {
   height: 100%;
@@ -32,18 +29,16 @@ button {
 
 .App {
   height: calc(100% - 60px);
-  margin: 0 10px;
   padding: 50px;
-  border: 10px solid darkgray;
-  background: gray;
-  color: white;
-  box-shadow: inset 0 0 15px 2px #4d4d4d; }
+  background: #967bb6;
+  color: #3a1f04;
+  box-shadow: inset 0 0 15px 2px #634883; }
 
 .Exits {
   margin: 20px 0; }
   .Exits li {
     cursor: pointer;
-    color: aqua;
+    color: #665d1e;
     display: inline;
     margin-right: 20px; }
 

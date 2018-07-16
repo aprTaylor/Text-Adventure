@@ -1,5 +1,5 @@
 import genExits from './genExits';
-import addActions from './addActions';
+import genMap from './genMap'
 import * as actions from '../actions';
 
 import { ROOMS, EXITS, DESCRIPTORS } from '../GameObjects';
@@ -10,7 +10,23 @@ export const initialState = {
   room: ROOMS.FIELD,
   world: {tick: 0},
   display: DESCRIPTORS[ROOMS.FIELD],
-  actions: []
+  actions: [],
+
+  mapHasRendered: false,
+  mapOptions: {
+    physics:false,
+    edges: {
+        "smooth": {
+            "type": "discrete",
+            //"forceDirection": "vertical",
+            "roundness": 0
+        }
+    }
+  },
+  mapData: {
+    nodes: [],
+    edges: []
+  }
 };
   
 function reducer(state = initialState, action = {}) {
@@ -29,6 +45,10 @@ function reducer(state = initialState, action = {}) {
     case actions.CLEAR_ACTIONS:
     case actions.ADD_ACTIONS:
       return updateX("actions", action.actions, state);
+    case actions.GENERATE_MAP: 
+      return genMap(state, action);
+    case actions.MAP_RENDERED:
+      return updateX("mapRendered", true, state);
     default:
       return state;
     }

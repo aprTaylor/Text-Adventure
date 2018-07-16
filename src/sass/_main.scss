@@ -7,7 +7,7 @@ body, html {
 }
 
 body {
-    background: lighten($primary, 20%);
+    //background: lighten($primary, 20%);
 }
 
 ul {
@@ -39,9 +39,9 @@ button {
 
 .App {
     height: calc(100% - 60px);
-    margin: 0 10px;
+    //margin: 0 10px;
     padding: 50px;
-    border: 10px solid $secondary;
+    //border: 10px solid $secondary;
     background: $primary;
     color: $text-color;
 
