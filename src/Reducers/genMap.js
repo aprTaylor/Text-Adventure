@@ -1,8 +1,22 @@
 import { GENERATE_MAP } from '../actions'
+import { EXITS } from '../GameObjects'
 const genMap = (state, action) => {
 
     if (action.type !== GENERATE_MAP) return state;
 
+        let data = genData();
+      
+      console.log("Map generated", data);
+    return {
+        ...state,
+        mapData: data
+    };
+};
+
+const genData = () => {
+    let visited = [];
+    let queue = [];
+    queue.push(Object.keys(EXITS)[0]);
     var nodes = [
         {id: 1, label: 'Fixed node', x:0, y:0, fixed:true},
         {id: 2, label: 'Drag me', x:0, y:130, physics:false},
@@ -12,15 +26,12 @@ const genMap = (state, action) => {
       var edges = [
         {from: 1, to: 2, arrows:'to'}
       ];
-      var data = {
+
+      return {
         nodes: nodes,
         edges: edges
       };
-      console.log("Map generated", data);
-    return {
-        ...state,
-        mapData: data
-    };
-};
+
+}
 
 export default genMap;
