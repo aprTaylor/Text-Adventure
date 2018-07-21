@@ -14,9 +14,8 @@ const genMap = (state, action) => {
 };
 
 const genData = () => {
-    let visited = [];
-    let queue = [];
-    queue.push(Object.keys(EXITS)[0]);
+    
+    
     var nodes = [
         {id: 1, label: 'Fixed node', x:0, y:0, fixed:true},
         {id: 2, label: 'Drag me', x:0, y:130, physics:false},
