@@ -5,16 +5,16 @@ export const len = (obj, countDigits) => {
 }
 
 const mapping = {
-    obj: (obj) => {
+    object: (obj) => {
         let cnt = 0;
-        for(var key in myObject) 
-            if (myObject.hasOwnProperty(key)) 
+        for(var key in obj) 
+            if (obj.hasOwnProperty(key)) 
                 cnt++;
             
         return cnt;
     },
     array: (arr) => {
-        return obj.length;
+        return arr.length;
     },
     number: (number, countDigits) => {
         if(countDigits)

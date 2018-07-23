@@ -11,8 +11,8 @@ const mapping = {
     array: (index, arr) => {
         return arr[index];
     },
-    obj: (index, obj) => {
-        return obj(Object.keys(obj)[index]);
+    object: (index, obj) => {
+        return obj[Object.keys(obj)[index]];
     },
     string: (index, str) => {
         return str.charAt(index);

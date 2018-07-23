@@ -1,5 +1,5 @@
 import { forceArray } from '../util/mis'
-import { isA } from '../util/isA'
+import { isA } from '../util/TypeProof'
 /**
  * Handles state changes between diffrent displays.
  * 

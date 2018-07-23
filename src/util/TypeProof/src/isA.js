@@ -3,7 +3,7 @@
  * https://webbjocke.com/javascript-check-data-types/
  * by Webbjocke
  */
-export const isA = {
+const isA = {
     object: (obj) => {
         return obj && typeof obj === 'object' && obj.constructor === Object;
     },
@@ -41,3 +41,5 @@ export const isA = {
         return typeof sym === 'symbol';
     }    
 };
+
+export default isA;

@@ -1,4 +1,4 @@
-import { isA } from '../util/isA';
+import { isA } from '../util/TypeProof';
 
 /**
  * Create a basic description system,

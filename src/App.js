@@ -55,7 +55,6 @@ class App extends Component {
   }
 
   render() {
-    console.log("App",this.props);
     return (
       <div className="App">
         <Exits exits={this.props.exits} changeRoom={this.props.changeRoom}/>

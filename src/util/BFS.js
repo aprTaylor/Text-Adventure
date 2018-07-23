@@ -1,7 +1,6 @@
-import isA from './isA'
-import isEmpty from './isEmpty'
-import len from './len'
-export default BST = (graph, process, ...params) => {
+import {isA, len, isEmpty, atIndex} from './TypeProof';
+const MAX_REC = 100;
+const BFS = (graph, process, ...params) => {
     //Error check
     if(isEmpty(graph))
         throw Error("BST graph is empty. Graph must be non-empty.");
@@ -11,26 +10,43 @@ export default BST = (graph, process, ...params) => {
     let visited = [];
     let queue = [];
     let keys = Object.keys(graph);
+    let cnt = 0;
+
+    let edges = [];
+    let vertices = [];
     queue.push(keys[0]);
+    visited.push(keys[0]);
 
-    while(!queue.length){
+    while(queue.length > 0){
+        //Make sure we do not recurse too far
+        if(cnt >= MAX_REC)
+            throw Error("BFS exceeded max recurion level. Max recursion is currently set to "+MAX_REC);
+        cnt++;
+
         let first = queue.shift();
-        process(first, ...params);
+        let nodeEdges = graph[first];
+        let edgeslen = len(graph[first]);
 
-        let edges = graph[first];
-        let edgeslen = len(edges);
+        vertices.push(first);
+
+        process(first, edges, ...params);
+
         // Get all adjacent vertices of the dequeued
         // vertex. If an adjacent has not been visited, 
         // then mark it visited and enqueue it
-        for (i = 0; i < edgeslen; ++i){
-            let atIndex = atIndex(i, edges);
-            if (!visited[atIndex]){
-                visited.push(atIndex);
-                queue.push(atIndex);
+        for (let i = 0; i < edgeslen; ++i){
+            let index = atIndex(i, nodeEdges);
+            if (visited.indexOf(index) === -1){
+                visited.push(index);
+                queue.push(index);
+                edges.push({vert1: first, vert2: index});
             }
         }
-
     }
+    return {vertices: vertices, edges: edges};
+
 }
+
+export default BFS;
 
 ///

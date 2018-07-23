@@ -21,6 +21,10 @@ export const initialState = {
             //"forceDirection": "vertical",
             "roundness": 0
         }
+    },
+    interaction: {
+      dragView: false,
+      selectable: false
     }
   },
   mapData: {

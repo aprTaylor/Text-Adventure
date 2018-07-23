@@ -1,5 +1,5 @@
 import { Basic } from './Basic'
-import { isA } from '../util/isA'
+import { isA } from '../util/TypeProof'
 import { ACTIONS } from '../GameObjects'
 
 /**
