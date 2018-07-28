@@ -4,8 +4,6 @@ const BFS = (graph, process, ...params) => {
     //Error check
     if(isEmpty(graph))
         throw Error("BST graph is empty. Graph must be non-empty.");
-    if(!isA.func(process))
-        throw Error(process + " is not a function. Process for BST must be a function.");
     
     let visited = [];
     let queue = [];
@@ -29,7 +27,9 @@ const BFS = (graph, process, ...params) => {
 
         vertices.push(first);
 
-        process(first, edges, ...params);
+        if(isA.func(process))
+            process(first, nodeEdges, ...params);
+
 
         // Get all adjacent vertices of the dequeued
         // vertex. If an adjacent has not been visited, 
@@ -39,7 +39,7 @@ const BFS = (graph, process, ...params) => {
             if (visited.indexOf(index) === -1){
                 visited.push(index);
                 queue.push(index);
-                edges.push({vert1: first, vert2: index});
+                edges.push({from: first, to: index});
             }
         }
     }

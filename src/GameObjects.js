@@ -10,9 +10,9 @@ export const ROOMS = {
 }
 
 export const EXITS = {
+    [ROOMS.HOME]: {E: ROOMS.FIELD},
     [ROOMS.FIELD]:  {E: ROOMS.FOREST, W: ROOMS.HOME},
     [ROOMS.FOREST]: {W: ROOMS.FIELD},
-    [ROOMS.HOME]: {E: ROOMS.FIELD},
     [ROOMS.TEST]: {N: "north", S: "south", E:"east", W:"west"}
 }
 
