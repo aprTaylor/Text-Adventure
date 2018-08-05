@@ -2,6 +2,7 @@ import { DisplayManager } from './Displays/DisplayManager'
 import { Flipbook } from './Displays/Flipbook'
 import { Basic } from './Displays/Basic'
 
+/*
 export const ROOMS = {
     "FIELD": "Field",
     "FOREST": "Forest",
@@ -14,7 +15,25 @@ export const EXITS = {
     [ROOMS.FIELD]:  {E: ROOMS.FOREST, W: ROOMS.HOME},
     [ROOMS.FOREST]: {W: ROOMS.FIELD},
     [ROOMS.TEST]: {N: "north", S: "south", E:"east", W:"west"}
+}*/
+export const ROOMS = {
+    "FIELD": "Field",
+    "FOREST": "Forest",
+    "HOME": "Home",
+    "TOWN": "Town",
+    "CASTLE": "Castle",
+    "TEST": "Test"
 }
+
+export const EXITS = {
+    [ROOMS.CASTLE]: {S: ROOMS.HOME},
+    [ROOMS.HOME]: {E: ROOMS.FIELD, N: ROOMS.CASTLE, S: ROOMS.TOWN},
+    [ROOMS.TOWN]: {N: ROOMS.HOME},
+    [ROOMS.FIELD]:  {E: ROOMS.FOREST, W: ROOMS.HOME},
+    [ROOMS.FOREST]: {W: ROOMS.FIELD},
+    [ROOMS.TEST]: {N: "north", S: "south", E:"east", W:"west"}
+}
+
 
 export const TIME = {
     MORNING: "Morning",

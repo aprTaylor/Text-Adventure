@@ -25,32 +25,34 @@ const getDir = (prevRoom, currRoom) => {
 const genData = () => {
   let nodes = [];
   let edges = [];
-  let currX = 0;
-  let currY = 0;
-  let prevRoom = null;
+  let x = 0;
+  let y = 0;
+  let roomCoords = {};
   const lineLng = 100;
     
-    let results = BFS(EXITS, (room, edges) => {
-      console.log("edges", edges)
+    let results = BFS(EXITS, (room, parent, edges) => {
       //Set position of room node
-      if(prevRoom){
-        let dir = getDir(prevRoom, room);
-        console.log("room", room, "prevRoom", prevRoom, "dir", dir);
-        switch(dir){
-          case "E": currX -= lineLng; break;
-          case "W": currX += lineLng; break;
-          case "N": currY += lineLng; break;
-          case "S": currY -= lineLng; break;
-        }
-      }
-      prevRoom = room;
+      if(parent){
+        let dir = getDir(parent, room);
+        if(roomCoords.hasOwnProperty(parent))
+          x = roomCoords[parent].x;
+          y = roomCoords[parent].y;
 
-      let node = {id: room, label: room, x: currX, y: currY, fixed: true};
+          if(dir.includes("E"))
+            x -= lineLng;
+          else if(dir.includes("W"))
+            x += lineLng;
+          if(dir.includes("N"))
+            y -= lineLng;
+          else if(dir.includes("S"))
+            y += lineLng;
+
+      }
+      roomCoords[room] = {x: x, y: y};
+      let node = {id: room, label: room, x: x, y: y, fixed: true};
 
       nodes.push(node);
     });
-
-    console.log("Gen map", "nodes", nodes, "edges", results.edges, "exits", EXITS)
     /*
     var nodes = [
         {id: 1, label: 'Fixed node', x:0, y:0, fixed:true},

@@ -12,8 +12,9 @@ const BFS = (graph, process, ...params) => {
 
     let edges = [];
     let vertices = [];
+    let prev = null;
     queue.push(keys[0]);
-    visited.push(keys[0]);
+    visited[keys[0]] = {parent: null};
 
     while(queue.length > 0){
         //Make sure we do not recurse too far
@@ -23,12 +24,12 @@ const BFS = (graph, process, ...params) => {
 
         let first = queue.shift();
         let nodeEdges = graph[first];
-        let edgeslen = len(graph[first]);
+        let edgeslen = len(nodeEdges);
 
         vertices.push(first);
 
         if(isA.func(process))
-            process(first, nodeEdges, ...params);
+            process(first, visited[first].parent, nodeEdges, ...params);
 
 
         // Get all adjacent vertices of the dequeued
@@ -36,8 +37,8 @@ const BFS = (graph, process, ...params) => {
         // then mark it visited and enqueue it
         for (let i = 0; i < edgeslen; ++i){
             let index = atIndex(i, nodeEdges);
-            if (visited.indexOf(index) === -1){
-                visited.push(index);
+            if (!visited.hasOwnProperty(index)){
+                visited[index] = {parent: first};
                 queue.push(index);
                 edges.push({from: first, to: index});
             }
