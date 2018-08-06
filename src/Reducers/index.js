@@ -25,8 +25,12 @@ export const initialState = {
     interaction: {
       dragView: false,
       selectable: false
+    },
+    nodes:{
+      shape: "square"
     }
   },
+
   mapData: {
     nodes: [],
     edges: []
