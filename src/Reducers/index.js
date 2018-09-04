@@ -1,6 +1,8 @@
 import genExits from './genExits';
 import genMap from './genMap'
-import * as actions from '../actions';
+import updateInventory from './updateInventory'
+import * as action from '../actions';
+import * as names from '../actions/names';
 
 import { ROOMS, EXITS, DESCRIPTORS } from '../GameObjects';
 import { Basic } from '../Displays/Basic';
@@ -8,12 +10,13 @@ import { Basic } from '../Displays/Basic';
 export const initialState = {
   exits:  genExits(EXITS[ROOMS.FIELD], {room: ROOMS.FIELD}).exits,
   room: ROOMS.FIELD,
-  world: {tick: 0},
+  world: {tick: 0, inventory: {}},
   display: DESCRIPTORS[ROOMS.FIELD],
   actions: [],
 
   mapHasRendered: false,
   mapOptions: {
+    autoResize: true,   
     physics:false,
     edges: {
         "smooth": {
@@ -39,24 +42,26 @@ export const initialState = {
   
 function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case actions.CHANGE_ROOM:
+    case names.CHANGE_ROOM:
       let newState ={
         display: DESCRIPTORS[action.room],
         actions: [],
         room: action.room
       }
       return genExits(updateMany(newState, state), action);
-    case actions.CHANGE_DISPLAY:
+    case names.CHANGE_DISPLAY:
       return updateX("display", action.display, state);
-    case actions.UPDATE_TICK:
+    case names.UPDATE_TICK:
       return updateX("world", {tick: action.tick}, state);
-    case actions.CLEAR_ACTIONS:
-    case actions.ADD_ACTIONS:
+    case names.CLEAR_ACTIONS:
       return updateX("actions", action.actions, state);
-    case actions.GENERATE_MAP: 
+    case names.GENERATE_MAP: 
       return genMap(state, action);
-    case actions.MAP_RENDERED:
+    case names.MAP_RENDERED:
       return updateX("mapRendered", true, state);
+    case names.ADD_TO_INVENTORY:
+    case names.REMOVE_FROM_INVENTORY:
+      return updateInventory(action, state);
     default:
       return state;
     }

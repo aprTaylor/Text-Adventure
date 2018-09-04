@@ -6,7 +6,6 @@ const addActions = (state, action) => {
         return state;
 
     let newActions = forceArray(action.newActions);
-    let newState = {world:{}};
 
     newActions = newActions.reduce((actions, newAction) => {
         switch(newAction){
@@ -19,7 +18,6 @@ const addActions = (state, action) => {
     }, state.actions);
     return {
         ...state,
-        ...newState,
         actions: newActions
     }
 }

@@ -12,6 +12,11 @@ export class Map extends Component {
         if(!this.props.hasRendered){
             let container = document.getElementById('map');
             let network = new vis.Network(container, this.props.data, this.props.options);
+            network.once('initRedraw', function() {
+                network.moveTo({
+                    scale: 0.8,
+                })
+              });            
             this.props.setHasRendered();
         }
     }

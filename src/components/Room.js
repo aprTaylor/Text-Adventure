@@ -33,7 +33,9 @@ export class Room extends Component {
             this.props.addActions(actions);
 
         return (
-            <TextWindow text={this.text} />
+            <div id={ this.props.id } className={ this.props.className }>
+                <TextWindow text={this.text} />
+            </div>
         )
     }
   }

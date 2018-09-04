@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
+import { Flex } from 'reflexbox'
 //import PropTypes from 'prop-types';
 import { Exits } from './components/Exits'
 import { TextWindow } from './components/TextWindow'
 import { Room } from './components/Room'
 import { Actions } from './components/Actions'
 import { Map } from './Containers/Map'
+import { AccessIndex } from './components/AccessIndex'
 
 import { ACTIONS } from './GameObjects'
 import { forceArray } from './util/mis'
@@ -58,10 +60,17 @@ class App extends Component {
     return (
       <div className="App">
         <Exits exits={this.props.exits} changeRoom={this.props.changeRoom}/>
-        <Room display={this.props.display} world={this.props.world} 
-        addActions={this.addActions} actions={this.props.actions}/>
-        <Actions actions={this.props.actions} actionMap={this.actionsMap}/>
-        <Map />
+        <div className="left-container">
+          <Room id="room-display" display={this.props.display} world={this.props.world} 
+          addActions={this.addActions} actions={this.props.actions}/>
+          <Actions actions={this.props.actions} actionMap={this.actionsMap}/>
+        </div>
+        <div className="right-container">
+          <Map />
+          <AccessIndex />
+        </div>
+        
+        
       </div>
     );
   }

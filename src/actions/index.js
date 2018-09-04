@@ -1,42 +1,48 @@
-export const CHANGE_ROOM = 'CHANGE_ROOM';
-export const CHANGE_DISPLAY = 'CHANGE_DISPLAY';
-export const UPDATE_TICK = 'UPDATE_TICK';
-export const ADD_ACTIONS = 'ADD_ACTIONS';
-export const CLEAR_ACTIONS = 'CLEAR_ACTIONS';
-export const GENERATE_MAP = 'GENERATE_MAP';
-export const MAP_RENDERED = 'MAP_RENDERED'
-
+import * as names from './names'
 export const changeRoom = newRoom => ({
-    type: CHANGE_ROOM,
+    type: names.CHANGE_ROOM,
     room: newRoom,
 });
 
 export const changeDisplay = display => ({
-    type: CHANGE_DISPLAY,
+    type: names.CHANGE_DISPLAY,
     display: display
 });
 
 export const clearActions = () => ({
-    type: CLEAR_ACTIONS,
+    type: names.CLEAR_ACTIONS,
     actions: []
 });
 
 export const addActions = (actions, newActions) => ({
-    type: ADD_ACTIONS,
+    type: names.ADD_ACTIONS,
     actions: actions.concat(newActions)
 });
 
 export const updateTick = (tick, tickAmnt = 1) => ({
-    type: UPDATE_TICK,
+    type: names.UPDATE_TICK,
     tick: tick+tickAmnt
 });
 
 /* Map Container */
 
 export const generateMap = () => ({
-    type: GENERATE_MAP
+    type: names.GENERATE_MAP
 });
 
 export const mapRendered = () => ({
-    type: MAP_RENDERED
+    type: names.MAP_RENDERED
 });
+
+/* Inventory */
+export const addToInventory = (inventoryItemId, amount = 1) => ({
+    type: names.ADD_TO_INVENTORY,
+    id: inventoryItemId,
+    amount: amount
+})
+
+export const removeFromInventory = (inventoryItemId, amount = 1)  => ({
+    type: names.REMOVE_FROM_INVENTORY,
+    id: inventoryItemId,
+    amount: amount
+})

@@ -1,4 +1,4 @@
-import { GENERATE_MAP } from '../actions'
+import { GENERATE_MAP } from '../actions/names'
 import { EXITS } from '../GameObjects'
 import BFS from '../util/BFS'
 const genMap = (state, action) => {
