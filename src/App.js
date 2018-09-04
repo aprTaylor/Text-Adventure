@@ -59,8 +59,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Exits exits={this.props.exits} changeRoom={this.props.changeRoom}/>
         <div className="left-container">
+          <Exits exits={this.props.exits} changeRoom={this.props.changeRoom}/>
           <Room id="room-display" display={this.props.display} world={this.props.world} 
           addActions={this.addActions} actions={this.props.actions}/>
           <Actions actions={this.props.actions} actionMap={this.actionsMap}/>
