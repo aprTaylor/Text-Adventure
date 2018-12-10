@@ -1,8 +1,8 @@
-import Base from './Base'
+import Extendable from './Base'
 /**
  * The system is responsible for updating the entities.
  */
-class System extends Base{
+class System extends Extendable{
     constructor(extendsWith) {
         super(extendsWith)
         /**

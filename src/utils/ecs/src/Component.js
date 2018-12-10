@@ -1,10 +1,10 @@
-import Base from './Base';
+import Extendable from './Base';
 
 /**
  * The components is the container of some properties that
  * the entity possesses. It may also contain some methods.
  */
-class Component extends Base{
+class Component extends Extendable{
     /**
      * Name of this component. It is expected to be overriden and
      * should be unique.

@@ -88,7 +88,7 @@ class World {
     getEntities(...componentNames) {
         let familyId, families;
 
-        familyId = this._getFamilyId(componentNames);
+        familyId = World._getFamilyId(componentNames);
         this._ensureFamilyExists(componentNames);
         return this._families[familyId].getEntities();
     }
@@ -117,7 +117,7 @@ class World {
     entityAdded(...componentNames) {
         var familyId, families;
 
-        familyId = this._getFamilyId(componentNames);
+        familyId = World._getFamilyId(componentNames);
         this._ensureFamilyExists(componentNames);
         return this._families[familyId].entityAdded;
     }
@@ -133,7 +133,7 @@ class World {
     entityRemoved(...componentNames) {
         var familyId, families;
 
-        familyId = this._getFamilyId(componentNames);
+        familyId = World._getFamilyId(componentNames);
         this._ensureFamilyExists(componentNames);
 
         return this._families[familyId].entityRemoved;
@@ -146,7 +146,7 @@ class World {
      */
     _ensureFamilyExists(components) {
         var families = this._families;
-        var familyId = this._getFamilyId(components);
+        var familyId = World._getFamilyId(components);
         if (!families[familyId]) {
             families[familyId] = new Family(components);
             let entities = this._entities.toArray()
@@ -163,7 +163,7 @@ class World {
      * @param {Array.<String>} components
      * @return {String} The family ID for the passed array of components.
      */
-    _getFamilyId(components) {
+    static _getFamilyId(components) {
         return '$' + components.join(",");
     }
 

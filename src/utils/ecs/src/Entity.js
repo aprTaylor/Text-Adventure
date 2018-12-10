@@ -1,4 +1,3 @@
-import Base from './Base'
 import Signal from './Signal'
 
 /**
@@ -40,6 +39,16 @@ class Entity {
     addComponent(component) {
         this._components['$' + component.name] = component;
         this.onComponentAdded.emit(this, component.name);
+    }
+
+    /**
+     * Add multiple components to this entity.
+     * @param {[Component]} component
+     */
+    addComponents(components) {
+        components.forEach(component => {
+            this.addComponent(component);
+        });
     }
 
     /**
