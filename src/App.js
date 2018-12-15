@@ -4,14 +4,17 @@ import styled, {ThemeProvider} from 'styled-components'
 import Theme from './styles/theme'
 
 //Components
-import DisplayWindowProvidor from './components/data/DisplayWindowProvidor'
+import DisplayWindowProvider from './components/data/DisplayWindowProvider'
+import GlobalProvider from './GlobalContext';
 class App extends Component {
   render() {
     return (
         <ThemeProvider theme={Theme}>
+        <GlobalProvider>
             <Root className="App">
-                <DisplayWindowProvidor />
+                <DisplayWindowProvider />
             </Root>
+        </GlobalProvider>
         </ThemeProvider>
     );
   }

@@ -2,7 +2,7 @@
 import React from "react";
 import DisplayWindow from "../presentation/DisplayWindow";
 
-class DisplayWindowProvidor extends React.Component {
+class DisplayWindowProvider extends React.Component {
   constructor() {
     super();
     this.state = { comments: [] }
@@ -13,5 +13,5 @@ class DisplayWindowProvidor extends React.Component {
   }
 }
 
-export default DisplayWindowProvidor
+export default DisplayWindowProvider
 

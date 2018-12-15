@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Field",
+        "exits": {
+            "E": "Forest",
+            "W": "Home"
+        }
+    },
+    {
+        "name": "Forest",
+        "exits": {
+            "W": "Home"
+        }
+    },
+    {
+        "name": "Home",
+        "exits": {
+            "E": "Field"
+        }
+    }
+
+]
