@@ -1,4 +1,4 @@
-import DisplayManager from "./components/displays/DisplayManager";
+import DisplayManager from "./components/Description";
 
 
 export function Room (world, roomData, descriptionMap) {
