@@ -6,3 +6,4 @@ function parseRooms(){
     this.desc = roomDesc;
 }
 export const RoomParser = new parseRooms();
+

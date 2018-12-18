@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "chai": "^4.2.0",
+    "compromise": "^11.12.4",
     "nano-ecs": "^2.3.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",

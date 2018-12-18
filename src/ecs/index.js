@@ -1,12 +1,19 @@
 import nano from 'nano-ecs'
-import { entities as Entities} from './dataToLoad'
-import { systems as Systems} from './dataToLoad'
+import { entities as Entities} from './util/dataToLoad'
+import { systems as Systems} from './util/dataToLoad'
 
 const state = {};
 let systems;
+/** @type CES */
 let ces;
 class World {
     static instance;
+
+    /**
+     * Provides easy access of ecs
+     * @param {function} _systems 
+     * @param {[Entity]} entities 
+     */
     constructor(_systems, entities = []){
         if(World.instance){
             return World.instance;
@@ -14,9 +21,9 @@ class World {
         ces = nano();
 
         World.instance = this;
-        systems = _systems;
-        entities.forEach(e => e(this.ces));
+        entities.forEach(e => e(this));
     }
+
 
     static getState() {
         return Object.assign({}, state);
@@ -36,4 +43,4 @@ class World {
 export default World
 
 export const loadWorld = (systems = Systems, entities = Entities) => 
-                            new World(systems, entities)
+                            new World(systems, entities);

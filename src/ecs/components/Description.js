@@ -4,10 +4,22 @@
  * @param {object} displayMap {...,stateName: {data: new type(), meta: {}}}
  * @param {string} entryPoint stateName to start on
  */
+/*
 export default function Description(displayMap, entryPoint) {
     this.map = displayMap;
     this.currentState = entryPoint;
     this.toDisplay;
+}
+*/
+
+/**
+ * 
+ *
+ * @export
+ * @param {*} text
+ */
+export function Description(text) {
+    this.text = text;
 }
 
 export const types = {
