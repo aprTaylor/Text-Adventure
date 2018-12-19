@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "chai": "^4.2.0",
     "compromise": "^11.12.4",
     "nano-ecs": "^2.3.0",
     "prop-types": "^15.6.2",
@@ -32,6 +31,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.2.0",
     "redux-devtools": "^3.4.2"
   }
 }

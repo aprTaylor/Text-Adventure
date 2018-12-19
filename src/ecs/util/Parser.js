@@ -1,5 +1,5 @@
-let rooms = require('../data/rooms.json');
-let roomDesc = require('../data/roomDesc.json');
+let rooms = require('../../data/rooms.json');
+let roomDesc = require('../../data/roomDesc.json');
 
 function parseRooms(){
     this.rooms = rooms;

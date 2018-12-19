@@ -1,24 +1,7 @@
-import Description from "../components/Description";
-import { Name } from "../components";
-import { getArticle } from '../util/Proper'
+
 
 class DescriptionSystem {
-    /**
-     * Get Description for entity
-     * @param {CES} world 
-     * @param {Entity} entity 
-     * @param {boolean} namePreferred Try to return name first
-     */
-    static describe(world, entity, namePreferred = false) {
-        let message;
-        if(entity.hasComponent(Description) && entity.description.inRoom)
-            message = entity.description.inRoom;
-
-        if((!message || namePreferred) && entity.hasComponent(Name))
-            message = `\nThere is ${(entity.name.label)[0]} here.`
-
-        return message || "unknown object";
-    }
+    
 }
 
 export default DescriptionSystem

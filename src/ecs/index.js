@@ -21,6 +21,7 @@ class World {
         ces = nano();
 
         World.instance = this;
+        systems = _systems.forEach(sys => new sys(ces));
         entities.forEach(e => e(this));
     }
 

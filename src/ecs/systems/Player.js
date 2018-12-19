@@ -1,6 +1,6 @@
-class PlayerSystem extends System{
-    getPlayer() {
-        return this.world.queryTag('player')[0];
+class PlayerSystem{
+    getPlayer(world) {
+        return world.queryTag('player')[0];
     }
 }
 

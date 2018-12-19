@@ -1,7 +1,7 @@
 /** Specifies that an entity physically exists in a room
  *  @param {Entity} room The room that the presence is located at */
 export function Presence(room) {
-    this.roomName = roomName;
+    this.room = room;
 }
 
 /** Specifies that an entity is a room */
