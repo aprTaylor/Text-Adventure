@@ -1,4 +1,4 @@
-import React from react;
+import React from 'react';
 import ReactAnimationFrame from 'react-animation-frame';
 import { connect } from 'react-redux';
 import { update } from '../../redux/actions'
@@ -6,8 +6,10 @@ import { update } from '../../redux/actions'
 class Updater extends React.Component {
     onAnimationFrame(time, lastTime) {
         const dt = time - lastTime;
-         this.props.update(dt);
+        this.props.store.dispatch(update(dt));
     }
+
+    render(){return null}
 }
  
-export default connect({}, { update })( ReactAnimationFrame(Updater));
+export default ReactAnimationFrame(Updater, 1000);

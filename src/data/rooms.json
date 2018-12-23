@@ -1,22 +1,18 @@
-[
-    {
-        "name": "Field",
+{
+    "Field": {
         "exits": {
             "E": "Forest",
             "W": "Home"
         }
     },
-    {
-        "name": "Forest",
+    "Forest": {
         "exits": {
             "W": "Home"
         }
     },
-    {
-        "name": "Home",
+    "Home": {
         "exits": {
             "E": "Field"
         }
     }
-
-]
+}

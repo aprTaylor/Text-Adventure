@@ -1,8 +1,21 @@
-import { Notable, Container, Openable } from "../components";
+import System from './System'
+import { Notable, Container, Openable, Containable, Name, Presence } from "../components";
 import { Description } from "../components/Description";
 import { getArticleInPlace, getToBe } from '../util/Proper'
+import { logger } from '../util';
 
-class SightSystem {
+let logs = new logger("SightSystem", 0);
+class SightSystem extends System{
+
+    update(dt, state) {
+        let desc;
+
+        if(state.events.actions.look){
+            desc = this.describeRoom(this.getCurrRoom());
+            return {...state, world:{...state.world, description: state.world.description + desc}}
+        }
+        return state;
+    }
     
     /**
      * Returns description of specified room
@@ -10,22 +23,22 @@ class SightSystem {
      * @param {Entity} room
      */
     describeRoom(room) {
-        if(!room) room = getCurrRoom();
-        let message = appendDescription(world, room.description.text, room)
-        LoggingSystem.instance.addLog(message)
+        if(!room) room = this.getCurrRoom();
+        let message = this.appendDescription(room.description.text, room);
+        return message;
     }
 
     
     appendDescription(description, room) {
         let updatedDescription = description;
-        const entities = entitiesInRoom(world, room);
-        for (entity in entities) {
+        const entities = this.entitiesInRoom(this.world, room);
+        for (let entity in entities) {
             if(entity === this.world.queryTag('player')[0]) continue;
             if (entity.hasComponent(Notable)) {
                 //Use generated description or one that is provided
-                updatedDescription += describe(entity)
+                updatedDescription += this.describe(entity)
             }
-            updatedDescription += `\n${describeContainerContents(entity)}`;
+            updatedDescription += `\n${this.describeContainerContents(entity)}`;
         }
         return updatedDescription
     }
@@ -34,7 +47,7 @@ class SightSystem {
         if(!entity.hasComponent(Container)) return "";
         const containerName = entity.name.label || "nearby container";
         const article = entity.name.label? "The":"A";
-        const items = listContainerContents(entity);
+        const items = this.listContainerContents(entity);
         if(items.length < 0) return "";
         return `${article} ${containerName} contains:\n  ${items.join("\n  ")}`;
     }
@@ -43,8 +56,8 @@ class SightSystem {
         if(!entity.hasComponent(Container)) return [];
         if(entity.hasComponent(Openable) && !entity.openable.isOpen) return [];
 
-        const contents = fetchContainedEntities(world, entity);
-        return contents.map(item => describe(world, item, true));
+        const contents = this.fetchContainedEntities(this.world, entity);
+        return contents.map(item => this.describe(this.world, item, true));
     }
 
      /**
@@ -58,7 +71,7 @@ class SightSystem {
 
     entitiesInRoom(room) {
         if(!room){
-            room = getCurrRoom();
+            room = this.getCurrRoom();
         }
         //let result = entitiesPresentInRoom()
         //result.append(entitiesContainedByRoom())

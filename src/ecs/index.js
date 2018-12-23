@@ -1,8 +1,17 @@
 import nano from 'nano-ecs'
-import { entities as Entities} from './util/dataToLoad'
-import { systems as Systems} from './util/dataToLoad'
+import { systems as Systems, entities as Entities} from './util/dataToLoad'
+import { logger } from './util';
 
-const state = {};
+//Initial State
+let state = {
+    events: {
+        moveTo: "Home",
+        actions: {look: true}
+    },
+    world: {
+        description: ""
+    }
+};
 let systems;
 /** @type CES */
 let ces;
@@ -21,8 +30,9 @@ class World {
         ces = nano();
 
         World.instance = this;
-        systems = _systems.forEach(sys => new sys(ces));
-        entities.forEach(e => e(this));
+        systems = _systems.map(sys => new sys(ces));
+
+        entities.forEach(e => e(ces));
     }
 
 
@@ -37,7 +47,9 @@ class World {
      * @param {number} dt The time since last update
      */
     static update = (dt) => {
-        systems.forEach(sys => sys.update(dt, state));
+        systems.forEach(sys => state = sys.update(dt, state));
+        //clean events
+        state.events = {actions: {}};
     }
 }
 

@@ -1,6 +1,6 @@
 
 
-class DescriptionSystem {
+class DescriptionSystem extends System{
     
 }
 

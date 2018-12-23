@@ -11,3 +11,5 @@ class System {
         return state;
     }
 }
+
+export default System

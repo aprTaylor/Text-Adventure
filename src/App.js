@@ -15,7 +15,7 @@ class App extends Component {
         <ThemeProvider theme={Theme}>
         <Provider store={store}>
             <Root className="App">
-                <Updater />
+                <Updater store={store}/>
                 <DisplayWindowProvider />
             </Root>
         </Provider>

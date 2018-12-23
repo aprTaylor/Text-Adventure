@@ -18,7 +18,7 @@ export default function Description(displayMap, entryPoint) {
  * @export
  * @param {*} text
  */
-export function Description(text) {
+export function Description(entity, text) {
     this.text = text;
 }
 
