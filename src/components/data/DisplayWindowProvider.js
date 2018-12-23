@@ -37,7 +37,7 @@ class DisplayWindowProvider extends React.Component {
 
 const mapStateToProps = function(state) {
     return {
-      desc: state.ecs.world.description
+      desc: state.world.description
     }
   }
   
