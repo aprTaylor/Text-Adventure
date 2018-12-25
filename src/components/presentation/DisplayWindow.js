@@ -2,7 +2,7 @@ import React from "react";
 
 const DisplayWindow = props => (
   <div className="TextWindow">
-    {props.description}
+    {props.children}
   </div>
 )
 

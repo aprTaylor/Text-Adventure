@@ -1,4 +1,4 @@
-import { GET_DESC, UPDATE } from './types.js';
+import { UPDATE } from './types.js';
 import World from '../../ecs';
 
 
@@ -8,4 +8,8 @@ export const update = (dt) => {
         type: UPDATE,
         payload: World.getState().world
     }
+}
+
+export const Action = {
+    exitToRoom: (roomName) => World.triggerEvent('moveTo', roomName)
 }

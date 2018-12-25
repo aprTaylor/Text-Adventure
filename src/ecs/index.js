@@ -9,7 +9,8 @@ let state = {
         actions: {look: true}
     },
     world: {
-        description: ""
+        description: "",
+        exitNames: []
     }
 };
 let systems;
@@ -50,6 +51,14 @@ class World {
         systems.forEach(sys => state = sys.update(dt, state));
         //clean events
         state.events = {actions: {}};
+    }
+
+    static takeAction = (action, ...data) => {
+        state.events.actions[action] = data;
+    }
+
+    static triggerEvent = (event, ...data) => {
+        state.events[event] = data;
     }
 }
 

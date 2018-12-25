@@ -1,10 +1,7 @@
 import { UPDATE} from '../actions/types.js'
+import World from '../../ecs/index.js';
 
-const initialState = {
-     world: {
-         description: ""
-     }
-}
+const initialState = World.getState().world
 
 export default function(state = initialState, action) {
     switch(action.type) {

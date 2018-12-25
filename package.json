@@ -5,14 +5,17 @@
   "dependencies": {
     "compromise": "^11.12.4",
     "nano-ecs": "^2.3.0",
+    "polished": "^2.3.1",
     "prop-types": "^15.6.2",
+    "ramda": "^0.26.1",
     "react": "^16.6.3",
     "react-animation-frame": "^1.0.2",
     "react-dom": "^16.6.3",
     "react-redux": "^6.0.0",
     "react-scripts": "2.1.1",
     "redux": "^4.0.1",
-    "sinon": "^7.2.0"
+    "sinon": "^7.2.0",
+    "styled-components": "^4.1.3"
   },
   "scripts": {
     "start": "react-scripts start",

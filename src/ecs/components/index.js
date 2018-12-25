@@ -4,9 +4,6 @@ export function Presence(entity, room) {
     this.room = room;
 }
 
-/** Specifies that an entity is a room */
-export function Room(entity) {}
-
 /** Specifies that an entity is displayed in the room description\
  *  *Note: can be used in conjunction with Description.inRoom* */
 export function Notable(entity) {}
@@ -32,4 +29,13 @@ export function Containable(entity, container, weight) {
  *  @param {string} label The label */
 export function Name(entity, label) {
     this.label = label;
+}
+
+/** Connects an entity to another entity
+ * @param {DIR} direction 
+ * @param {Entity} connectedEntity */
+export function Portal(entity, container, connectedEntity, direction) {
+    this.dir = direction;
+    this.link = connectedEntity;
+    this.backwardLink = container;
 }

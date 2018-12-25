@@ -24,6 +24,7 @@ class RoomSystem extends System{
         if(room.length === 0)
             room = Room(this.world, roomName);
 
+        
         entity.presence.room = room;
 
         return room;

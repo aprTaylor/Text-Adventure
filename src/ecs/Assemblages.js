@@ -1,5 +1,5 @@
 import { Description } from "./components/Description";
-import { Name, Presence } from './components'
+import { Name, Presence, Portal } from './components'
 import { declareClass } from "babel-types";
 import { logger } from "./util";
 
@@ -22,3 +22,10 @@ export function Actor (world, name, startingLocation) {
     .addComponent(Presence, startingLocation)
     .addTag('actor')
 }
+
+export function Exit (world, direction, inRoom, toRoom) {
+    return world.createEntity()
+    .addComponent(Name, toRoom.name)
+    .addComponent(Portal, inRoom, toRoom, direction)
+    .addTag('exit')
+} 
