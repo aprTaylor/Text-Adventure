@@ -1,6 +1,7 @@
 import nano from 'nano-ecs'
 import { systems as Systems, entities as Entities} from './util/dataToLoad'
 import { logger } from './util';
+import SceneManager from './managers/SceneManger';
 
 //Initial State
 let state = {
@@ -32,8 +33,9 @@ class World {
 
         World.instance = this;
         systems = _systems.map(sys => new sys(ces));
-
         entities.forEach(e => e(ces));
+
+        this.sceneManger = new SceneManager(ces).loadScene('Scene1');
     }
 
 

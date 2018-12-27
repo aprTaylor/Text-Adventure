@@ -1,5 +1,4 @@
 import System from './System';
-import { Room } from "../util/Bridge";
 import { Presence } from "../components";
 import { logger } from '../util';
 
@@ -17,15 +16,9 @@ class RoomSystem extends System{
     moveTo(entity, roomName) {
         //If an entity does not have a presence component it cannot be moved
         if(!entity.hasComponent(Presence)) return false;
-
-        //check if room exists
-        let room = this.world.queryTag('room').filter(() => entity.name === roomName);
-
-        if(room.length === 0)
-            room = Room(this.world, roomName);
-
-        
-        entity.presence.room = room;
+        //get room
+        let room = this.world.queryTag('room').filter((room) => room.name.label === roomName);
+        entity.presence.room = room[0];
 
         return room;
     }

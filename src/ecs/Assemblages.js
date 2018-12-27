@@ -1,9 +1,7 @@
 import { Description } from "./components/Description";
 import { Name, Presence, Portal } from './components'
-import { declareClass } from "babel-types";
 import { logger } from "./util";
 
-let logs = new logger('Parser');
 export function Room (world, name, desc) {
     return world.createEntity()
     .addComponent(Name, name)
