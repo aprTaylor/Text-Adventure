@@ -2,17 +2,18 @@ import Manager from './Manager'
 import { Room } from '../Assemblages';
 
 let scene;
+//TODO: fix scene manager
 class SceneManager extends Manager {
   
   loadScene(sceneName) {
-    scene = require(`../../data/${sceneName}.json`);
+    //scene = require(`../../data/${sceneName}.json`);
 
     //Load Rooms
-    Object.keys(scene.rooms).forEach(roomName => {
-      let roomDescs = scene.roomDesc[roomName];
-      let desc = roomDescs.intro || roomDescs.standard;
-      Room(this.world, roomName, desc.data.join(""));
-    });
+    //Object.keys(scene.rooms).forEach(roomName => {
+    //  let roomDescs = scene.roomDesc[roomName];
+    // let desc = roomDescs.intro || roomDescs.standard;
+    //  Room(this.world, roomName, desc.data.join(""));
+    //});
 
     return this;
   }

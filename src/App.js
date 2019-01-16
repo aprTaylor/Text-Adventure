@@ -6,8 +6,8 @@ import Theme from './styles/theme'
 import store from './store.js'
 
 //Components
-import DisplayWindowProvider from './components/data/DisplayWindowProvider'
-import Updater from './components/data/Updater'
+import DisplayWindowProvider from './components/provider/DisplayWindowProvider'
+import Updater from './components/provider/Updater'
 
 class App extends Component {
   render() {

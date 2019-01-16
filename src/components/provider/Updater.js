@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactAnimationFrame from 'react-animation-frame';
-import { connect } from 'react-redux';
 import { update } from '../../redux/actions'
  
 class Updater extends React.Component {

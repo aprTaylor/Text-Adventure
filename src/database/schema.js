@@ -1,3 +1,18 @@
+export const scene_schema = {
+  version: 0,
+  type: 'object',
+  properties: {
+    name: {
+      type: 'string',
+      primary: true
+    },
+    rooms: {
+      type: 'array',
+      'uniqueItems': true,
+      item: {type: 'string', ref: 'room'},
+    }
+  }
+}
 export const room_schema = {
   version: 0,
   type: 'object',
@@ -6,7 +21,7 @@ export const room_schema = {
       type: 'string',
       primary: true
     },
-    description: {type: "string", ref: 'description'},
+    description: {type: 'string', ref: 'description'},
     exits: {
       type: 'object',
       properties: {
@@ -23,7 +38,7 @@ export const room_schema = {
       }
     }
   },
-  required: ['descriptions']
+  required: ['description']
 }
 
 export const description_schema = {
@@ -31,7 +46,7 @@ export const description_schema = {
   type: 'object',
   properties: {
     name: {type: 'string', primary: true},
-    text: {type: 'string'},
+    text: {type: 'array', item: {type: 'string'}},
     next: {type: 'string', ref: 'description'}
   },
   required: ['text']
