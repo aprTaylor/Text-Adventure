@@ -9,7 +9,8 @@ export const scene_schema = {
     rooms: {
       type: 'array',
       'uniqueItems': true,
-      item: {type: 'string', ref: 'room'},
+      ref: 'room',
+      items: {type: 'string'},
     }
   }
 }

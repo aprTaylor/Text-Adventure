@@ -7,9 +7,12 @@ import { loadDatabase } from './database'
 import { loadWorld } from './ecs'
 
 loadDatabase().then(db => {
-  loadWorld(db);
-  ReactDOM.render(<App />, document.getElementById('root'));
+  loadWorld(db, load);
 });
+
+const load = () => {
+  ReactDOM.render(<App />, document.getElementById('root'));
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

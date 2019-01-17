@@ -1,19 +1,21 @@
+import { forEach } from 'async'
 import Manager from './Manager'
 import { Room } from '../Assemblages';
 
 let scene;
 //TODO: fix scene manager
-class SceneManager extends Manager {
+class SceneManager extends Manager{
   
-  loadScene(sceneName) {
-    //scene = require(`../../data/${sceneName}.json`);
+  async loadScene(sceneName) {
+    const scene = await this.managers
+                            .DataManager
+                            .get('scene', sceneName)
 
     //Load Rooms
-    //Object.keys(scene.rooms).forEach(roomName => {
-    //  let roomDescs = scene.roomDesc[roomName];
-    // let desc = roomDescs.intro || roomDescs.standard;
-    //  Room(this.world, roomName, desc.data.join(""));
-    //});
+    await forEach(await scene.rooms_, async (room, onErr) => {
+      const desc = await room.description_;
+      Room(this.world, room.name, desc.text.join(""));
+    })
 
     return this;
   }

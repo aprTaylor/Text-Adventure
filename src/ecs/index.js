@@ -1,7 +1,10 @@
 import nano from 'nano-ecs'
-import { systems as Systems, entities as Entities} from './util/dataToLoad'
+import { RxDatabase } from 'rxdb'
+import { map, forEach, forEachObjIndexed } from 'ramda'
+
+import { systems as Systems, entities as Entities, managers as Managers} from './util/dataToLoad'
 import { logger } from './util';
-import SceneManager from './managers/SceneManger';
+import System from './systems/System'
 
 //Initial State
 let state = {
@@ -15,27 +18,35 @@ let state = {
     }
 };
 let systems;
-/** @type CES */
+let managers = {};
 let ces;
+
+/**
+ * Point of access for game logic
+ * @param {RxDatabase} database
+ * @param {[System]} _systems 
+ * @param {[Entity]} entities 
+ */
 class World {
     static instance;
-
-    /**
-     * Provides easy access of ecs
-     * @param {function} _systems 
-     * @param {[Entity]} entities 
-     */
-    constructor(_systems, entities = []){
+    constructor(database, _managers, _systems, entities = []){
         if(World.instance){
             return World.instance;
         }
+        //init
         ces = nano();
-
         World.instance = this;
-        systems = _systems.map(sys => new sys(ces));
-        entities.forEach(e => e(ces));
 
-        this.sceneManger = new SceneManager(ces).loadScene('Scene1');
+        //Load 
+        forEachObjIndexed((manager, key) => {
+            managers[key] = new manager(managers, database, ces);
+        }, _managers)
+        systems = map(sys => new sys(managers, ces), _systems);
+        entities = forEach(e => e(ces), entities);
+
+        //Load Scene
+        this.isLoading = true;
+        managers.SceneManager.loadScene('town_edge').then(val => this.isLoading = false);
     }
 
 
@@ -66,5 +77,11 @@ class World {
 
 export default World
 
-export const loadWorld = (systems = Systems, entities = Entities) => 
-                            new World(systems, entities);
+/**
+ * Initialize world with either passed or standard parameters
+ * @param {RxDatabase} database
+ * @param {[System]} systems 
+ * @param {[Entity]} entities 
+ */
+export const loadWorld = (database, managers = Managers, systems = Systems, entities = Entities) => 
+                            new World(database, managers, systems, entities);

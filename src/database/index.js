@@ -1,4 +1,4 @@
-import * as RxDB from 'rxdb';
+import  * as RxDB from 'rxdb';
 import { scene_schema, room_schema, description_schema } from './schema';
 
 const collections = [
@@ -9,12 +9,20 @@ const collections = [
 
 let dbPromise = null;
 
+/**
+ * Create database and collections
+ */
 const _create = async () => {
-  RxDB.plugin(require('pouchdb-adapter-idb'));
+  if(process.env.NODE_ENV === 'development')
+    RxDB.plugin(require('pouchdb-adapter-memory'));
+  else 
+    RxDB.plugin(require('pouchdb-adapter-idb'));
+
+  const adapter = process.env.NODE_ENV === 'development'?'memory':'idb'
 
   console.log('DatabaseService: creating database..');
   const db = await RxDB.create(
-    {name: "apothecary_game", adapter: 'idb'}
+    {name: "apothecary_game", adapter: adapter}
   );
   console.log('DatabaseService: created database');
 
@@ -25,25 +33,31 @@ const _create = async () => {
   return db;
 }
 
+/**
+ * Get initialized database
+ * @returns {RxDB.RxDatabase}
+ */
 export const get = async () => {
   if (!dbPromise)
     dbPromise = await _create();
   return dbPromise;
 }
 
+/**
+ * Initializes and loads database
+ * @returns {RxDB.RxDatabase}
+ */
 export const loadDatabase = async () => {
   const db = await get();
-  console.log("DATABASE", db)
+
   //Do not re-initialize database
-  if(process.env.NODE_ENV !== 'development')
-    if(await db.getLocal('initialized')) return false;
+  if(await db.getLocal('initialized')) return db;
 
   //Data
   ['scene','room', 'description'].forEach(name => fill(name, db));
 
-  if(process.env.NODE_ENV !== 'development')
-    //Do not re-init database
-    await db.insertLocal('initialized', {isTrue: true})
+  //Do not re-init database
+  await db.insertLocal('initialized', {isTrue: true})
 
   return db;
 } 
