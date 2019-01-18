@@ -3,8 +3,10 @@ import { RxDatabase } from 'rxdb'
 import { map, forEach, forEachObjIndexed } from 'ramda'
 
 import { systems as Systems, entities as Entities, managers as Managers} from './util/dataToLoad'
-import { logger } from './util';
+import { logger, validate } from './util';
 import System from './systems/System'
+import Manager from './managers/Manager'
+import './util/typeDef'
 
 //Initial State
 let state = {
@@ -21,15 +23,21 @@ let systems;
 let managers = {};
 let ces;
 
-/**
- * Point of access for game logic
- * @param {RxDatabase} database
- * @param {[System]} _systems 
- * @param {[Entity]} entities 
- */
+
 class World {
     static instance;
-    constructor(database, _managers, _systems, entities = []){
+    /**
+     * Initialize world with either passed or standard parameters
+     * @param {object} config
+     * @param {function} config.callback
+     * @param {[System]} config.systems 
+     * @param {[Entity]} config.entities 
+     * @param {[Manager]} config.managers
+     * @param {RxDatabase} config.database
+     */
+    constructor({database, callback, managers:_managers = Managers, systems:_systems = Systems, entities = Entities}){
+        if(!validate(database)) throw new Error("Database must be defined");
+    
         if(World.instance){
             return World.instance;
         }
@@ -45,8 +53,9 @@ class World {
         entities = forEach(e => e(ces), entities);
 
         //Load Scene
-        this.isLoading = true;
-        managers.SceneManager.loadScene('town_edge').then(val => this.isLoading = false);
+        managers.SceneManager
+                .loadScene('town_edge')
+                .then(_ => typeof callback==='function'?callback():"");
     }
 
 
@@ -77,11 +86,3 @@ class World {
 
 export default World
 
-/**
- * Initialize world with either passed or standard parameters
- * @param {RxDatabase} database
- * @param {[System]} systems 
- * @param {[Entity]} entities 
- */
-export const loadWorld = (database, managers = Managers, systems = Systems, entities = Entities) => 
-                            new World(database, managers, systems, entities);

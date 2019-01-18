@@ -4,10 +4,11 @@ import './styles/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { loadDatabase } from './database'
-import { loadWorld } from './ecs'
+import World from './ecs'
 
+//ensures all assets are loaded
 loadDatabase().then(db => {
-  loadWorld(db, load);
+  new World({database: db, callback: load});
 });
 
 const load = () => {

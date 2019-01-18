@@ -30,3 +30,4 @@
   * @property {function(string):[Entity]} queryTag Returns a list of all entities with the given tag.
   * @property {function():number} count Returns the total number of entities in the world.
   */
+

@@ -12,13 +12,13 @@
     "exits": {
       "W": "Home"
     },
-    "description": ""
+    "description": "forest_standard"
   },
   {
     "name": "Home",
     "exits": {
       "E": "Field"
     },
-    "description": ""
+    "description": "home_standard"
   }
 ]

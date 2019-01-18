@@ -1,4 +1,4 @@
-import { forEach } from 'async'
+import { asyncForEach } from '../util'
 import Manager from './Manager'
 import { Room } from '../Assemblages';
 
@@ -12,7 +12,7 @@ class SceneManager extends Manager{
                             .get('scene', sceneName)
 
     //Load Rooms
-    await forEach(await scene.rooms_, async (room, onErr) => {
+    await asyncForEach(await scene.rooms_, async (room) => {
       const desc = await room.description_;
       Room(this.world, room.name, desc.text.join(""));
     })

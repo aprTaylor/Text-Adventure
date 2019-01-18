@@ -15,3 +15,17 @@ logger.prototype.log = function(...message){
         console.log("tag: ", this.tag, "i: ", this.i, ...message); 
     this.i++;
 }
+
+/**
+ * Checks that all passed arguments are not null or undefined
+ * @param  {...any} things 
+ */
+export const validate = (...things) => {
+    return things.every((thing) => thing !== undefined && thing !== null);
+}
+
+export async function asyncForEach(array, callback) {
+    for (let index = 0; index < array.length; index++) {
+      await callback(array[index], index, array);
+    }
+  }
