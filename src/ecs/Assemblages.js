@@ -21,9 +21,9 @@ export function Actor (world, name, startingLocation) {
     .addTag('actor')
 }
 
-export function Exit (world, direction, inRoom, toRoom) {
+export function Exit (world, inRoom, toRoom, direction) {
     return world.createEntity()
-    .addComponent(Name, toRoom.name)
+    .addComponent(Name, toRoom.name.label)
     .addComponent(Portal, inRoom, toRoom, direction)
     .addTag('exit')
 } 

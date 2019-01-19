@@ -1,3 +1,4 @@
+import { pipe, toPairs, fromPairs, filter, apply as Rapply } from 'ramda'
 /** Bind arguments starting after however many are passed in. */ 
 export function bind_trailing_args(fn, ...bound_args) {
     return function(...args) {
@@ -24,8 +25,23 @@ export const validate = (...things) => {
     return things.every((thing) => thing !== undefined && thing !== null);
 }
 
-export async function asyncForEach(array, callback) {
+export const asyncForEach = async (array, callback) => {
     for (let index = 0; index < array.length; index++) {
       await callback(array[index], index, array);
     }
-  }
+}
+
+export const asyncObjForEach = async (obj, callback) => {
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            await callback(obj[key], key, obj);
+        }
+    }
+} 
+
+/*** RAMDA **********************************/
+export const filterWithKeys = (pred, obj) => pipe(
+    toPairs,
+    filter(Rapply(pred)),
+    fromPairs
+)(obj);

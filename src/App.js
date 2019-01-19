@@ -27,6 +27,9 @@ class App extends Component {
 const Root = styled.div`
     height: 100%;
     width: 100%;
+    margin-top: 0;
+    position: absolute;
+    top: 0;
     background: ${props => props.theme.colors.background}
 `
 

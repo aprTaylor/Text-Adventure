@@ -8,8 +8,8 @@ import ExitsProvidor from "./ExitsProvidor";
 class DisplayWindowProvider extends React.Component {
     render() {
         return React.createElement(DisplayWindow, null, 
+            <ExitsProvidor />,
             <Description description={this.props.desc}/>,
-            <ExitsProvidor />
         );
     }
 }

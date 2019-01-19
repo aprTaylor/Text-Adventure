@@ -70,16 +70,19 @@ class World {
      * @param {number} dt The time since last update
      */
     static update = (dt) => {
-        systems.forEach(sys => state = sys.update(dt, state));
+        systems.forEach(sys => {
+            if(sys.isTriggered(dt, state))
+                state = sys.update(dt, state)
+        });
         //clean events
         state.events = {actions: {}};
     }
 
-    static takeAction = (action, ...data) => {
-        state.events.actions[action] = data;
+    static takeAction = (action) => {
+        state.events.actions[action] = true;
     }
 
-    static triggerEvent = (event, ...data) => {
+    static triggerEvent = (event, data) => {
         state.events[event] = data;
     }
 }

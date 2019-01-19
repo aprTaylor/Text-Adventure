@@ -26,10 +26,10 @@ export const room_schema = {
     exits: {
       type: 'object',
       properties: {
-        N: {type: 'string', ref: 'room'},
-        E: {type: 'string', ref: 'room'},
-        S: {type: 'string', ref: 'room'},
-        W: {type: 'string', ref: 'room'},
+        N: {type: 'string', ref: 'room', "optional": true},
+        E: {type: 'string', ref: 'room', "optional": true},
+        S: {type: 'string', ref: 'room', "optional": true},
+        W: {type: 'string', ref: 'room', "optional": true},
       }
     },
     flags: {

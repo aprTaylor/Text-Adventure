@@ -1,20 +1,22 @@
+import { setIn as setState } from 'timm'
 import System from './System'
 import { Notable, Container, Openable, Containable, Name, Presence } from "../components";
 import { Description } from "../components/Description";
 import { getArticleInPlace, getToBe } from '../util/Proper'
 import { logger } from '../util';
 
+
 let logs = new logger("SightSystem", 0);
 class SightSystem extends System{
 
     update(dt, state) {
-        let desc;
+        let desc = this.describeRoom(this.getCurrRoom());
+        
+        return setState(state, ["world", "description"], desc)
+    }
 
-        if(state.events.actions.look){
-            desc = this.describeRoom(this.getCurrRoom());
-            return {...state, world:{...state.world, description: state.world.description + desc}}
-        }
-        return state;
+    isTriggered(dt, state) {
+        return !!state.events.actions.look;
     }
     
     /**
@@ -92,10 +94,6 @@ class SightSystem extends System{
             message = `\nThere ${getToBe(entity.name.label)} ${getArticleInPlace(entity.name.label, true)[0]} here.`
 
         return message || "unknown object";
-    }
-
-    getCurrRoom(){
-        return this.world.queryTag('player')[0].presence.room;
     }
     
 

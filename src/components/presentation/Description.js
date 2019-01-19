@@ -8,6 +8,7 @@ const Description = props => (
 )
 
 const Root = styled.div`
+    margin-top: 0;
     & p {
         white-space: pre-line;
     }

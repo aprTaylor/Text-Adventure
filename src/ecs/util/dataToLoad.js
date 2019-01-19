@@ -6,6 +6,7 @@ import { Player } from '../Assemblages'
 import PlayerSystem from '../systems/Player';
 import RoomSystem from '../systems/Room';
 import SightSystem from '../systems/Sight';
+import ExitSystem from '../systems/Exits'
 //util
 import { bind_trailing_args } from '.';
 
@@ -18,7 +19,7 @@ export const entities = [
 /*** SYSTEMS ****************************************************************/
 
 export const systems = [
-    RoomSystem, SightSystem
+    RoomSystem, SightSystem, ExitSystem
 ];
 
 /*** Managers *****************************************************************/

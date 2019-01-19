@@ -1,6 +1,7 @@
-import { asyncForEach } from '../util'
+import { asyncForEach, filterWithKeys } from '../util'
+import { forEach, forEachObjIndexed } from 'ramda'
 import Manager from './Manager'
-import { Room } from '../Assemblages';
+import { Room, Exit } from '../Assemblages';
 
 let scene;
 //TODO: fix scene manager
@@ -12,11 +13,21 @@ class SceneManager extends Manager{
                             .get('scene', sceneName)
 
     //Load Rooms
+    let roomMap = {};
     await asyncForEach(await scene.rooms_, async (room) => {
       const desc = await room.description_;
-      Room(this.world, room.name, desc.text.join(""));
+      roomMap[room.name] = {
+        room: Room(this.world, room.name, desc.text.join("")),
+        exits: filterWithKeys((_, exit) => exit !== undefined, room.exits)
+      }
     })
 
+    forEachObjIndexed((roomInfo, roomName) => {
+      forEachObjIndexed((exit, dir) => {
+         Exit(this.world, roomInfo.room, roomMap[exit].room, dir)
+      }, roomInfo.exits)
+    }, roomMap)
+    
     return this;
   }
 }

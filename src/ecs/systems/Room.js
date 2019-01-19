@@ -3,15 +3,17 @@ import { Presence, Name } from "../components";
 import { logger } from '../util';
 
 let logs = new logger("Room System");
-class RoomSystem extends System{
+class RoomSystem extends System {
     update(dt, state) {
         //Move player to correct room
-        if(state.events.moveTo)
-            this.currRoom = this.moveTo(this.world.queryTag('player')[0], state.events.moveTo);
+        this.currRoom = this.moveTo(this.world.queryTag('player')[0], state.events.moveTo);
 
         return state;
     }
 
+    isTriggered(dt, state){
+        return !!state.events.moveTo
+    }
 
     moveTo(entity, roomName) {
         //If an entity does not have a presence component it cannot be moved
@@ -20,8 +22,7 @@ class RoomSystem extends System{
         //get room
         let room = this.world.queryTag('room').filter((room) => room.name.label === roomName);
         entity.presence.room = room[0];
-        let k = this.world.queryComponents[Name];
-        console.log("ROOMS", room, roomName, Object.assign({}, this.world))
+
         return room;
     }
 }

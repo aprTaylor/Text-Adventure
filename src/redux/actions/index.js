@@ -11,5 +11,8 @@ export const update = (dt) => {
 }
 
 export const Action = {
-    exitToRoom: (roomName) => World.triggerEvent('moveTo', roomName)
+    exitToRoom: (roomName) => {
+        World.triggerEvent('moveTo', roomName);
+        World.takeAction('look');
+    }
 }

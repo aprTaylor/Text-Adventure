@@ -1,11 +1,16 @@
 import React from "react";
+import styled from 'styled-components'
 
 const Exits = props => (
-  <ul className="Exits">
+  <Root className="Exits">
     {props.exits.map((name, index) => {
-        return <li key={ index } onClick={() => props.handleClick(name)}>{name}</li>;
+        return <li key={ index } onClick={props.handleClick.bind(this,name)}>{name}</li>;
     })}
-  </ul>
+  </Root>
 )
+
+const Root = styled.ul`
+  margin-top: 0;
+`
 
 export default Exits
