@@ -1,5 +1,6 @@
 import  * as RxDB from 'rxdb';
 import { scene_schema, room_schema, description_schema } from './schema';
+import Database from './Database';
 
 const collections = [
   { name: 'scene', schema: scene_schema },
@@ -13,22 +14,21 @@ let dbPromise = null;
  * Create database and collections
  */
 const _create = async () => {
-  if(process.env.NODE_ENV === 'development')
-    RxDB.plugin(require('pouchdb-adapter-memory'));
-  else 
-    RxDB.plugin(require('pouchdb-adapter-idb'));
-
-  const adapter = process.env.NODE_ENV === 'development'?'memory':'idb'
-
+  const db = new Database("apothecary_game", {
+    adapter: {
+      dev: {
+        name: "memory",
+        path: "pouchdb-adapter-memory"
+      },
+      prod: {
+        name: "idb",
+        path: "pouchdb-adapter-idb"
+      }
+    }
+  })
   console.log('DatabaseService: creating database..');
-  const db = await RxDB.create(
-    {name: "apothecary_game", adapter: adapter}
-  );
+    await db.create()
   console.log('DatabaseService: created database');
-
-  // create collections
-  console.log('DatabaseService: create collections');
-  await Promise.all(collections.map(colData => db.collection(colData)));
 
   return db;
 }
