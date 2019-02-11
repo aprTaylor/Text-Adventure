@@ -1,13 +1,13 @@
 {
   "main.css": "/Text-Adventure/static/css/main.08d72841.chunk.css",
-  "main.js": "/Text-Adventure/static/js/main.8ad5b674.chunk.js",
-  "main.js.map": "/Text-Adventure/static/js/main.8ad5b674.chunk.js.map",
+  "main.js": "/Text-Adventure/static/js/main.469dcf45.chunk.js",
+  "main.js.map": "/Text-Adventure/static/js/main.469dcf45.chunk.js.map",
   "static/js/1.bceb70fd.chunk.js": "/Text-Adventure/static/js/1.bceb70fd.chunk.js",
   "static/js/1.bceb70fd.chunk.js.map": "/Text-Adventure/static/js/1.bceb70fd.chunk.js.map",
   "runtime~main.js": "/Text-Adventure/static/js/runtime~main.6b203cf5.js",
   "runtime~main.js.map": "/Text-Adventure/static/js/runtime~main.6b203cf5.js.map",
   "static/css/main.08d72841.chunk.css.map": "/Text-Adventure/static/css/main.08d72841.chunk.css.map",
   "index.html": "/Text-Adventure/index.html",
-  "precache-manifest.507550c4f75129e7d72201fd7aca1aa5.js": "/Text-Adventure/precache-manifest.507550c4f75129e7d72201fd7aca1aa5.js",
+  "precache-manifest.f2762fb3fca939517317f966d6110a3d.js": "/Text-Adventure/precache-manifest.f2762fb3fca939517317f966d6110a3d.js",
   "service-worker.js": "/Text-Adventure/service-worker.js"
 }
