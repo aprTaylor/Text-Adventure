@@ -1,0 +1,24 @@
+[
+  { 
+    "name": "Field",
+    "exits": {
+      "E": "Forest",
+      "W": "Home"
+    },
+    "description": "field_intro"
+  },
+  {
+    "name": "Forest",
+    "exits": {
+      "W": "Home"
+    },
+    "description": "forest_standard"
+  },
+  {
+    "name": "Home",
+    "exits": {
+      "E": "Field"
+    },
+    "description": "home_standard"
+  }
+]
