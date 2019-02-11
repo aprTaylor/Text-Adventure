@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/Text-Adventure/static/js/runtime~main.6b203cf5.js"
   },
   {
-    "revision": "9fbd06764b066601e19a",
-    "url": "/Text-Adventure/static/js/main.9fbd0676.chunk.js"
+    "revision": "62c6c17a3cf26a40c213",
+    "url": "/Text-Adventure/static/js/main.62c6c17a.chunk.js"
   },
   {
     "revision": "bceb70fd28210ecadc54",
     "url": "/Text-Adventure/static/js/1.bceb70fd.chunk.js"
   },
   {
-    "revision": "9fbd06764b066601e19a",
+    "revision": "62c6c17a3cf26a40c213",
     "url": "/Text-Adventure/static/css/main.08d72841.chunk.css"
   },
   {
-    "revision": "8ef94deb002b94c370c41f4a1667c3ba",
+    "revision": "19eaa251b4267ca19c1002b1e1c69576",
     "url": "/Text-Adventure/index.html"
   }
 ];
