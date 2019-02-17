@@ -1,6 +1,4 @@
-import {RxDatabase} from 'rxdb'
-//jsDoc
-import SceneManager from './SceneManger';
+
 
 class Manager {
   /**
@@ -10,9 +8,8 @@ class Manager {
    * @param {DataManager} managers.DataManager
    * @param {SceneManager} managers.SceneManager
    */
-  constructor(managers, database, world) {
+  constructor(managers, world) {
     this.managers = managers;
-    this.database = database
     this.world = world;
   }
 }

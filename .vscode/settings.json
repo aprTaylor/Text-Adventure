@@ -6,5 +6,6 @@
         "flipbook",
         "room",
         "timebased"
-    ]
+    ],
+    "search.usePCRE2": true
 }

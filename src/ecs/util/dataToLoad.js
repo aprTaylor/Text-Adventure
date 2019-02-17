@@ -1,7 +1,9 @@
-import SceneManager from '../managers/SceneManger'
+//Managers
 import DataManager from '../managers/DataManager'
 //Rooms
 import { Player } from '../Assemblages'
+//Components 
+import * as Components from '../components'
 //Systems
 import PlayerSystem from '../systems/Player';
 import RoomSystem from '../systems/Room';
@@ -10,11 +12,8 @@ import ExitSystem from '../systems/Exits'
 //util
 import { bind_trailing_args } from '.';
 
-/***  ENTITIES ***********************************************************/
-
-export const entities = [
-    bind_trailing_args(Player)
-];
+/*** COMPONENTS */
+export const components = Components;
 
 /*** SYSTEMS ****************************************************************/
 
@@ -24,6 +23,11 @@ export const systems = [
 
 /*** Managers *****************************************************************/
 export const managers = {
-    SceneManager, DataManager
+    DataManager
 }
+
+/***  ENTITIES ***********************************************************/
+
+export const entities = [
+];
 

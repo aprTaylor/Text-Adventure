@@ -1,11 +1,10 @@
 import Manager from "./Manager";
+import Rooms from '../../data/room'
 
 class DataManager extends Manager {
-  async get(collection, name) {
-    return this.database[collection]
-               .findOne(name)
-               .exec()
-  } 
+  getRooms()  {
+    return Rooms;
+  }
 }
 
 export default DataManager

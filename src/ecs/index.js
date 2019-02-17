@@ -1,12 +1,12 @@
-import nano from 'nano-ecs'
-import { RxDatabase } from 'rxdb'
+import { EntityComponentSystem, EntityPool} from 'entity-component-system'
 import { map, forEach, forEachObjIndexed } from 'ramda'
 
-import { systems as Systems, entities as Entities, managers as Managers} from './util/dataToLoad'
+import { systems as Systems, entities as Entities, managers as Managers, components} from './util/dataToLoad'
 import { logger, validate } from './util';
 import System from './systems/System'
 import Manager from './managers/Manager'
 import './util/typeDef'
+import newGame from './newGame'
 
 //Initial State
 let state = {
@@ -19,13 +19,19 @@ let state = {
         exitNames: []
     }
 };
+
+//private variables
 let systems;
-let managers = {};
-let ces;
+let ecs;
+let ecsPool;
+
+//entity creation
+let lastCreatedEntity;
+let lastCreatedEntityComponents;
 
 
 class World {
-    static instance;
+    static managers = {};
     /**
      * Initialize world with either passed or standard parameters
      * @param {object} config
@@ -33,31 +39,24 @@ class World {
      * @param {[System]} config.systems 
      * @param {[Entity]} config.entities 
      * @param {[Manager]} config.managers
-     * @param {RxDatabase} config.database
      */
-    constructor({database, callback, managers:_managers = Managers, systems:_systems = Systems, entities = Entities}){
-        if(!validate(database)) throw new Error("Database must be defined");
-    
-        if(World.instance){
-            return World.instance;
-        }
+    static init(_managers = Managers, _systems = Systems){
+
         //init
-        ces = nano();
-        World.instance = this;
+        ecs = new EntityComponentSystem();
+        ecsPool =  new EntityPool();
 
         //Load 
+        systems = forEach(sys => ecs.add(sys, _systems));
+        forEachObjIndexed((comp, compName) => ecsPool.registerComponent(compName, comp), components);
         forEachObjIndexed((manager, key) => {
-            managers[key] = new manager(managers, database, ces);
+            World.managers[key] = new manager(World.managers, ecs);
         }, _managers)
-        systems = map(sys => new sys(managers, ces), _systems);
-        entities = forEach(e => e(ces), entities);
-
-        //Load Scene
-        managers.SceneManager
-                .loadScene('town_edge')
-                .then(_ => typeof callback==='function'?callback():"");
     }
 
+    static startNewGame(entities = Entities) {
+        newGame();
+    }
 
     static getState() {
         return Object.assign({}, state);
@@ -70,10 +69,7 @@ class World {
      * @param {number} dt The time since last update
      */
     static update = (dt) => {
-        systems.forEach(sys => {
-            if(sys.isTriggered(dt, state))
-                state = sys.update(dt, state)
-        });
+        ecs.run(ecsPool, dt);
         //clean events
         state.events = {actions: {}};
     }
@@ -84,6 +80,26 @@ class World {
 
     static triggerEvent = (event, data) => {
         state.events[event] = data;
+    }
+
+    //Easy Entity Creation
+    static createEntity = () => {
+        lastCreatedEntity = ecsPool.create(); 
+        lastCreatedEntityComponents = [];
+        return this;
+    }
+
+    /** To last created component */
+    static addComponent = (component, ...props) => {
+        let comp = ecsPool.addComponent(lastCreatedEntity, component.name);
+        lastCreatedEntityComponents.push(component.name);
+        return this;
+    }
+    
+    /** To last created component */
+    static addTag = (tagName) => {
+        try{ ecsPool.registerSearch(tagName, lastCreatedEntityComponents); }
+        catch{/*ignore search already created error*/}
     }
 }
 
