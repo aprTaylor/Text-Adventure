@@ -6,13 +6,13 @@ export const update = (dt) => {
     World.update(dt);
     return {
         type: UPDATE,
-        payload: World.getState().world
-    }
+        payload: World.IO.getState().world
+    } 
 }
 
 export const Action = {
     exitToRoom: (roomName) => {
-        World.triggerEvent('moveTo', roomName);
-        World.takeAction('look');
+        World.IO.triggerEvent('moveTo', roomName);
+        World.IO.takeAction('look');
     }
 }
