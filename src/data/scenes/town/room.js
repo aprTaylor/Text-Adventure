@@ -1,6 +1,7 @@
 import Descriptions from './description'
 const Rooms = 
 {
+  Entry: "Field",
   Field: { 
     exits: {
       E: "Forest",

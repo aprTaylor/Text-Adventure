@@ -10,12 +10,12 @@ class SceneManager extends Manager{
   async loadScene(sceneName) {
     const scene = await this.managers
                             .DataManager
-                            .get('scene', sceneName)
+                            .getScene(sceneName)
 
     //Load Rooms
     let roomMap = {};
-    await asyncForEach(await scene.rooms_, async (room) => {
-      const desc = await room.description_;
+    await asyncForEach(await scene.rooms, async (room) => {
+      const desc = await room.descriptions;
       roomMap[room.name] = {
         room: Room(this.world, room.name, desc.text.join("")),
         exits: filterWithKeys((_, exit) => exit !== undefined, room.exits)

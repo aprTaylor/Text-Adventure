@@ -1,5 +1,6 @@
 //Managers
 import DataManager from '../managers/DataManager'
+import SceneManager from '../managers/SceneManger'
 //Rooms
 import { Player } from '../Assemblages'
 //Components 
@@ -23,7 +24,7 @@ export const systems = [
 
 /*** Managers *****************************************************************/
 export const managers = {
-    DataManager
+    DataManager, SceneManager
 }
 
 /***  ENTITIES ***********************************************************/

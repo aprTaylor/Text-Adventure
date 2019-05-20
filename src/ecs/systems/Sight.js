@@ -6,7 +6,6 @@ import { getArticleInPlace, getToBe } from '../util/Proper'
 import { logger } from '../util';
 
 
-let logs = new logger("SightSystem", 0);
 class SightSystem extends System{
 
     update(dt, state) {

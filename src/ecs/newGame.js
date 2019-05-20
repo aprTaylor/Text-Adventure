@@ -3,9 +3,8 @@ import {Room, Player} from './Assemblages'
 import {forEachObjIndexed} from 'ramda'
 
 export default function newGame() {
-  let rooms =  World.managers.DataManager.getRooms();
-  //Load rooms
-  forEachObjIndexed((room, roomName) => Room(roomName, room.description), rooms);
+  //load starting scene
+  let rooms =  World.managers.SceneManager.loadScene("town");
   //load player
   Player();
 }
