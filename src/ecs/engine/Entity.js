@@ -1,5 +1,6 @@
 import { forEachObjIndexed } from 'ramda'
-import { logger } from '../util';
+import isA from 'typeproof/core/isA'
+import { logger, forceArray } from '../util';
 
 class Entity {
   constructor(ecsPool){
@@ -20,16 +21,15 @@ class Entity {
    * @memberof Entity
    */
   addComponent = (component, props, id) => {
-      logger.info("Add component", component, props, id, "");
 
       //props may be id argument
-      const toId = (typeof props === "string")?props:(id || this._lastCreatedEntity);
+      const toId = (isA.number(props))?props:(id || this._lastCreatedEntity);
 
-      let comp = this._ecsPool.addComponent(toId, component.name);
-      if(!id && typeof props !== String) 
-          this._lastCreatedEntityComponents.push(component.name);
-      if(typeof props === "object")
-          forEachObjIndexed((key, value) => comp[key] = value, props);
+      let comp = this._ecsPool.addComponent(toId, component);
+      if(!id && toId !== props)
+          this._lastCreatedEntityComponents.push(component);
+      if(isA.object(props))
+          forEachObjIndexed((value, key) => comp[key] = value, props);
 
       return this;
   }
@@ -57,8 +57,16 @@ class Entity {
       (!id?this._lastCreatedEntityComponents:Object.keys(this._ecsPool.entities[id]));
       try{ this._ecsPool.registerSearch(tagName, components); }
       catch{/*ignore search already created error*/}
+
+      return this;
   }
 
+  queryComponents = (components) => {
+    components = forceArray(components);
+    const tagName = getTagName(components);
+    this.addTag(tagName, components);
+    return this.byTag(tagName);
+  }
   /**
    * Remove entity from game world
    * @param {String} id 
@@ -72,9 +80,23 @@ class Entity {
       return this._ecsPool.entities[id];
   }
 
+  find = (tagName, propsMatch) => {
+      return this.byTag(tagName).filter(found => {
+          let gotten = this.get(found);
+          return Object.keys(propsMatch).every(prop => {
+              return gotten[prop] === propsMatch.prop;
+          })
+      })
+  }
+
   byTag = (tagName) => {
       return this._ecsPool.find(tagName);
   }
 }
+
+const getTagName = (components) => {
+    components = forceArray(components);
+    return components.join(",")
+  }
 
 export default Entity

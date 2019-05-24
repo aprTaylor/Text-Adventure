@@ -1,4 +1,4 @@
-import Descriptions from './description'
+import Descriptions from './descriptions'
 const Rooms = 
 {
   Entry: "Field",

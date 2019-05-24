@@ -1,6 +1,6 @@
+import System from './System'
 
-
-class DescriptionSystem extends System{
+function DescriptionSystem (pool, dt) {
     
 }
 

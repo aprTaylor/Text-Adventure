@@ -1,4 +1,5 @@
-class ContainmentSystem extends System{
+
+function ContainmentSystem (pool, dt) {
 }
 
 export default ContainmentSystem

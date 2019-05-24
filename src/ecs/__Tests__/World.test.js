@@ -1,4 +1,4 @@
-import World from '../'
+/*import World from '../'
 import chai from 'chai'
 global.jestExpect = global.expect;
 global.expect = chai.expect;
@@ -24,4 +24,4 @@ describe("World", () => {
         jestExpect(mockA).toHaveBeenCalled();
         jestExpect(mockB).toHaveBeenCalled();
     })
-})
+})*/

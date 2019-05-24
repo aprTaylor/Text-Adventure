@@ -1,4 +1,5 @@
 import { pipe, toPairs, fromPairs, filter, apply as Rapply } from 'ramda'
+import isA from 'typeproof/core/isA';
 export {default as logger} from './logger';
 
 
@@ -7,6 +8,11 @@ export function bind_trailing_args(fn, ...bound_args) {
     return function(...args) {
         return fn(...args, ...bound_args);
     };
+}
+
+export const forceArray = (arr) => {
+    if(isA.array(arr)) return arr;
+    return [arr];
 }
 
 /**

@@ -3,6 +3,7 @@ import { Description } from "./components/Description";
 import { logger } from "./util";
 
 export function Room (name, desc) {
+    console.log("Room", name)
     return World.Entity.create()
     .addComponent("name", {name})
     .addComponent("description", {desc})
@@ -14,10 +15,10 @@ export function Player () {
     .addTag('player')
 }
 
-export function Actor (name, startingLocation) {
+export function Actor (name, room) {
     return World.Entity.create()
     .addComponent("name", {name})
-    .addComponent("presence", {startingLocation})
+    .addComponent("presence", {room})
     .addTag('actor')
 }
 

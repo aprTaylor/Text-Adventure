@@ -1,6 +1,6 @@
 //Managers
 import DataManager from '../managers/DataManager'
-import SceneManager from '../managers/SceneManger'
+import SceneManager from '../managers/SceneManager'
 //Rooms
 import { Player } from '../Assemblages'
 //Components 

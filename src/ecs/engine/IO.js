@@ -19,6 +19,10 @@ class IO {
       this.state.events[event] = data;
   }
 
+  updateWorld = (facet, data) => {
+    this.state.world[facet] = data;
+  }
+
   getState() {
       return Object.assign({}, this.state);
   }
