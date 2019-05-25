@@ -5,11 +5,14 @@ import _Entity from './engine/Entity'
 import _IO from './engine/IO'
 
 import { systems as Systems, entities as Entities, managers as Managers, components} from './util/dataToLoad'
-import { logger } from './util';
 import System from './systems/System'
 import Manager from './managers/Manager'
 import './util/typeDef'
 import newGame from './newGame'
+
+let i = 0;
+
+const logger = require('logdown')('app:ecs/index.js')
 
 //Initial State
 let state = {
@@ -48,12 +51,10 @@ class World {
         forEachObjIndexed((manager, key) => {
             World.managers[key] = new manager(World.managers, ecs);
         }, _managers)
-
-        console.log("ECS", ecs)
     }
 
-    static startNewGame(entities = Entities) {
-        newGame();
+    static async startNewGame(entities = Entities) {
+        await newGame();
     }
 
     /**
@@ -62,10 +63,13 @@ class World {
      * @memberof World
      * @param {number} dt The time since last update
      */
+    
     static update = (dt) => {
+        if(i == 0) logger.trace("Update", dt)
         ecs.run(ecsPool, dt);
         //clean events
         state.events = {actions: {}};
+        i++;
     }
 }
 

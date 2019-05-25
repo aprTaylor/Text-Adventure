@@ -1,29 +1,12 @@
-import '../util/typeDef'
-class System {
-    /**
-     * @param {Manager} managers
-     * @param {CES} world 
-     */
-    constructor(managers, world){
-        this.managers = managers;
-        this.world = world;
-    }
+import World from '..'
 
-    update(dt, state) {
-        return state;
-    }
+const System = ({
+    getCurrRoom: () => {
+        const presence = World.Entity.getFirstFromTag('player').presence;
+        const room = World.Entity.get(presence);
 
-    isTriggered(dt, state) {
-        return true;
+        return room;
     }
-
-    //Common functions used across systems
-    /**
-     * Gets the room that the player is in
-     * @return {Entity} Room Entity*/
-    getCurrRoom(){
-        return this.world.queryTag('player')[0].presence.room;
-    }
-}
+})
 
 export default System

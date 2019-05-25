@@ -1,4 +1,4 @@
-import {format, createLogger, transports} from 'winston';
+/*import {format, createLogger, transports} from 'winston';
 import isA  from 'typeproof/core/isA'
 
 const { combine, timestamp, colorize, printf } = format;
@@ -6,7 +6,7 @@ const { combine, timestamp, colorize, printf } = format;
 const level = process.env.LOG_LEVEL || 'debug';
 
 const myFormat = printf(({ level, message, label, timestamp }) => {
-	return `${timestamp} ${level}: ${message}`;
+	return `${level}: ${message}`;
 });
 
 const logger = createLogger({
@@ -43,4 +43,4 @@ if (process.env.NODE_ENV !== 'production') {
   }));
 }
 */
-export default loggerWrapper;
+//export default loggerWrapper;

@@ -1,9 +1,11 @@
 import { UPDATE } from './types.js';
 import World from '../../ecs';
 
+const logger = require('logdown')('app:actions.js');
 
 export const update = (dt) => {
     World.update(dt);
+
     return {
         type: UPDATE,
         payload: World.IO.getState().world

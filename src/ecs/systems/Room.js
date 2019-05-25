@@ -1,7 +1,8 @@
 import System from './System';
 import World from '../'
 import { Presence, Name } from "../components";
-import { logger } from '../util';
+
+const logger = require('logdown')('app:RoomSystem.js')
 
 function RoomSystem (pool, dt)  {
     //Move player to correct room

@@ -1,6 +1,6 @@
 import { pipe, toPairs, fromPairs, filter, apply as Rapply } from 'ramda'
 import isA from 'typeproof/core/isA';
-export {default as logger} from './logger';
+//export {default as logger} from './logger';
 
 
 /** Bind arguments starting after however many are passed in. */ 

@@ -1,12 +1,12 @@
 import World from './'
 import { Description } from "./components/Description";
-import { logger } from "./util";
+
+const logger = require('logdown')('app:Assemblages.js')
 
 export function Room (name, desc) {
-    console.log("Room", name)
     return World.Entity.create()
-    .addComponent("name", {name})
-    .addComponent("description", {desc})
+    .addComponent("name", {label: name})
+    .addComponent("description", {text: desc})
     .addTag('room')
 } 
 
@@ -17,14 +17,17 @@ export function Player () {
 
 export function Actor (name, room) {
     return World.Entity.create()
-    .addComponent("name", {name})
+    .addComponent("name", {label: name})
     .addComponent("presence", {room})
     .addTag('actor')
 }
 
-export function Exit (inRoom, toRoom, direction) {
+export function Exit (name, inRoom, toRoom, direction) {
     return World.Entity.create()
-    .addComponent("name", {name: toRoom.name.label})
-    .addComponent("portal", {inRoom, toRoom, direction})
+    .addComponent("name", {label: name})
+    .addComponent("portal", {
+        dir: direction,
+        link: toRoom,
+        backwardLink: inRoom})
     .addTag('exit')
 } 

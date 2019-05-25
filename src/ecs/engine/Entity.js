@@ -1,6 +1,8 @@
 import { forEachObjIndexed } from 'ramda'
 import isA from 'typeproof/core/isA'
-import { logger, forceArray } from '../util';
+import { forceArray } from '../util';
+
+const logger = require('logdown')('app:Entity.js')
 
 class Entity {
   constructor(ecsPool){
@@ -32,6 +34,10 @@ class Entity {
           forEachObjIndexed((value, key) => comp[key] = value, props);
 
       return this;
+  }
+
+  setComponent = (component, id, val) => {
+      this._ecsPool.setComponent(id, component, val)
   }
 
   /**
@@ -80,17 +86,25 @@ class Entity {
       return this._ecsPool.entities[id];
   }
 
+  getFirstFromTag = (tagName) => {
+    return this.get(this.byTag(tagName)[0])
+  }
+
   find = (tagName, propsMatch) => {
       return this.byTag(tagName).filter(found => {
           let gotten = this.get(found);
           return Object.keys(propsMatch).every(prop => {
-              return gotten[prop] === propsMatch.prop;
+              return gotten[prop] === propsMatch[prop];
           })
       })
   }
 
   byTag = (tagName) => {
       return this._ecsPool.find(tagName);
+  }
+
+  byTagGet = (tagName) => {
+    return this._ecsPool.find(tagName).map(id => this.get(id));
   }
 }
 

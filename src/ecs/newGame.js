@@ -2,9 +2,10 @@ import World from ".";
 import {Room, Player} from './Assemblages'
 import {forEachObjIndexed} from 'ramda'
 
-export default function newGame() {
-  //load starting scene
-  World.managers.SceneManager.loadScene("town");
+export default async function newGame() {
   //load player
   Player();
+
+  //load starting scene
+  await World.managers.SceneManager.loadScene("town");
 }

@@ -1,30 +1,25 @@
 import { setIn as setState } from 'timm'
 import { Notable, Container, Openable, Containable, Name, Presence } from "../components";
-import { Description } from "../components/Description";
+import { Description } from "../components";
 import { getArticleInPlace, getToBe } from '../util/Proper'
-import { logger } from '../util';
+import System from './System'
 import World from '..';
+
+const logger = require('logdown')('app:SightSystem.js')
 
 
 function SightSystem (pool, dt) {
-    let desc = describeRoom(getCurrRoom());
+    let desc = describeRoom(System.getCurrRoom());
         
     World.IO.updateWorld("description", desc);
 }
 
-const getCurrRoom = () => {
-    const player = World.Entity.byTag('player')[0];
-    const presence = World.Entity.get(player).room;
-    const room = World.Entity.find('room', {name: presence});
-
-    return room[0];
-}
 /**
   * Returns description of specified room
   * @param {Entity} room
   */
 const describeRoom = (room) => {
-    if(!room) room = getCurrRoom();
+    if(!room) room = System.getCurrRoom();
     let message = appendDescription(room.description.text, room);
 
     return message;
@@ -33,14 +28,14 @@ const describeRoom = (room) => {
     
 const appendDescription = (description, room) => {
     let updatedDescription = description;
-    const entities = this.entitiesInRoom(this.world, room);
+    const entities = entitiesInRoom(room);
     for (let entity in entities) {
-        if(entity === this.world.queryTag('player')[0]) continue;
+        if(entity === World.Entity.byTag('player')[0]) continue;
         if (entity.hasComponent(Notable)) {
             //Use generated description or one that is provided
-            updatedDescription += this.describe(entity)
+            updatedDescription += describe(entity)
         }
-        updatedDescription += `\n${this.describeContainerContents(entity)}`;
+        updatedDescription += `\n${describeContainerContents(entity)}`;
     }
     return updatedDescription
 }
@@ -74,7 +69,7 @@ const fetchContainedEntities = (entity) => {
 const entitiesInRoom = (room) => {
     /*
     if(!room){
-        room = getCurrRoom();
+        room = System.getCurrRoom();
     }*/
     //let result = entitiesPresentInRoom()
     //result.append(entitiesContainedByRoom())
