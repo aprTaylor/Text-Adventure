@@ -17,8 +17,8 @@ const logger = require('logdown')('app:ecs/index.js')
 //Initial State
 let state = {
     events: {
-        moveTo: "Home",
-        actions: {look: true}
+        moveTo: "",
+        actions: {}
     },
     world: {
         description: "",
@@ -65,7 +65,7 @@ class World {
      */
     
     static update = (dt) => {
-        if(i == 0) logger.trace("Update", dt)
+        //if(i == 0) logger.trace("Update", dt)
         ecs.run(ecsPool, dt);
         //clean events
         state.events = {actions: {}};

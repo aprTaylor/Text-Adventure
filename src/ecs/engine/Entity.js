@@ -2,7 +2,7 @@ import { forEachObjIndexed } from 'ramda'
 import isA from 'typeproof/core/isA'
 import { forceArray } from '../util';
 
-const logger = require('logdown')('app:Entity.js')
+const logger = require('logdown')('app:engine/Entity.js')
 
 class Entity {
   constructor(ecsPool){

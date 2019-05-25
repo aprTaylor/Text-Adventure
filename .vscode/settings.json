@@ -4,6 +4,7 @@
         "containables",
         "descs",
         "flipbook",
+        "logdown",
         "room",
         "timebased"
     ],

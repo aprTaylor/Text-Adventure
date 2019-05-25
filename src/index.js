@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import World from './ecs'
 
 if(process.env.NODE_ENV !== 'production')
-  localStorage.debug = 'app* UI*'
+  localStorage.debug = 'app*, UI*, redux*'
 
 World.init();
 World.startNewGame().then(() => {

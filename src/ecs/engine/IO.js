@@ -1,3 +1,5 @@
+const logger = require('logdown')('app:engine/IO.js');
+
 class IO {
   constructor(state) {
     this.state = state;
@@ -7,7 +9,8 @@ class IO {
    * @memberof IO
    */
   takeAction = (action) => {
-      this.state.events.actions[action] = true;
+    logger.info("Action taken", action)
+    this.state.events.actions[action] = true;
   }
 
   /**
@@ -16,7 +19,8 @@ class IO {
    * @memberof IO
    */
   triggerEvent = (event, data) => {
-      this.state.events[event] = data;
+    logger.info("Event triggered", event, data)
+    this.state.events[event] = data;
   }
 
   updateWorld = (facet, data) => {

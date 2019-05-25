@@ -8,4 +8,6 @@ export default async function newGame() {
 
   //load starting scene
   await World.managers.SceneManager.loadScene("town");
+
+  World.IO.triggerEvent('moveTo', 'Field')
 }

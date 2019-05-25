@@ -10,7 +10,7 @@ function ExitSystem (pool, dt)  {
   const exitsInRoom = World.Entity.byTagGet('exit')
                                   .filter(exit => exit.portal.backwardLink === room.id)
                                   .map(exit => exit.name.label)
-  World.IO.updateWorld("exitName", exitsInRoom);
+  World.IO.updateWorld("exitNames", exitsInRoom);
 }
 
 export default ExitSystem

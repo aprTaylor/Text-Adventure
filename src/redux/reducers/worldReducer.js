@@ -1,7 +1,7 @@
 import { UPDATE} from '../actions/types.js'
 import World from '../../ecs/index.js';
 
-const logger = require('logdown')("worldReducer.js")
+const logger = require('logdown')("redux:worldReducer.js")
 
 const initialState = World.IO.getState().world
 

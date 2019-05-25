@@ -1,7 +1,7 @@
 import { UPDATE } from './types.js';
 import World from '../../ecs';
 
-const logger = require('logdown')('app:actions.js');
+const logger = require('logdown')('redux:actions.js');
 
 export const update = (dt) => {
     World.update(dt);

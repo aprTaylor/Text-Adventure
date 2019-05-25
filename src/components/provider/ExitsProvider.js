@@ -3,7 +3,9 @@ import Exits from "../presentation/Exits";
 import { connect } from 'react-redux';
 import { Action } from '../../redux/actions'
 
-class ExitsProvidor extends React.Component {
+const logger = require('logdown')('UI:ExitsProvider.js')
+
+class ExitsProvider extends React.Component {
     render() {
         return React.createElement(Exits, this.props);
     }
@@ -11,7 +13,8 @@ class ExitsProvidor extends React.Component {
 
 const mapStateToProps = function(state) {
     return {
-      exits: state.world.exitNames
+      exits: state.world.exitNames,
+      moveTo: name => Action.exitToRoom(name)
     }
   }
 
@@ -24,5 +27,5 @@ const mapDispatchToProps = (dispatch) => {
   }
   
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExitsProvidor);
+export default connect(mapStateToProps, mapDispatchToProps)(ExitsProvider);
 

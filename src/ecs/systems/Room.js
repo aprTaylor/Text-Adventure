@@ -1,12 +1,14 @@
 import System from './System';
 import World from '../'
-import { Presence, Name } from "../components";
 
-const logger = require('logdown')('app:RoomSystem.js')
+const logger = require('logdown')('app:system/RoomSystem.js')
 
 function RoomSystem (pool, dt)  {
     //Move player to correct room
-    this.currRoom = moveTo(World.Entity.byTag('player')[0], World.IO.state.events.moveTo);
+    if(World.IO.state.events.moveTo){
+        const currRoom = moveTo(World.Entity.byTagGet('player')[0], World.IO.state.events.moveTo);
+        logger.info("New currRoom", currRoom)
+    }
 }
 
 
@@ -15,10 +17,12 @@ const moveTo = (entity, roomName) => {
     if(!entity.presence) return false;
 
     //get room
-    let room = this.world.queryTag('room').filter((room) => room.name.label === roomName);
+    let room = World.Entity.byTagGet('room').filter((room) => {
+        return room.name.label === roomName
+    });
     entity.presence.room = room[0];
 
-    return room;
+    return room[0];
 }
 
 export default RoomSystem

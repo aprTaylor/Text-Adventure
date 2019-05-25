@@ -3,12 +3,15 @@ import DisplayWindow from "../presentation/DisplayWindow";
 import { getDesc } from '../../redux/actions'
 import { connect } from 'react-redux';
 import Description from "../presentation/Description";
-import ExitsProvidor from "./ExitsProvidor";
+import ExitsProvider from "./ExitsProvider";
+
+const logger = require('logdown')('app:DisplayWindowProvider.js')
 
 class DisplayWindowProvider extends React.Component {
     render() {
+      logger.info("Props", this.props)
         return React.createElement(DisplayWindow, null, 
-            <ExitsProvidor />,
+            <ExitsProvider />,
             <Description description={this.props.desc}/>,
         );
     }

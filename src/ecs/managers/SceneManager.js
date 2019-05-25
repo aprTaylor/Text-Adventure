@@ -4,7 +4,7 @@ import World from '..'
 import Manager from './Manager'
 import { Room, Exit } from '../Assemblages';
 
-const logger = require('logdown')('app:SceneManager.js')
+const logger = require('logdown')('app:manager/SceneManager.js')
 
 let scene;
 //TODO: fix scene manager
@@ -35,8 +35,8 @@ class SceneManager extends Manager{
         exits: filterWithKeys((_, exit) => exit !== undefined, val.exits)
       }
       //Set player location to the scene entry point (Subject to change)
-      if(key === entry) 
-        World.Entity.getFirstFromTag('player').presence = id;
+      //if(key === entry) 
+      //  World.Entity.getFirstFromTag('player').presence = id;
     }, scene.rooms)
 
     forEachObjIndexed((roomInfo, roomName) => {
