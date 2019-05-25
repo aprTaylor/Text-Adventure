@@ -1,8 +1,14 @@
+/**
+ * Loads data
+ */
 import World from ".";
 import {Room, Player} from './Assemblages'
 import {forEachObjIndexed} from 'ramda'
 
-export default async function newGame() {
+export default async function newGame(loaded, state) {
+  //load persisted 
+  state.persist = loaded.persist
+
   //load player
   Player();
 

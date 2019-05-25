@@ -7,8 +7,6 @@
     "entity-component-system": "^4.0.5",
     "logdown": "^3.2.8",
     "polished": "^2.3.3",
-    "pouchdb-adapter-idb": "^7.0.0",
-    "pouchdb-adapter-memory": "^7.0.0",
     "prop-types": "^15.7.2",
     "ramda": "^0.26.1",
     "react": "^16.8.6",
@@ -17,8 +15,8 @@
     "react-redux": "^6.0.1",
     "react-scripts": "2.1.1",
     "redux": "^4.0.1",
-    "rxdb": "^8.2.0",
     "sinon": "^7.3.2",
+    "store": "^2.0.12",
     "styled-components": "^4.2.0",
     "timm": "^1.6.1",
     "typeproof": "^1.0.7"

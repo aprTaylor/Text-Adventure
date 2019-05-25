@@ -10,8 +10,6 @@ import Manager from './managers/Manager'
 import './util/typeDef'
 import newGame from './newGame'
 
-let i = 0;
-
 const logger = require('logdown')('app:ecs/index.js')
 
 //Initial State
@@ -23,7 +21,8 @@ let state = {
     world: {
         description: "",
         exitNames: []
-    }
+    },
+    persist: {}
 };
 
 //private variables
@@ -54,7 +53,11 @@ class World {
     }
 
     static async startNewGame(entities = Entities) {
-        await newGame();
+        //Give defaults to load
+        const loaded = World.managers.DataManager.load({
+            persist: {visited: {}}
+        })
+        await newGame(loaded, state);
     }
 
     /**
@@ -69,7 +72,6 @@ class World {
         ecs.run(ecsPool, dt);
         //clean events
         state.events = {actions: {}};
-        i++;
     }
 }
 

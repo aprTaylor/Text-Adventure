@@ -5,9 +5,9 @@ const logger = require('logdown')('app:system/RoomSystem.js')
 
 function RoomSystem (pool, dt)  {
     //Move player to correct room
-    if(World.IO.state.events.moveTo){
-        const currRoom = moveTo(World.Entity.byTagGet('player')[0], World.IO.state.events.moveTo);
-        logger.info("New currRoom", currRoom)
+    if(World.IO.getState().events.moveTo){
+        const currRoom = moveTo(World.Entity.byTagGet('player')[0], World.IO.getState().events.moveTo);
+        World.IO.persist(['visited', currRoom.name.label], true)
     }
 }
 

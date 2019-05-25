@@ -1,8 +1,19 @@
+/**
+ * Allows for accessing and updating game state
+ * Types of state:
+ * * events: Used to send messages to states. Is reset every cycle.
+ * * world: Used to send data to the UI and store session specific data.   
+ * * persist: Used to represent data that will persist for the entire playthrough.
+ *   Will be loaded from the save file.  
+ */
+import timm from 'timm'
+import {forceArray} from '../util/index'
 const logger = require('logdown')('app:engine/IO.js');
 
+let state;
 class IO {
-  constructor(state) {
-    this.state = state;
+  constructor(state_) {
+    state = state_;
   }
   /**
    * @param {String} action Name of action to take
@@ -10,25 +21,39 @@ class IO {
    */
   takeAction = (action) => {
     logger.info("Action taken", action)
-    this.state.events.actions[action] = true;
+    state = timm.setIn(state, ['events', 'actions', action], true);
   }
 
   /**
-   * @param {String} event Name of event to trigger
-   * @param {any=} data relevant event data
+   * @param {[string]|string} eventPath Adjustable updating of events
+   * @param {any} data relevant event data
    * @memberof IO
    */
-  triggerEvent = (event, data) => {
-    logger.info("Event triggered", event, data)
-    this.state.events[event] = data;
+  triggerEvent = (eventPath, data) => {
+    logger.info("Event triggered", eventPath, data)
+    state = timm.setIn(state, ['events', ...forceArray(eventPath)], data);
   }
 
-  updateWorld = (facet, data) => {
-    this.state.world[facet] = data;
+  /**
+   * @param {[string]|string} idPath Adjustable updating of data
+   * @param {any} data relevant data
+   * @memberof IO
+   */
+  persist = (idPath, data) => {
+    state = timm.setIn(state, ['persist', ...forceArray(idPath)], data);
+  } 
+
+  /**
+   * @param {[string]|string} facetPath Adjustable updating of data
+   * @param {any} data relevant data
+   * @memberof IO
+   */
+  updateWorld = (facetPath, data) => {
+    state = timm.setIn(state, ['world', ...forceArray(facetPath)], data);
   }
 
   getState() {
-      return Object.assign({}, this.state);
+      return Object.assign({}, state);
   }
 }
 
