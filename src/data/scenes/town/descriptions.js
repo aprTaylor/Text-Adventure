@@ -1,5 +1,5 @@
 const Descriptions = {
-  field: {
+  Field: {
     intro: {
       next: "standard",
       text: "You stand waist deep in a field of flowers. Their long stalks sway in "+
@@ -27,7 +27,7 @@ const Descriptions = {
     }
   },
   
-  forest: {
+  Forest: {
     standard: {
       text:  
         "You hesitantly take a few steps into into the forested depths. The trees are "+
@@ -35,7 +35,7 @@ const Descriptions = {
     }
   },
 
-  home: {
+  Home: {
     standard: {
       text: "You are inside a house."
     }

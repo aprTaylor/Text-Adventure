@@ -1,7 +1,16 @@
 import System from './System'
 
+const logger = require('logdown')('app:DescriptionSystem.js')
+
 function DescriptionSystem (pool, dt) {
+    const currRoom = System.getCurrRoom();
     
+    logger.info(currRoom, currRoom.visited.isTrue)
+    
+    //Only show intro once
+    if(currRoom.visited.isTrue && currRoom.description.state === 'intro'){
+        currRoom.description.state = 'standard'
+    }
 }
 
 export default DescriptionSystem

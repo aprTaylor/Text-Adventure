@@ -3,15 +3,16 @@ import { Description } from "./components/Description";
 
 const logger = require('logdown')('app:Assemblages.js')
 
-export function Room (name, desc) {
+export function Room (scene, name, state) {
     return World.Entity.create()
     .addComponent("name", {label: name})
-    .addComponent("description", {text: desc})
+    .addComponent("description", {path: [scene, 'descriptions', name], state})
+    .addComponent("visited")
     .addTag('room')
 } 
 
-export function Player () {
-    return Actor('player', 'undefinedRoom')
+export function Player (room) {
+    return Actor('player', room)
     .addTag('player')
 }
 

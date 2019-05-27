@@ -6,14 +6,25 @@ const logger = require('logdown')('app:engine/Entity.js')
 
 class Entity {
   constructor(ecsPool){
-      this._ecsPool = ecsPool;
-      this._lastCreatedEntity = null;
-      this._lastCreatedEntityComponents = [];
+    this._ecsPool = ecsPool;
+    this._lastCreatedEntity = null;
+    this._lastCreatedEntityComponents = [];
   }
+
+  save = () => {
+    return this._ecsPool.save();
+  }
+
+  load = (entities) => {
+      if(entities)
+        this._ecsPool.load(entities);
+    return this;
+  }
+
   create = () => {
-      this._lastCreatedEntity = this._ecsPool.create(); 
-      this._lastCreatedEntityComponents = [];
-      return this;
+    this._lastCreatedEntity = this._ecsPool.create(); 
+    this._lastCreatedEntityComponents = [];
+    return this;
   }
 
   /**

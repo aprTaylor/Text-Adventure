@@ -1,6 +1,8 @@
 import store from 'store'
+import timm from 'timm'
 import Manager from "./Manager";
 import World from '..';
+import isA from 'typeproof/core/isA';
 
 const logger = require('logdown')('app:DataManager.js');
 
@@ -8,23 +10,41 @@ const scenePath = "data/scenes/";
 const descriptionPath = "descriptions.js";
 const roomPath = "room.js"
 
+const loaded = {};
 class DataManager extends Manager {
-  async getScene(name){
-    name = name+"/";
-    const descriptions = (await import("../../"+scenePath+name+descriptionPath)).default;
-    const rooms = (await import("../../"+scenePath+name+roomPath)).default;
+  async getScene(name) {
+    //Only load once
+    if(loaded[name]) return;
 
-    return {descriptions, rooms}
+    let name_ = name+"/";
+    const descriptions = (await import("../../"+scenePath+name_+descriptionPath)).default;
+    const rooms = (await import("../../"+scenePath+name_+roomPath)).default;
+
+    loaded[name] = {descriptions, rooms};
+
+    return loaded[name];
+  }
+
+  getFrom(path, state) {
+    if(isA.string(path)) path = path.split("/")
+    if(state) path = timm.addLast(path, state)
+    return timm.getIn(loaded, path);
+  }
+
+  get (path) {
+   
   }
 
   save() {
     //Save world persist data
     store.set("persist", World.IO.getState().persist);
+    store.set("entities", World.Entity.save());
   }
 
-  load({persist}) {
+  load({persist, entities}) {
     return {
-      persist: store.get('persist', persist)
+      persist: store.get('persist', persist),
+      entities: store.get('entities', entities)
     }
   }
 }

@@ -10,22 +10,27 @@ let scene;
 //TODO: fix scene manager
 class SceneManager extends Manager{
   
+  //Will only load unloaded scenes
   async loadScene(sceneName) {
     logger.info("Loading Scene", '"'+sceneName+'"', "...");
 
     const scene = await this.managers
                             .DataManager
                             .getScene(sceneName);
+    //Already loaded
+    if(!scene) return;
 
     //Load Rooms
     let roomMap = {};
     let entry = scene.rooms.Entry;
     //Load each room in the scene
     forEachObjIndexed((val, key) => {
+
       //Skip the entry key
       if(key === 'Entry') return;
+
       //Load room
-      Room(key, val.description.text);
+      Room(sceneName, key, scene.descriptions[key].intro?'intro':'standard');
       //alias entity id
       const id = World.Entity._lastCreatedEntity; //Not good async solution
       //store refs for creating exits

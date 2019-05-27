@@ -20,7 +20,7 @@ function SightSystem (pool, dt) {
   */
 const describeRoom = (room) => {
     if(!room) room = System.getCurrRoom();
-    let message = appendDescription(room.description.text, room);
+    let message = appendDescription(System.load(room, 'description').text, room);
 
     return message;
 }

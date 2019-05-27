@@ -8,6 +8,10 @@ export const Presence = (room) => ({
  *  *Note: can be used in conjunction with Description.inRoom* */
 export const Notable = () => ({});
 
+export const Visited = (isTrue = false) => ({
+    isTrue
+})
+
 /** Specifies that an entity can hold other entities
  * @param {number} capacity The max weight a container can hold */
 export const Container = (capacity) => ({
@@ -42,6 +46,7 @@ export const Portal = ( container, connectedEntity, direction) => ({
 
 /** Text description of entity
  * @param {*} text */
-export const Description = (text) => ({
-    text
+export const Description = (path, state = null) => ({
+    path,
+    state
 })

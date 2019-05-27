@@ -9,11 +9,17 @@ export default async function newGame(loaded, state) {
   //load persisted 
   state.persist = loaded.persist
 
-  //load player
-  Player();
+  //load entities
+  if(!loaded.entities) await setUpNewGame();
+  else World.Entity.load(loaded.entities);
+
+
+}
+
+const setUpNewGame = async () => {
+  Player('Field');
 
   //load starting scene
   await World.managers.SceneManager.loadScene("town");
-
-  World.IO.triggerEvent('moveTo', 'Field')
 }
+

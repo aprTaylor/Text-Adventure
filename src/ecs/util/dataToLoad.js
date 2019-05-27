@@ -6,6 +6,7 @@ import { Player } from '../Assemblages'
 //Components 
 import * as Components from '../components'
 //Systems
+import DescriptionSystem from '../systems/Description'
 import PlayerSystem from '../systems/Player';
 import RoomSystem from '../systems/Room';
 import SightSystem from '../systems/Sight';
@@ -19,7 +20,7 @@ export const components = Components;
 /*** SYSTEMS ****************************************************************/
 
 export const systems = [
-    RoomSystem, SightSystem, ExitSystem
+    PlayerSystem, RoomSystem,DescriptionSystem, SightSystem, ExitSystem
 ];
 
 /*** Managers *****************************************************************/
