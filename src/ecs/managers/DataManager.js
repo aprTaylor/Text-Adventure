@@ -25,9 +25,22 @@ class DataManager extends Manager {
     return loaded[name];
   }
 
+  async getItems() {
+    if(loaded['items']) return;
+
+    const descriptions = (await import("../../data/items/descriptions")).default;
+    const items = (await import("../../data/items/index")).default;
+
+    loaded['items'] = {descriptions, items};
+
+    return loaded['items'];
+
+  }
+
   getFrom(path, state) {
     if(isA.string(path)) path = path.split("/")
-    if(state) path = timm.addLast(path, state)
+    if(state) path = timm.addLast(path, state);
+
     return timm.getIn(loaded, path);
   }
 

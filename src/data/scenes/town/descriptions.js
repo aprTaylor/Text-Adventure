@@ -14,7 +14,7 @@ const Descriptions = {
         "Your fingers have passed the point of simply aching awhile ago. The sky is transitioning from "+
         "its earlier pinkish hue into the darker tones of the night sky and you are forced to admit that your time is up."+
         "Even so, the sight of the overflowing stack of flora you've gathered fills your chest with pride, even the slightest "+
-        "jostle would send it toppling! Covering the top of the basket carefully with your free hand you decide to make your way home."
+        "jostle would send it toppling!"
       },
 
     standard: {

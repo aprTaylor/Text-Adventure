@@ -21,5 +21,8 @@ const setUpNewGame = async () => {
 
   //load starting scene
   await World.managers.SceneManager.loadScene("town");
+
+  //load items
+  await World.managers.DataManager.getItems();
 }
 
