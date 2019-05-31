@@ -2,7 +2,7 @@ const Descriptions = {
   Field: {
     intro: {
       next: "standard",
-      text: "You stand waist deep in a field of flowers. Their long stalks sway in "+
+      text: "{{green}} You stand waist deep in a field of flowers. Their long stalks sway in "+
         "the breeze, forming violet waves that gently brush against you. "+
         "A normal person may have been overwhelmed by the strong sharp scent "+
         "but have little effect on you after years spent gathering herbs and crafting medicines. "+

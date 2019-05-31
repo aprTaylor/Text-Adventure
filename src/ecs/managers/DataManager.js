@@ -3,6 +3,8 @@ import timm from 'timm'
 import Manager from "./Manager";
 import World from '..';
 import isA from 'typeproof/core/isA';
+import Mustache from 'mustache'
+import strTemplate from '../util/descriptionTemplate'
 
 const logger = require('logdown')('app:DataManager.js');
 
@@ -37,15 +39,25 @@ class DataManager extends Manager {
 
   }
 
+  templateStr(gottenStr) {
+    if(gottenStr.text) gottenStr = gottenStr.text; 
+    logger.info("template", gottenStr)
+    gottenStr = Mustache.render(gottenStr, strTemplate)
+
+    logger.info("template sfter", gottenStr)
+    return gottenStr;
+  }
+
   getFrom(path, state) {
     if(isA.string(path)) path = path.split("/")
     if(state) path = timm.addLast(path, state);
 
-    return timm.getIn(loaded, path);
-  }
+    let gotten = timm.getIn(loaded, path);
 
-  get (path) {
-   
+    //Template descriptions
+    if(path.includes('descriptions')) gotten = this.templateStr(gotten);
+
+    return gotten;
   }
 
   save() {

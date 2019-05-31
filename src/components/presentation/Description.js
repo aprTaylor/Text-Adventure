@@ -1,9 +1,11 @@
 import React from "react";
 import styled from 'styled-components';
+import SanitizeHTML from '../utils/SanitizeHTML'
+
 
 const Description = props => (
   <Root className="Description">
-      <p>{props.description}</p>
+      <SanitizeHTML html={props.description}/>
   </Root>
 )
 
