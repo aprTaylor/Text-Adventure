@@ -6,7 +6,7 @@ const items = ({
     container: {
       capacity: 5,
     },
-    notable: {}
+    takeable: {}
   },
 
   lavender: {
@@ -16,7 +16,8 @@ const items = ({
     stackable: {},
     color: {
       label: "purplish"
-    }
+    },
+    takeable: {}
   }
 })
 

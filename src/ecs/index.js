@@ -20,7 +20,8 @@ let state = {
     },
     world: {
         description: "",
-        exitNames: []
+        exitNames: [],
+        availableActions: []
     },
     persist: {}
 };

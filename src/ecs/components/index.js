@@ -62,3 +62,5 @@ export const Physical = (weight = 0) => ({
 export const Stackable = (max) => ({
     max
 })
+
+export const Takeable = () => ({})

@@ -11,6 +11,7 @@ import PlayerSystem from '../systems/Player';
 import RoomSystem from '../systems/Room';
 import SightSystem from '../systems/Sight';
 import ExitSystem from '../systems/Exits'
+import ActionSystem from '../systems/Action'
 //util
 import { bind_trailing_args } from '.';
 
@@ -20,7 +21,7 @@ export const components = Components;
 /*** SYSTEMS ****************************************************************/
 
 export const systems = [
-    PlayerSystem, RoomSystem,DescriptionSystem, SightSystem, ExitSystem
+    PlayerSystem, RoomSystem, ActionSystem, DescriptionSystem, SightSystem, ExitSystem
 ];
 
 /*** Managers *****************************************************************/

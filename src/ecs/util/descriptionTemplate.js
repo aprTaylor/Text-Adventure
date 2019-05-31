@@ -1,6 +1,6 @@
 const Template = (entity = {}) => ({
   color: () => {
-    return entity.color.label
+    return (entity.color && entity.color.label)
   }
 })
 

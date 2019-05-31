@@ -1,6 +1,3 @@
-import { setIn as setState } from 'timm'
-import { Notable, Container, Openable, Containable, Name, Presence } from "../components";
-import { Description } from "../components";
 import { getArticleInPlace, getToBe } from '../util/Proper'
 import System from './System'
 import World from '..';

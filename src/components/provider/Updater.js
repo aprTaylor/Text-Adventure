@@ -14,4 +14,4 @@ class Updater extends React.Component {
     render(){return null}
 }
  
-export default ReactAnimationFrame(Updater, 1000);
+export default ReactAnimationFrame(Updater, (process.env.NODE_ENV !== 'production')?1000:100);
