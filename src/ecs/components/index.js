@@ -31,8 +31,12 @@ export const Containable = (container, weight) => ({
 
 /** A label that the entity may be referred by
  *  @param {string} label The label */
-export const Name = ( label) => ({
+export const Name = (label = "") => ({
     label,
+});
+
+export const Color = (label) => ({
+    label
 });
 
 /** Connects an entity to another entity
@@ -49,4 +53,12 @@ export const Portal = ( container, connectedEntity, direction) => ({
 export const Description = (path, state = null) => ({
     path,
     state
+})
+
+export const Physical = (weight = 0) => ({
+    weight
+})
+
+export const Stackable = (max) => ({
+    max
 })

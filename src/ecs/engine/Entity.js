@@ -1,6 +1,7 @@
 import { forEachObjIndexed } from 'ramda'
 import isA from 'typeproof/core/isA'
 import { forceArray } from '../util';
+import World from '..';
 
 const logger = require('logdown')('app:engine/Entity.js')
 
@@ -27,6 +28,30 @@ class Entity {
     return this;
   }
 
+  constructItem = (name, room) => {
+    const itemData = World.managers.DataManager.getFrom(`items/props/${name}`)
+    
+    //Create entity
+    this.create();
+
+    //Add entity components
+    Object.keys(itemData).forEach(key => {
+      this.addComponent(key, itemData[key])
+    })
+
+    //Add the room that the object is in, if is in room
+    if(room)
+      this.addComponent("presence", {room})
+    
+    //Add a description if the object has one
+    if(World.managers.DataManager.hasDescription('item', name))
+      this.addComponent("description", {path: `items/descriptions/${name}`})
+    
+    //Tag component with name & itemmmm
+    this.addTag(name);
+
+  }
+
   /**
    * @param {object} component Component to add
    * @param {object=} props Optional table used to initialize component 
@@ -36,10 +61,10 @@ class Entity {
   addComponent = (component, props, id) => {
 
       //props may be id argument
-      const toId = (isA.number(props))?props:(id || this._lastCreatedEntity);
+      const toId = (id || this._lastCreatedEntity);
 
       let comp = this._ecsPool.addComponent(toId, component);
-      if(!id && toId !== props)
+      if(!id)
           this._lastCreatedEntityComponents.push(component);
       if(isA.object(props))
           forEachObjIndexed((value, key) => comp[key] = value, props);
@@ -121,7 +146,7 @@ class Entity {
 
 const getTagName = (components) => {
     components = forceArray(components);
-    return components.join(",")
+    return components.sort().join(",")
   }
 
 export default Entity

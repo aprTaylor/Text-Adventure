@@ -28,33 +28,31 @@ const describeRoom = (room) => {
     
 const appendDescription = (description, room) => {
     let updatedDescription = description;
-    const entities = entitiesInRoom(room);
-    for (let entity in entities) {
-        if(entity === World.Entity.byTag('player')[0]) continue;
-        if (entity.hasComponent(Notable)) {
-            //Use generated description or one that is provided
-            updatedDescription += describe(entity)
-        }
+    //const entities = entitiesInRoom(room);
+    /*entities.forEach(entity => {
+        entity = World.Entity.get(entity);
+        updatedDescription += describe(entity);
+        logger.info("Describe", entity)
         updatedDescription += `\n${describeContainerContents(entity)}`;
-    }
+    })*/
     return updatedDescription
 }
 
 const describeContainerContents = (entity) => {
-    if(!entity.hasComponent(Container)) return "";
-    const containerName = entity.name.label || "nearby container";
-    const article = entity.name.label? "The":"A";
-    const items = this.listContainerContents(entity);
+    if(!entity.container) return "";
+    const containerName = (entity.name && entity.name.label) || "nearby container";
+    const article = (entity.name)?entity.name.label? "The":"A":"";
+    const items = listContainerContents(entity);
     if(items.length < 0) return "";
     return `${article} ${containerName} contains:\n  ${items.join("\n  ")}`;
 }
 
 const listContainerContents = (entity) => {
-    if(!entity.hasComponent(Container)) return [];
-    if(entity.hasComponent(Openable) && !entity.openable.isOpen) return [];
+    if(!entity.container) return [];
+    if(entity.openable && !entity.openable.isOpen) return [];
 
-    const contents = this.fetchContainedEntities(this.world, entity);
-    return contents.map(item => this.describe(this.world, item, true));
+    const contents = fetchContainedEntities(entity);
+    return contents.map(item => describe(item, true));
 }
 
 /**
@@ -62,7 +60,7 @@ const listContainerContents = (entity) => {
  * @param {Entity} entity The container entity
  */
 const fetchContainedEntities = (entity) => {
-    const containables = this.world.queryComponents([Containable]);
+    const containables = World.Entity.queryComponents(['containable']);
     return containables.filter(child => child.containable.container === entity);
 }  
 
@@ -73,7 +71,9 @@ const entitiesInRoom = (room) => {
     }*/
     //let result = entitiesPresentInRoom()
     //result.append(entitiesContainedByRoom())
-    return World.Entity.queryComponents([Presence]).filter(name => name === room);
+    return World.Entity.queryComponents(["notable", "presence"]).filter(id => {
+        return World.Entity.get(id).presence.room === room.id;
+    });
 }
 
 /**
@@ -83,10 +83,11 @@ const entitiesInRoom = (room) => {
  */
 const describe = (entity, namePreferred = false) => {
     let message;
-    if(entity.hasComponent(Description) && entity.description.inRoom)
+    logger.info("descibe --", entity)
+    if(entity.description && entity.description.inRoom)
         message = entity.description.inRoom;
 
-    if((!message || namePreferred) && entity.hasComponent(Name))
+    if((!message || namePreferred) && entity.name)
         message = `\nThere ${getToBe(entity.name.label)} ${getArticleInPlace(entity.name.label, true)[0]} here.`
 
     return message || "unknown object";

@@ -5,7 +5,8 @@ const Rooms =
     exits: {
       E: "Forest",
       W: "Home"
-    }
+    },
+    items: ["basket"] 
   },
   Forest: {
     exits: {

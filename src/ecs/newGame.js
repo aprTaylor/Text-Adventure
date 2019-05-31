@@ -18,11 +18,11 @@ export default async function newGame(loaded, state) {
 
 const setUpNewGame = async () => {
   Player('Field');
+  
+  //load items
+  await World.managers.DataManager.getItems();
 
   //load starting scene
   await World.managers.SceneManager.loadScene("town");
-
-  //load items
-  await World.managers.DataManager.getItems();
 }
 

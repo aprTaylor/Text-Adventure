@@ -1,13 +1,22 @@
 const items = ({
   basket: {
-    weight: 1.5,
-    capacity: 5,
-    traits: ['container']
+    physical: {
+      weight: 1.5
+    },
+    container: {
+      capacity: 5,
+    },
+    notable: {}
   },
 
   lavender: {
-    weight: 0.2,
-    traits: ['stackable']
+    physical: {
+      weight: 0.2,
+    },
+    stackable: {},
+    color: {
+      label: "purplish"
+    }
   }
 })
 

@@ -1,4 +1,5 @@
 import { asyncForEach, filterWithKeys } from '../util'
+import isA from 'typeproof/core/isA'
 import { forEachObjIndexed } from 'ramda'
 import World from '..'
 import Manager from './Manager'
@@ -39,6 +40,17 @@ class SceneManager extends Manager{
         id,
         exits: filterWithKeys((_, exit) => exit !== undefined, val.exits)
       }
+
+      //load items in the scene
+      if(isA.array(val.items)){
+        val.items.forEach(item => {
+          let name = item;
+          if(isA.object(item)) name = item.name;
+
+          World.Entity.constructItem(name, id);
+        })
+      }
+
       //Set player location to the scene entry point (Subject to change)
       //if(key === entry) 
       //  World.Entity.getFirstFromTag('player').presence = id;
