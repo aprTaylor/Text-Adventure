@@ -1,4 +1,5 @@
 import World from '..'
+import isA from 'typeproof/core/isA'
 
 const logger = require('logdown')('app:system')
 
@@ -17,6 +18,7 @@ const System = ({
         let room = World.Entity.byTagGet('room').filter((room) => {
             return room.name.label === roomName
         });
+        logger.trace("ID", room, entity, roomName)
         entity.presence.room = room[0].id;
 
         return room[0];

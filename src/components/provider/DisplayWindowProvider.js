@@ -29,7 +29,7 @@ const mapStateToProps = function(state) {
 }
 
 const mapDispatchToProps = dispatch => ({
-  moveTo: () => dispatch(Action.exitToRoom)
+  moveTo: (name) => Action.exitToRoom(name)
 })
   
 

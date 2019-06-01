@@ -33,7 +33,7 @@ const Actions = props => {
     <Paper square className={classes.root}>
       <Tabs value={value} indicatorColor="primary" textColor="primary" onChange={handleChange}>
         {props.actions && Object.keys(props.actions).map(action => (
-          <Tab label={action} />
+          <Tab label={action} key={action}/>
         ))}
         }
       </Tabs>
@@ -43,17 +43,16 @@ const Actions = props => {
         onChangeIndex={handleChange.bind(null, null)}
       >
         {props.actions && Object.keys(props.actions).map(action => (
-          <TabContainer dir={theme.direction}>
+          <TabContainer dir={theme.direction} key={action}>
             <List>
               {props.actions[action].map(item => (
-                <ListItem button>
+                <ListItem button key={item.name}>
                   <ListItemText primary={item.name} />
                 </ListItem>
               ))}
             </List>
           </TabContainer>
         ))}
-        }
       </SwipeableViews>
     </Paper>
   );
