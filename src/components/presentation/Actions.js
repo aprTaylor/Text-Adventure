@@ -36,6 +36,7 @@ const Actions = props => {
           <Tab label={action} key={action}/>
         ))}
         }
+        <Tab label="Inventory" />
       </Tabs>
       <SwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -53,6 +54,16 @@ const Actions = props => {
             </List>
           </TabContainer>
         ))}
+        <TabContainer dir={theme.direction}>
+          <List>
+            {props.inventory.map(item => (
+              <ListItem key={item.name}>
+                <ListItemText primary={item.name} />
+              </ListItem>
+            ))
+            }
+          </List>
+        </TabContainer>
       </SwipeableViews>
     </Paper>
   );

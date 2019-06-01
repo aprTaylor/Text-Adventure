@@ -14,7 +14,8 @@ function PlayerSystem (pool, dt) {
     let actions = World.IO.getState().events.actions;
     if(actions.take) {
         actions.take.forEach(item => {
-            World.IO.updateWorld(["inventory"], )
+            const {id, name} = World.Entity.get(item);
+            World.IO.updateWorld(["inventory"], {id, name: name.label}, "push")
         });
     }
 }

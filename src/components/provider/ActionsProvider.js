@@ -14,7 +14,8 @@ class ActionsProvider extends React.Component {
 
 const mapStateToProps = function(state) {
   return {
-    actions: state.world.availableActions
+    actions: state.world.availableActions,
+    inventory: state.world.inventory
   }
 }
 
