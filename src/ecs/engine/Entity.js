@@ -41,7 +41,11 @@ class Entity {
 
     //Add the room that the object is in, if is in room
     if(room)
-      this.addComponent("presence", {room})
+      this.addComponent("presence", {room});
+
+    //Add name if one is not given
+    if(!itemData.name)
+      this.addComponent("name", {label: name});
     
     //Add a description if the object has one
     if(World.managers.DataManager.hasDescription('item', name))

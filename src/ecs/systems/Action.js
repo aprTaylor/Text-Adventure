@@ -15,11 +15,11 @@ function ActionSystem (pool, dt) {
                           .filter(entity => currRoom.id === entity.presence.room);
 
 
-  World.IO.updateWorld(["availableActions", "takeable"], 
+  World.IO.updateWorld(["availableActions", "take"], 
     items.map(entity => {
       const {id, name} = entity; 
       return ({
-        id, name, 
+        id, name: name.label, 
         description: System.load(entity, 'description'),
       })
     })

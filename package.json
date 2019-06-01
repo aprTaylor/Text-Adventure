@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "homepage": "https://agray5.github.io/Text-Adventure/",
   "dependencies": {
+    "@material-ui/core": "^4.0.0-rc.0",
     "compromise": "^11.13.2",
     "entity-component-system": "^4.0.5",
     "logdown": "^3.2.8",
@@ -15,6 +16,7 @@
     "react-dom": "^16.8.6",
     "react-redux": "^6.0.1",
     "react-scripts": "2.1.1",
+    "react-swipeable-views": "^0.13.3",
     "redux": "^4.0.1",
     "sanitize-html": "^1.20.1",
     "sinon": "^7.3.2",
