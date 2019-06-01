@@ -86,7 +86,7 @@ class Entity {
    * @memberof Entity
    */
   removeComponent = (component, id) => {
-      this._ecsPool.removeComponent(id, component.name);
+      this._ecsPool.removeComponent(id, component);
   }
 
   /**

@@ -21,7 +21,8 @@ let state = {
     world: {
         description: "",
         exitNames: [],
-        availableActions: []
+        availableActions: [],
+        inventory: []
     },
     persist: {}
 };
@@ -72,7 +73,7 @@ class World {
         //if(i == 0) logger.trace("Update", dt)
         ecs.run(ecsPool, dt);
         //clean events
-        state.events = {actions: {}};
+        World.IO.resetEvents();
     }
 }
 

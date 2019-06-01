@@ -46,7 +46,7 @@ const Actions = props => {
           <TabContainer dir={theme.direction} key={action}>
             <List>
               {props.actions[action].map(item => (
-                <ListItem button key={item.name}>
+                <ListItem button key={item.name} onClick={props.handleClick.bind(null, action, item.id)}>
                   <ListItemText primary={item.name} />
                 </ListItem>
               ))}

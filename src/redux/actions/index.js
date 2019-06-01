@@ -12,9 +12,13 @@ export const update = (dt) => {
     } 
 }
 
+/** Does not effect UI data so does not need to be dispatched */
 export const Action = {
     exitToRoom: (roomName) => {
         World.IO.triggerEvent('moveTo', roomName);
         World.IO.takeAction('look');
+    },
+    takeAction: (action, data) => {
+        World.IO.takeAction(action, data);
     }
 }

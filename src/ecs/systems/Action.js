@@ -9,6 +9,14 @@ function ActionSystem (pool, dt) {
 
   const currRoom = System.getCurrRoom();
 
+  //Take queued actions
+  let actions = World.IO.getState().events.actions;
+  if(actions.take) {
+    actions.take.forEach(item => {
+      take(item);
+    });
+  }
+
   //Add takable to actions
   let items = World.Entity.queryComponents(["takeable", "presence"])
                           .map(entity => World.Entity.get(entity))
@@ -27,6 +35,13 @@ function ActionSystem (pool, dt) {
 
   logger.info("items", World.IO.getState())
         
+}
+
+const take = (itemId) => {
+  //Remove from world and move into player inventory
+  World.Entity.removeComponent("presence", itemId);
+  logger.info("presence", World.Entity.get(itemId))
+  World.Entity.getFirstFromTag("player").inventory.list.push(itemId);
 }
 
 export default ActionSystem 

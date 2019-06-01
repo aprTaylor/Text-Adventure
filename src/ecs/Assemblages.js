@@ -20,6 +20,7 @@ export function Actor (name, room) {
     return World.Entity.create()
     .addComponent("name", {label: name})
     .addComponent("presence", {room})
+    .addComponent("inventory")
     .addTag('actor')
 }
 

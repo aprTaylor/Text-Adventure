@@ -19,9 +19,9 @@ class IO {
    * @param {String} action Name of action to take
    * @memberof IO
    */
-  takeAction = (action) => {
+  takeAction = (action, data = true) => {
     logger.info("Action taken", action)
-    state = timm.setIn(state, ['events', 'actions', action], true);
+    state = timm.setIn(state, ['events', 'actions', action], data);
   }
 
   /**
@@ -46,14 +46,22 @@ class IO {
   /**
    * @param {[string]|string} facetPath Adjustable updating of data
    * @param {any} data relevant data
+   * @param {"push"} transform relevant data
    * @memberof IO
    */
-  updateWorld = (facetPath, data) => {
+  updateWorld = (facetPath, data, transform) => {
+    switch(transform){
+      case "push": data = timm.addLast(timm.getIn(state, ['world', ...forceArray(facetPath)]), data)
+    }
     state = timm.setIn(state, ['world', ...forceArray(facetPath)], data);
   }
 
   getState() {
       return Object.assign({}, state);
+  }
+
+  resetEvents () {
+    state = timm.setIn(state, ['events', 'actions'], {actions: {}})
   }
 }
 

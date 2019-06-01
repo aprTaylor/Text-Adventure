@@ -64,3 +64,7 @@ export const Stackable = (max) => ({
 })
 
 export const Takeable = () => ({})
+
+export const Inventory = (list = []) => ({
+    list
+})

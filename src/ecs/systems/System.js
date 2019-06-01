@@ -18,7 +18,6 @@ const System = ({
         let room = World.Entity.byTagGet('room').filter((room) => {
             return room.name.label === roomName
         });
-        logger.trace("ID", room, entity, roomName)
         entity.presence.room = room[0].id;
 
         return room[0];
