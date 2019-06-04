@@ -1,32 +1,31 @@
-[![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
+# react-text-adventure
 
-This is a text adventure game built with React and Redux for the view layer and uses an entity component system, nano-ecs.js. It will also store the game data in a local database.
+> Create text adventures using redux, react, and entity component system
 
-# Features
+[![NPM](https://img.shields.io/npm/v/react-text-adventure.svg)](https://www.npmjs.com/package/react-text-adventure) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-## Templating Descriptions
-Description files utilize [moustace.js](https://github.com/janl/mustache.js/). This means that a description can embedd tags in the format of {{tag}}. These tags are replaced at runtime. 
+## Install
 
-Example:
-
-```js
-  //descriptions.js
-  const Descriptions = ({
-    Room: {
-      standard: "This room has {{color}} walls."
-    }
-  })
-
- //template.js
- const Template = (entity) => ({
-   color: () => {
-     return entity.color
-   }
- })
+```bash
+npm install --save react-text-adventure
 ```
 
-<!-- Live preview is not ready yet -->
-<!-- This project is far from complete but a [live version](https://agray5.github.io/Text-Adventure) can be viewed.-->
+## Usage
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```jsx
+import React, { Component } from 'react'
 
+import MyComponent from 'react-text-adventure'
+
+class Example extends Component {
+  render () {
+    return (
+      <MyComponent />
+    )
+  }
+}
+```
+
+## License
+
+MIT © [agray5](https://github.com/agray5)
