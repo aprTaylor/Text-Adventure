@@ -1,22 +1,23 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+//Depends
+import React, { Component } from 'react';
+/*
+import { Provider } from 'react-redux';
+import store from './store.js'
 
-import styles from './styles.css'
+//Components
+import Updater from './components/provider/Updater'
+*/
+/*
+const App = ({children}) => (
+  <Provider store={store}>
+    <div className="React-Text-Adventure">
+      <Updater store={store}/>
+      {children}
+    </div>
+  </Provider>
+)*/
 
-export default class ExampleComponent extends Component {
-  static propTypes = {
-    text: PropTypes.string
-  }
-
-  render() {
-    const {
-      text
-    } = this.props
-
-    return (
-      <div className={styles.test}>
-        Example Component: {text}
-      </div>
-    )
-  }
+const App = () => {
+  return (<div></div>)
 }
+export default App;
