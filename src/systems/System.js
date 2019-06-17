@@ -1,4 +1,3 @@
-import World from '..'
 import isA from 'typeproof/core/isA'
 
 const logger = require('logdown')('app:system')

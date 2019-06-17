@@ -1,7 +1,6 @@
 import { asyncForEach, filterWithKeys } from '../util'
 import isA from 'typeproof/core/isA'
 import { forEachObjIndexed } from 'ramda'
-import World from '..'
 import Manager from './Manager'
 import { Room, Exit } from '../Assemblages';
 
@@ -10,6 +9,11 @@ const logger = require('logdown')('app:manager/SceneManager.js')
 let scene;
 //TODO: fix scene manager
 class SceneManager extends Manager{
+
+  constructor(world) {
+    super(world);
+    this.world = world;
+  }
   
   //Will only load unloaded scenes
   async loadScene(sceneName) {
@@ -33,7 +37,7 @@ class SceneManager extends Manager{
       //Load room
       Room(sceneName, key, scene.descriptions[key].intro?'intro':'standard');
       //alias entity id
-      const id = World.Entity._lastCreatedEntity; //Not good async solution
+      const id = this.world.Entity._lastCreatedEntity; //Not good async solution
       //store refs for creating exits
       roomMap[key] = {
         name: key,
@@ -47,7 +51,7 @@ class SceneManager extends Manager{
           let name = item;
           if(isA.object(item)) name = item.name;
 
-          World.Entity.constructItem(name, id);
+          this.world.Entity.constructItem(name, id);
         })
       }
 

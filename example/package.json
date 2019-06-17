@@ -9,7 +9,7 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "^1.1.4",
-    "react-text-adventure": "file:.."
+    "react-text-adventure": "file:../"
   },
   "scripts": {
     "start": "react-scripts start",

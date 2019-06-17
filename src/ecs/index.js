@@ -4,8 +4,8 @@ import { forEach, forEachObjIndexed } from 'ramda'
 import _Entity from './engine/Entity'
 import _IO from './engine/IO'
 
-import { systems as Systems, entities as Entities, managers as Managers, components} from './util/dataToLoad'
-import System from './systems/System'
+//import load from './util/dataToLoad'
+import System from '../systems/System'
 import Manager from './managers/Manager'
 import './util/typeDef'
 import newGame from './newGame'
@@ -47,11 +47,13 @@ class World {
      */
     static init(_managers = Managers, _systems = Systems){
         //Load 
+        //systems = load(ecs, ecsPool, World.managers);
+        /*
         systems = forEach(sys => ecs.add(sys), _systems);
         forEachObjIndexed((comp, compName) => ecsPool.registerComponent(compName.toLowerCase(), comp), components);
         forEachObjIndexed((manager, key) => {
-            World.managers[key] = new manager(World.managers, ecs);
-        }, _managers)
+            World.managers[key] = new manager(ecs);
+        }, _managers)*/
     }
 
     static async startNewGame(entities = Entities) {
@@ -59,7 +61,7 @@ class World {
         const loaded = World.managers.DataManager.load({
             persist: {visited: {}}
         })
-        await newGame(loaded, state);
+        await newGame(World, loaded, state);
     }
 
     /**

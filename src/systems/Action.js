@@ -1,7 +1,7 @@
-import System from './System'
-import World from '..';
-import Entity from '../engine/Entity';
+import System from './System';
+import World from '../ecs';
 
+console.log("World", World)
 const logger = require('logdown')('app:ActionSystem.js')
 
 

@@ -6,12 +6,7 @@ import { Player } from '../Assemblages'
 //Components 
 import * as Components from '../components'
 //Systems
-import DescriptionSystem from '../systems/Description'
-import PlayerSystem from '../systems/Player';
-import RoomSystem from '../systems/Room';
-import SightSystem from '../systems/Sight';
-import ExitSystem from '../systems/Exits'
-import ActionSystem from '../systems/Action'
+
 //util
 import { bind_trailing_args } from '.';
 
@@ -20,17 +15,20 @@ export const components = Components;
 
 /*** SYSTEMS ****************************************************************/
 
-export const systems = [
-    PlayerSystem, RoomSystem, ActionSystem, DescriptionSystem, SightSystem, ExitSystem
-];
 
 /*** Managers *****************************************************************/
-export const managers = {
+const managers = {
     DataManager, SceneManager
 }
 
 /***  ENTITIES ***********************************************************/
 
-export const entities = [
-];
+export default load = (ecs, ecsPool, managersFromWorld) => {
+    const systemsForWorld = forEach(sys => ecs.add(sys), systems);
+    forEachObjIndexed((comp, compName) => ecsPool.registerComponent(compName.toLowerCase(), comp), components);
+    forEachObjIndexed((manager, key) => {
+        managersFromWorld[key] = new manager(ecs);
+    }, managers);
+    return systemsForWorld;
 
+}

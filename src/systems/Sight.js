@@ -1,6 +1,6 @@
-import { getArticleInPlace, getToBe } from '../util/Proper'
+import { getArticleInPlace, getToBe } from '../ecs/util/Proper'
 import System from './System'
-import World from '..';
+import World from '../ecs';
 
 const logger = require('logdown')('app:SightSystem.js')
 

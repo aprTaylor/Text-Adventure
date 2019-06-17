@@ -1,7 +1,6 @@
 import store from 'store'
 import timm from 'timm'
 import Manager from "./Manager";
-import World from '..';
 import isA from 'typeproof/core/isA';
 import Mustache from 'mustache'
 import strTemplate from '../util/descriptionTemplate'
@@ -14,6 +13,11 @@ const roomPath = "room.js"
 
 const loaded = {};
 class DataManager extends Manager {
+  constructor(world) {
+    super(world);
+    this.world = world;
+  }
+
   async getScene(name) {
     //Only load once
     if(loaded[name]) return;
@@ -71,8 +75,8 @@ class DataManager extends Manager {
 
   save() {
     //Save world persist data
-    store.set("persist", World.IO.getState().persist);
-    store.set("entities", World.Entity.save());
+    store.set("persist", this.world.IO.getState().persist);
+    store.set("entities", this.world.Entity.save());
   }
 
   load({persist, entities}) {

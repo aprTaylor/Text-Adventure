@@ -1,6 +1,6 @@
 import System from './System'
 import { setIn as setState } from 'timm'
-import World from '..';
+import World from '../ecs';
 
 const logger = require('logdown')('app:ExitSystem.js')
 

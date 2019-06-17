@@ -1,5 +1,5 @@
 import World from './'
-import { Description } from "./components/Description";
+//import { Description } from "./components/Description";
 
 const logger = require('logdown')('app:Assemblages.js')
 
